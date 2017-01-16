@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
@@ -13,3 +14,23 @@ build
 .DS_Store
 .env
 npm-debug.log
+=======
+node_modules
+
+
+# Editor specific files (Atom, Sublime, VSCode) #
+#################################################
+*.sublime*
+sublime
+
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+>>>>>>> 7f036f7689cc4b458058ea4a7163ca314b7324e2
