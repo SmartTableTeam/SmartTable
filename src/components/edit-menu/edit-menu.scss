@@ -1,0 +1,21 @@
+.edit-menu-background {
+  background: lighten(gray,12%);
+  height:100vh;
+}
+* {
+  line-height: 1.5em;
+}
+header {
+  height:40px;
+  width:100%;
+  background: lighten(black,30%);
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  color: lighten(gray,36%);
+  margin-bottom: 36px;
+}
+
+#edit-menu-container {
+  border:1px solid black;
+}
