@@ -1,0 +1,70 @@
+
+.btn {
+  background:lighten(black,15%);
+  border-radius: 8px;
+  color: lighten(gray,10%);
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.button-container {
+  width:100%;
+  margin: auto;
+  // border: 1px solid black;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .btn-lg {
+    width:235px;
+  }
+  .btn-md {
+    width: 120px;
+  }
+}
+
+.form-control {
+  margin-top: 36px;
+  background:darken(gray,2%);
+  color:lighten(gray,30%);
+  height:49px;
+}
+
+@media (max-width:1105px) {
+  .button-container .btn-lg {
+    width:165px;
+    font-size: 16px;
+  }
+  .button-container .btn-md {
+    width: 96px;
+    font-size: 16px;
+  }
+}
+
+
+@media (max-width:865px) {
+  .button-container .btn-lg {
+    width:135px;
+    font-size: 16px;
+  }
+  .button-container .btn-md {
+    width: 76px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width:665px) {
+  .button-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .button-container .btn-lg {
+    // width:100%;
+    float: left;
+    font-size: 16px;
+  }
+  .button-container .btn-md {
+    // width: 100%;
+    float: left;
+    font-size: 16px;
+  }
+}

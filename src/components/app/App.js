@@ -6,7 +6,7 @@ export default class App extends React.Component{
     return(
       <div>
         <div className='nav'>
-          <h1>Reajjjctdss</h1>
+          <h1>Nav Goes Here!</h1>
         </div>
 
         <div>{this.props.children}</div>
