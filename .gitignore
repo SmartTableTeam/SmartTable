@@ -1,11 +1,15 @@
 node_modules
-
+./BACK_END/node_modules
 
 # Editor specific files (Atom, Sublime, VSCode) #
 #################################################
 *.sublime*
 sublime
 
+
+# Log Files #
+#############
+*.log
 
 # OS generated files #
 ######################
