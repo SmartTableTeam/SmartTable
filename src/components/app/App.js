@@ -6,10 +6,13 @@ export default class App extends React.Component{
   render(){
     return(
       <div className='JumboTron'>
-        <Landing></Landing>
+        <div>{this.props.children}</div>
+
+
+
       </div>
 
     )
   }
 }
-//<div>{this.props.children}</div>
+  // <Landing></Landing>

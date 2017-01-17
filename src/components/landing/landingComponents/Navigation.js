@@ -2,17 +2,15 @@ import React from 'react'
 import {Link} from 'react-router'
 export default class Nav extends React.Component{
   render(){
-    console.log(this.props.func);
     return(
-
       <div className='navBar'>
 
 
         <div className='right'>
           <ul>
-
-              <li onClick={this.click.bind(this)}>Login</li>
-
+            <Link to=''>
+              <li>Login</li>
+            </Link>
             <li>Sign up</li>
           </ul>
         </div>
@@ -20,7 +18,5 @@ export default class Nav extends React.Component{
       </div>
     )
   }
-  click(){
-    this.props.func(!this.props.val)
-  }
+
 }
