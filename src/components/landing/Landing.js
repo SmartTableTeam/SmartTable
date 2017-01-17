@@ -10,8 +10,14 @@ export default class Landing extends React.Component{
       val:false
     }
   }
+  // componentDidMount(){
+  //   this.changesIt(!this.state.val);
+  // }
 
-
+  changesIt(){
+    console.log(';;;;;');
+    this.setState({val:false})
+  }
   activateRender(value){
 
     if(value!=undefined)this.setState({val:value})
@@ -20,23 +26,25 @@ export default class Landing extends React.Component{
       return (
         <div  className='modalContain'>
           <div className='modal'>
-            <Login/>
+
+
           </div>
         </div>
       )
     }
+
     // document.getElementById('render').className+='none'
     return;
   }
+
+
   render(){
     return(
       <div className='LandingContainer' >
-        <Nav func={this.activateRender.bind(this)} val={this.state.val}/>
-
-
-
-          {this.activateRender()}
-
+        <Nav func={this.activateRender.bind(this)}/>
+          {
+            this.state.val?<Login funky={this.changesIt.bind(this)}/>:null
+          }
       </div>
     )
   }

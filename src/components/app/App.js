@@ -4,12 +4,11 @@ import Landing from '../landing/Landing.js'
 export default class App extends React.Component{
 
   render(){
+    console.log(this.props);
     return(
       <div className='JumboTron'>
-        <div>{this.props.children}</div>
 
-
-
+        {this.props.children}
       </div>
 
     )
