@@ -13,12 +13,12 @@ export default class Login extends Component {
     return (
       <div className='contain'>
         <form className='content'>
+          <p className='prompt'>Company Name</p>
+          <input type='text' placeholder='Enter Company'></input>
+          <p className='prompt'>Email</p>
+          <input type='text' placeholder='Enter Email'></input>
           <p className='prompt'>Texter</p>
-          <input type='text'></input>
-          <p className='prompt'>Texter</p>
-          <input type='text'></input>
-          <p className='prompt'>Texter</p>
-            <input type='text'></input>
+            <input type='text' placeholder='Enter Company'></input>
           <Link to='/profile'>
             <button>SignUp</button>
           </Link>
