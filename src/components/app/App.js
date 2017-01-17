@@ -1,18 +1,15 @@
 import React from 'react'
-import '../../style.scss'
+import './jumboStyle.scss'
+import Landing from '../landing/Landing.js'
 export default class App extends React.Component{
 
   render(){
     return(
-      <div>
-        <div className='nav'>
-          <h1>Reajjjctdss</h1>
-        </div>
-
-        <div>{this.props.children}</div>
-
+      <div className='JumboTron'>
+        <Landing></Landing>
       </div>
 
     )
   }
 }
+//<div>{this.props.children}</div>
