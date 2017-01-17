@@ -20,7 +20,9 @@ export default class Nav extends React.Component{
       </div>
     )
   }
+
   click(){
+    console.log(this.props.val);
     this.props.func(!this.props.val)
   }
 }

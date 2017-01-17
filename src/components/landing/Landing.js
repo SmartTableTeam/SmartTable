@@ -13,13 +13,13 @@ export default class Landing extends React.Component{
 
 
   activateRender(value){
-
+    console.log('string', value);
     if(value!=undefined)this.setState({val:value})
     if(this.state.val){
       // document.getElementById('render').className='none'.replace('')
       return (
         <div  className='modalContain'>
-          <div className='modal'>
+          <div className='_modal'>
             <Login/>
           </div>
         </div>
@@ -32,7 +32,6 @@ export default class Landing extends React.Component{
     return(
       <div className='LandingContainer' >
         <Nav func={this.activateRender.bind(this)} val={this.state.val}/>
-
 
 
           {this.activateRender()}
