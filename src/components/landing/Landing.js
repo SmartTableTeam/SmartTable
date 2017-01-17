@@ -26,9 +26,9 @@ export default class Landing extends React.Component{
     return(
       <div className='LandingContainer'>
         <Nav func={this.activateRender.bind(this)} val={this.state.val}/>
-        <div>
+        <div className='modalContain'>
           {this.activateRender()}
-          {this.state.val}
+
         </div>
       </div>
     )

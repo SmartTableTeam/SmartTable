@@ -1,5 +1,6 @@
 import React , { Component } from 'react'
-
+import {Link} from 'react-router'
+import './Login.scss'
 export default class Login extends Component {
   constructor(props){
     super(props)
@@ -10,7 +11,19 @@ export default class Login extends Component {
 
   render() {
     return (
-      <h1>{this.state.message}!!!</h1>
+      <div className='contain'>
+        <form className='content'>
+          <p className='prompt'>Texter</p>
+          <input type='text'></input>
+          <p className='prompt'>Texter</p>
+          <input type='text'></input>
+          <p className='prompt'>Texter</p>
+            <input type='text'></input>
+          <Link to='/profile'>
+            <button>SignUp</button>
+          </Link>
+        </form>
+      </div>
     )
   }
 }

@@ -2,8 +2,18 @@
   margin:0;padding:0;
   width:100vw;height:100vh;
   background-color: mistyrose;
+  
 }
+.modalContain{
+display: flex;
+justify-content: center;
+align-items: center;
+  .modal{
 
+    height:300px;width:400px;
+    background-color: green;
+  }
+}
 .navBar{
   width:100vw;height: 100px;
   background-color: red;
