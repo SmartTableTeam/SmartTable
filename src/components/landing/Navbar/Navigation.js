@@ -11,9 +11,9 @@ export default class Nav extends React.Component{
         <div className='right'>
           <ul>
 
-              <li onClick={this.click.bind(this)}>Login</li>
+              <li>Login</li>
 
-            <li>Sign up</li>
+            <li onClick={this.click.bind(this)}>Sign up</li>
           </ul>
         </div>
 

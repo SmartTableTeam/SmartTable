@@ -1,7 +1,9 @@
 .LandingContainer{
   margin:0;padding:0;
   width:100vw;height:100vh;
-
+  background: url('./landingB.jpg');
+  background-position: center;
+  background-size: cover;
 }
 .modalContain{
 display: flex;
@@ -11,7 +13,7 @@ align-items: center;
   .modal{
     border-radius: 10%;
     height:400px;width:300px;
-    background-color: green;
+    background-color: #3e5882;
     box-shadow: 5px 10px 10px 5px #888888;
   }
 }
@@ -29,11 +31,16 @@ align-items: center;
     margin:0;padding:0;
     ul{
       margin: 0;padding: 0;
+      width:100%;
       list-style: none;
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: space-around;
       li{
+        color:white;
+        font-family: "urbana", sans-serif;
+        font-size: 18px;
+        font-weight: 400;
         cursor: pointer;
       }
     }

@@ -1,5 +1,5 @@
 import React from 'react'
-import Nav from './components/Navigation.js'
+import Nav from './NavBar/Navigation.js'
 import Login from './login/Login.js'
 import './landingStyle.scss'
 
@@ -7,7 +7,7 @@ export default class Landing extends React.Component{
   constructor(props){
     super(props)
     this.state={
-      val:true
+      val:false
     }
   }
 
@@ -18,8 +18,10 @@ export default class Landing extends React.Component{
     if(this.state.val){
       // document.getElementById('render').className='none'.replace('')
       return (
-        <div className='modal'>
-          <Login/>
+        <div  className='modalContain'>
+          <div className='modal'>
+            <Login/>
+          </div>
         </div>
       )
     }
@@ -32,9 +34,9 @@ export default class Landing extends React.Component{
         <Nav func={this.activateRender.bind(this)} val={this.state.val}/>
 
 
-        <div  className='modalContain'>
+
           {this.activateRender()}
-        </div>
+
       </div>
     )
   }
