@@ -1,11 +1,12 @@
 import React from 'react'
+import '../style.scss'
 export default class App extends React.Component{
 
   render(){
     return(
 
-      <div>
-        <h1>Reajjjct</h1>
+      <div className='nav'>
+        <h1>Reajjjctdss</h1>
       </div>
     )
   }
