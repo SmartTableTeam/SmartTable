@@ -1,6 +1,6 @@
 node_modules
-./BACK_END/node_modules
-./BACK_END/config.js
+/BACK_END/node_modules
+/BACK_END/config.js
 
 # Editor specific files (Atom, Sublime, VSCode) #
 #################################################
