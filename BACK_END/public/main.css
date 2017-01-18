@@ -1,0 +1,8 @@
+* {
+	box-sizing: border-box;
+	overflow: auto;
+}
+
+body {
+	margin: 20px;
+}
