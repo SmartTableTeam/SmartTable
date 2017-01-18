@@ -293,7 +293,7 @@ webpack-dev-server
   ```
 
 ### Delete a Menu
-  ** DELETE  /api/menu/:menu_id**
+  **DELETE  /api/menu/:menu_id**
   **Description:**
   This end point deletes a menu
 
@@ -320,7 +320,7 @@ webpack-dev-server
   ```
 
 ### Get detailed list of menus
-  ** GET  /api/menu/list/details**
+  **GET  /api/menu/list/details**
   **Description:**
   Get a list of menus for the logged in restaurant. Does include menu items
   Must be logged in as a restaurant to use.
@@ -363,7 +363,7 @@ webpack-dev-server
   "You must be logged in as a restaurant to use this resource"
 
 ### Get summary list of menus
-  ** GET  /api/menu/list/summary**
+  **GET  /api/menu/list/summary**
   **Description:**
   Get a list of menus for the logged in restaurant. Does not include menu items
   Must be logged in as a restaurant to use.
