@@ -8,11 +8,9 @@ export default class Login extends Component {
 
   render() {
 
-    console.log(this.props.function,'worked');
     return (
 
       <div className='contain'>
-        <h1>Create your account</h1>
         <form className='content'>
           <div className="login-exit click-to-close" onClick={this.props.funky}></div>
 
@@ -28,8 +26,7 @@ export default class Login extends Component {
           <hr />
 
           <Link to='/profile'>
-          <button onClick={this.postUser.bind(this)}>SignUp</button>
-            <button className="sign-up">Sign Up Now</button>
+            <button className="sign-up" onClick={this.postUser.bind(this)}>Sign Up Now</button>
           </Link>
 
         </form>
