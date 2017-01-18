@@ -1,0 +1,42 @@
+
+$primary-color: #449c57;
+// $secondary-color: ;
+$warning-color: #bc2031;
+
+
+//blue to save #3e5882
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.click-to-close {
+  height: 35px;
+  width: 35px;
+  background: $warning-color;
+  border-radius: 50%;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+.click-to-close:before {
+  content: 'X';
+}
+
+//
+// .LandingContainer{
+//   padding: 20px;
+// }
+
+.main-button {
+  border: none;
+  background: $primary-color;
+  color: white;
+}
