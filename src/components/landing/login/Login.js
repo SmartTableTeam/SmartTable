@@ -1,29 +1,42 @@
 import React , { Component } from 'react'
 import {Link} from 'react-router'
-import './Login.scss'
+import '../../main.scss'
+import './login.scss'
+
 export default class Login extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      message:'WELCOME TO THE LOGIN PAGE'
-    }
-  }
+
 
   render() {
+
+    console.log(this.props.function,'worked');
     return (
+
       <div className='contain'>
+        <h1>Create your account</h1>
         <form className='content'>
-          <p className='prompt'>Company Name</p>
-          <input type='text' placeholder='Enter Company'></input>
-          <p className='prompt'>Email</p>
-          <input type='text' placeholder='Enter Email'></input>
-          <p className='prompt'>Texter</p>
-            <input type='text' placeholder='Enter Company'></input>
+          <div className="login-exit click-to-close" onClick={this.props.funky}></div>
+
+          <h2>Register</h2>
+
+          <hr />
+
+          <input type='text' placeholder='Company Name'></input>
+          <input type='text' placeholder='Email'></input>
+          <input type='text' placeholder='Password'></input>
+          <input type='text' placeholder='Confirm Password'></input>
+
+          <hr />
+
           <Link to='/profile'>
-            <button>SignUp</button>
+          <button onClick={this.postUser.bind(this)}>SignUp</button>
+            <button className="sign-up">Sign Up Now</button>
           </Link>
+
         </form>
       </div>
     )
+  }
+  postUser(){
+
   }
 }

@@ -1,14 +1,53 @@
+// $color: red;
+@import '../../main.scss';
+
 .contain{
-  width: 100%;height: 100%;
+  width: 100vw;
+  height: 100vh;
+  margin-top: -100px;
+  background: rgba(0,0,0,0.7);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  .content{
+
+  .content {
     display: flex;
     flex-direction: column;
-    p{
-      padding: 0;margin: 0;
+    position: relative;
+    padding: 30px 40px;
+    background: white;
+
+                            //X button imported from main.scss
+    .login-exit {
+      position: absolute;
+      right: -10px;
+      top: -10px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    input {
+      margin: 5px 0;
+      padding: 5px;
+    }
+
+    .sign-up {
+      border: none;
+      background-color: $primary-color;
+      padding: 3px;
+      margin-top: 10px;
+      color: #fff;
+      width: 100%;
+    }
+
+    .sign-up:hover {
+      background-color: darken($primary-color, 10%);
+    }
+    .sign-up:active {
+      background-color: darken($primary-color, 15%);
     }
   }
 }
