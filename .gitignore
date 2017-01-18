@@ -16,9 +16,9 @@ build
 npm-debug.log
 
 node_modules
-./BACK_END/node_modules
 /BACK_END/node_modules
 /BACK_END/config.js
+/BACK_END/examplejson.json
 
 # Editor specific files (Atom, Sublime, VSCode) #
 #################################################
