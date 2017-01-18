@@ -4,18 +4,15 @@ import '../../main.scss'
 import './login.scss'
 
 export default class Login extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      message:'WELCOME TO THE LOGIN PAGE'
-    }
-  }
+
 
   render() {
 
+    console.log(this.props.function,'worked');
     return (
 
       <div className='contain'>
+        <h1>Create your account</h1>
         <form className='content'>
           <div className="login-exit click-to-close" onClick={this.props.funky}></div>
 
@@ -31,10 +28,15 @@ export default class Login extends Component {
           <hr />
 
           <Link to='/profile'>
+          <button onClick={this.postUser.bind(this)}>SignUp</button>
             <button className="sign-up">Sign Up Now</button>
           </Link>
+
         </form>
       </div>
     )
+  }
+  postUser(){
+
   }
 }

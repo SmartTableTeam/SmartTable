@@ -4,7 +4,7 @@ import {Link} from 'react-router'
 export default class Nav extends React.Component{
 
   render(){
-    console.log(this.props.func);
+
     return(
 
       <div className='navBar'>
@@ -19,7 +19,6 @@ export default class Nav extends React.Component{
   }
 
   click(){
-    console.log(this.props.val);
     this.props.func(true)
   }
 }
