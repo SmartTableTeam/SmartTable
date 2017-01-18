@@ -1,6 +1,7 @@
 import React from 'react'
 import Nav from './NavBar/Navigation.js'
 import Login from './login/Login.js'
+import SearchHere from './search/SearchHere.js'
 import './landingStyle.scss'
 
 export default class Landing extends React.Component{
@@ -19,20 +20,7 @@ export default class Landing extends React.Component{
     this.setState({val:false})
   }
   activateRender(value){
-
     if(value!=undefined)this.setState({val:value})
-    if(this.state.val){
-      // document.getElementById('render').className='none'.replace('')
-      return (
-        <div  className='modalContain'>
-          <div className='modal'>
-
-
-          </div>
-        </div>
-      )
-    }
-
     // document.getElementById('render').className+='none'
     return;
   }
@@ -42,9 +30,13 @@ export default class Landing extends React.Component{
     return(
       <div className='LandingContainer' >
         <Nav func={this.activateRender.bind(this)}/>
+        <div className='ifContent'>
           {
-            this.state.val?<Login funky={this.changesIt.bind(this)}/>:null
+            this.state.val?<Login funky={this.changesIt.bind(this)}/>:<SearchHere/>
           }
+
+        </div>
+
       </div>
     )
   }

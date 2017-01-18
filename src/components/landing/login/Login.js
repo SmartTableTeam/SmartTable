@@ -8,6 +8,7 @@ export default class Login extends Component {
     console.log(this.props.function,'worked');
     return (
       <div className='contain'>
+        <h1>Create your account</h1>
         <form className='content'>
           <p className='prompt'>Company Name</p>
           <input type='text' placeholder='Enter Company'></input>
