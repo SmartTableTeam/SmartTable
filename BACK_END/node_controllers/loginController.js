@@ -39,6 +39,9 @@ function logout(req,res) {
 	if(!!req.session & !!req.session.currentUser) {
 		req.session.currentUser = null;
 	}
+	if(!!req.session & !!req.session.currentCustomer) {
+		req.session.currentCustomer = null;
+	}
 	res.status(200).send("User Logged Out");
 }
 

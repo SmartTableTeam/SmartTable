@@ -69,17 +69,22 @@ function createCustomerAccount(req, res) {
 						}			
 						db.customers.insert(customer, function(err, customer) {
 							if(!err) {
-								req.session.currentUser = customer;
-								console.log(req.session.currentUser);
+								req.session.currentCustomer = customer;
 								res.status(200).send(customer)
 							} else {
 								console.log(err);
 								res.status(500).send(err);
 							}
 						})
+					} else {
+						console.log(err);
+						res.status(500).send(err);
 					}
 				})
 			}				
+		} else {
+			console.log(err);
+			res.status(500).send(err);
 		}
 	})
 }

@@ -19,7 +19,7 @@ app.use(express.static(__dirname +'/public'));
 
 //Local File modules AFTER app initialization
 var loginController 	= require('./node_controllers/loginController.js');
-var menuNode 			= require('./node_controllers/menuNodeController.js');
+var menuController		= require('./node_controllers/menuController.js');
 var accountController	= require('./node_controllers/accountController.js');
 
 //Connect to DB
@@ -29,37 +29,44 @@ var conn = massive.connectSync({
 app.set('db',conn);
 var db = app.get('db');
 
-app.listen(port, function() {
-  console.log("Started server on port", port, (new Date()).toTimeString());
-});
-
-
-
-
 //Custom Middleware
 var authcheck = function(req,res,next) {
 	if(loginController.checkLoggedIn(req)){
 		next();
 	} else {
-		res.status(401).send("You need to login to view this resource");
+		res.status(401).send("You must be logged in as a restaurant to use this resource");
 	}
 }
 
-//END POINTS
+//END POINTS	=	=	=	=	=	=	=	=	=
 
-//Authentication
+//Authentication	=	=	=
 app.post('/api/auth/login', loginController.login);
 app.post('/api/auth/logout', loginController.logout);
 
-//Accounts
+//Accounts	=	=	=	=	=
 app.post('/api/account/restaurant', accountController.createRestaurantAccount);
 app.post('/api/account/customer', accountController.createCustomerAccount);
-//Orders
+
+//Orders	=	=	=	=	=	
 
 
-//Menus
-app.get('/api/menu/:menu_id',authcheck, menuNode.getMenuById);
+//getMenuSummaryList=	=	=	
+app.post('/api/menu', authcheck, menuController.createMenu);
+app.get('/api/menu/:menu_id',authcheck, menuController.getMenuById);
+app.put('/api/menu', authcheck, menuController.updateMenu);
+app.delete('/api/menu/:menu_id', authcheck, menuController.deleteMenu);
+app.get('/api/menu/list/summary', authcheck, menuController.getMenuSummaryList);
+app.get('/api/menu/list/details', menuController.getMenuDetailsList);
 
-//Menu Items
+//Menu Items	=	=	=	=	
 
 
+
+
+
+
+//SPIN UP THE DRIVES!!
+app.listen(port, function() {
+  console.log("Started server on port", port, (new Date()).toTimeString());
+});
