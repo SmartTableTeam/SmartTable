@@ -1,0 +1,60 @@
+@import '../main.scss';
+
+.LandingContainer {
+  width: 100vw;
+  height: 100vh;
+  background: url('./landingB.jpg');
+  background-position: center;
+  background-size: cover;
+
+}
+// .modalContain {
+//   display: flex;
+//   height: 100vh;
+//   width: 100vw;
+//   margin-top: -100px;
+//   justify-content: center;
+//   align-items: center;
+//
+//   // ._modal {
+//   //   padding: 30px 40px;
+//   //   background: white;
+//   // }
+// }
+
+.navBar {
+  // width:100vw;
+  height: 100px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  // background: yellow;
+
+  .right {
+    width: 150px;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    // background: blue;
+    align-items: center;
+    margin-right: 20px;
+
+    ul {
+      width: 100%;
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      // background: red;
+      // margin-right: 200px;
+
+      li {
+        color: white;
+        font-family: "urbana", sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        cursor: pointer;
+      }
+    }
+  }
+}
