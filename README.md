@@ -36,8 +36,8 @@ webpack-dev-server
 
 ### Login 
 ---
-  **POST  /api/auth/login**
-  **Description:** 
+  **POST  /api/auth/login**  
+  **Description:**   
   This endpoint checks provided credentials to log in a user
 
   *NOTE: currently, only restaurants can log in. Customer login to be implemented*
@@ -50,9 +50,9 @@ webpack-dev-server
   }
   ```
 
-  **Success Response:**
-  A json object of data for the logged in user
-  HTTP status 200
+  **Success Response:**  
+  A json object of data for the logged in user  
+  HTTP status 200  
   ```javascript
   {
       email: 'rest1@rest1.com',
@@ -66,27 +66,27 @@ webpack-dev-server
   }
   ```
 
-  **Failure Response(s):**
-  A failure message
-  HTTP status 422
+  **Failure Response(s):**  
+  A failure message  
+  HTTP status 422  
   ```javascript
   "Incorrect email/password combination"
 ```
 
 ### Logout
 ---
-  **POST /api/auth/logout**
-  **Description:** 
-  This endpoint logs the signed in user out of current session
+  **POST /api/auth/logout**  
+  **Description:**  
+  This endpoint logs the signed in user out of current session  
 
-  **Request Body:**
+  **Request Body:**  
   No request body
 
-  **Success Response:**
+  **Success Response:**  
   HTTP status 200
 
-  **Failure Response(s):**
-  Thi endpoint will only fail on a server-side error
+  **Failure Response(s):**  
+  Thi endpoint will only fail on a server-side error  
   HTTP status 500
 
 ## User Account End points  =   =   =   =   =
@@ -94,12 +94,12 @@ webpack-dev-server
 
 ### Create Restaurant Account
 ---
-  **POST /api/account/restaurant**
-  **Description:**
+  **POST /api/account/restaurant**  
+  **Description:**  
   This end point creates a restaurant account, sets that account as the current user (logged in) and returns a restaurant JSON object.
 
-  **Request Body:**
-  A JSON object describing the restaurant to be created
+  **Request Body:**  
+  A JSON object describing the restaurant to be created  
   ```javascript
   {
       "email": "restaurant@example.com",
@@ -112,26 +112,27 @@ webpack-dev-server
   }
   ```
 
-  **Success Response:**
-  A JSON object containing the newly created restaurant
+  **Success Response:**  
+  A JSON object containing the newly created restaurant  
   HTTP status 200
 
-  **Failure Response(s):**
-  * Internal Server Error
-    HTTP status 500
-  * Account already exists for entered email
-    HTTP status 422
+  **Failure Response(s):**  
+  Internal Server Error  
+    HTTP status 500  
+  
+  Account already exists for entered email  
+    HTTP status 422  
     ```javascript
     "Account already exists for that email address"
     ```
 
 ### Create Customer Account
 ---
-  **POST /api/account/customer**
-  **Description:**
+  **POST /api/account/customer**  
+  **Description:**  
   This end point creates a customer account, sets that account as the current user (logged in) and returns a customer JSON object.
 
-  **Request Body:**
+  **Request Body:**  
   A JSON object describing the customer to be created
   ```javascript
   {
@@ -142,26 +143,27 @@ webpack-dev-server
   }
   ```
 
-  **Success Response:**
-  A JSON object containing the newly created customer
+  **Success Response:**  
+  A JSON object containing the newly created customer  
   HTTP status 200
 
   **Failure Response(s):**
-  * Internal Server Error
-    HTTP status 500
-  * Account already exists for entered email
-    HTTP status 422
-    ```javascript
-    "Account already exists for that email address"
-    ```
+  Internal Server Error  
+  HTTP status 500  
+
+  Account already exists for entered email  
+  HTTP status 422
+  ```javascript
+  "Account already exists for that email address"
+  ```
 
 ## Menu End Points  =   =   =   =   =   =
 
 ### Create a Menu
 ---
-  **POST /api/menu**
-  **Description:**
-  The endpoint will create a menu from a provided JSON object.
+  **POST /api/menu**  
+  **Description:**  
+  The endpoint will create a menu from a provided JSON object.  
   Requires a restaurant to be logged in to use this resource.
 
   **Request Body:**
@@ -173,7 +175,7 @@ webpack-dev-server
   }
   ```
 
-  **Success Response:**
+  **Success Response:**  
   A JSON Object containing the newly created menu, with it's id
   ```javascript
   {
@@ -184,29 +186,29 @@ webpack-dev-server
   } 
   ```
 
-  **Failure Responses:**
-  Server side error
-  HTTP status 500
-  An error object or message
+  **Failure Responses:**  
+  Server side error  
+  HTTP status 500  
+  An error object or message  
 
-  User not logged in
-  HTTP status 401
+  User not logged in  
+  HTTP status 401  
   ```javascript
   "You must be logged in as a restaurant to use this resource"
   ```
 
 ### Get Menu by ID
 ---
-  **GET /api/menu/:menu_id**
-  **Description:** 
+  **GET /api/menu/:menu_id**  
+  **Description:**   
   The endpoint will retrieve a menu object, containing a list the menu's menu items.
-  You must be logged in in order to use this end point. A non-logged in user will get a 401 error code
+  You must be logged in in order to use this end point. A non-logged in user will get a 401 error code  
   If a user requests a menu that is not tied to their account, they will get an empty response
 
-  **Request Params:**
+  **Request Params:**  
   menu_id - the id of the menu to be retrieved.
 
-  **Success Response:**
+  **Success Response:**  
   A JSON object containing the requested menu and its menu items
   HTTP status 200
   ```javascript
@@ -240,31 +242,31 @@ webpack-dev-server
         }]
     }
   ```
-  **Failure Response(s):**
-  Server side error
-  HTTP status 500
+  **Failure Response(s):**  
+  Server side error  
+  HTTP status 500  
 
-  No menu found for the logged in user and menu_id
-  HTTP status 200
+  No menu found for the logged in user and menu_id  
+  HTTP status 200  
   ```javascript
   {}
   ```
 
-  User not logged in
-  HTTP status 401
+  User not logged in  
+  HTTP status 401  
   ```javascript
   "You must be logged in as a restaurant to use this resource"
   ```
 
-### Update a Menu
-  ** PUT  /api/menu**
-  **Description:**
-  The endpoint will update a menu from a provided JSON object.
+### Update a Menu  
+  ** PUT  /api/menu**  
+  **Description:**  
+  The endpoint will update a menu from a provided JSON object.  
   Requires a restaurant to be logged in to use this resource.
 
-  **Request Body:**
-  A JSON object containing the menu to be updated.
-  The id specifies which menu to update 
+  **Request Body:**  
+  A JSON object containing the menu to be updated.  
+  The id specifies which menu to update   
   ```javascript
   {
     "id":1,
@@ -274,64 +276,64 @@ webpack-dev-server
   }
   ```
   
-  **Success Response:**
-  Menu updated
-  HTTP status 200
-  A JSON object containing the updated menu
+  **Success Response:**  
+  Menu updated  
+  HTTP status 200  
+  A JSON object containing the updated menu  
   
-  **Failure Responses:**
-  Server side error
-  HTTP status 500
+  **Failure Responses:**  
+  Server side error  
+  HTTP status 500  
 
-  No menu found for the given ID
-  HTTP status 422
+  No menu found for the given ID  
+  HTTP status 422  
 
-  User not logged in
-  HTTP status 401
+  User not logged in  
+  HTTP status 401  
   ```javascript
   "You must be logged in as a restaurant to use this resource"
   ```
 
 ### Delete a Menu
-  **DELETE  /api/menu/:menu_id**
-  **Description:**
+  **DELETE  /api/menu/:menu_id**  
+  **Description:**  
   This end point deletes a menu
 
-  **Request Params:**
+  **Request Params:**  
   menu_id - The integer id of the menu to be deleted
 
-  **Success Response:**
-  Menu Deleted
-  HTTP status 200
+  **Success Response:**  
+  Menu Deleted  
+  HTTP status 200  
   A JSON object containing the deleted menu.
 
 
-  **Failure Responses:**
-  Server side error
-  HTTP status 500
+  **Failure Responses:**  
+  Server side error  
+  HTTP status 500  
 
-  No menu found for the given ID
-  HTTP status 422
+  No menu found for the given ID  
+  HTTP status 422  
 
-  User not logged in
-  HTTP status 401
+  User not logged in  
+  HTTP status 401  
   ```javascript
   "You must be logged in as a restaurant to use this resource"
   ```
 
 ### Get detailed list of menus
-  **GET  /api/menu/list/details**
-  **Description:**
-  Get a list of menus for the logged in restaurant. Does include menu items
+  **GET  /api/menu/list/details**  
+  **Description:**  
+  Get a list of menus for the logged in restaurant. Does include menu items  
   Must be logged in as a restaurant to use.
 
-  **Request Params:**
+  **Request Params:**  
   N/A
 
-  **Success Response:**
-  Menu list returned, with menu items.
-  HTTP status 200
-  An array of menu objects
+  **Success Response:**  
+  Menu list returned, with menu items.  
+  HTTP status 200  
+  An array of menu objects  
   ```javascript
   [
     {
@@ -353,28 +355,28 @@ webpack-dev-server
   ]
   ```
 
-  **Failure Responses:**
-  Server side error
-  HTTP status 500
+  **Failure Responses:**  
+  Server side error  
+  HTTP status 500  
 
-  User not logged in
-  HTTP status 401
+  User not logged in  
+  HTTP status 401  
   ```javascript
   "You must be logged in as a restaurant to use this resource"
 
-### Get summary list of menus
-  **GET  /api/menu/list/summary**
-  **Description:**
-  Get a list of menus for the logged in restaurant. Does not include menu items
+### Get summary list of menus  
+  **GET  /api/menu/list/summary**  
+  **Description:**  
+  Get a list of menus for the logged in restaurant. Does not include menu items  
   Must be logged in as a restaurant to use.
 
-  **Request Params:**
+  **Request Params:**  
   N/A
 
-  **Success Response:**
-  Menu list returned
-  HTTP status 200
-  An array of menu objects, each containing an array of menu item objects
+  **Success Response:**  
+  Menu list returned  
+  HTTP status 200  
+  An array of menu objects, each containing an array of menu item objects  
   ```javascript
   [
       {
@@ -444,12 +446,12 @@ webpack-dev-server
   ]
   ```
 
-  **Failure Responses:**
-  Server side error
-  HTTP status 500
+  **Failure Responses:**  
+  Server side error  
+  HTTP status 500  
 
-  User not logged in
-  HTTP status 401
+  User not logged in  
+  HTTP status 401  
   ```javascript
   "You must be logged in as a restaurant to use this resource"
-
+  ```
