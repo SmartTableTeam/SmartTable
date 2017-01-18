@@ -18,9 +18,9 @@ app.use(express.static(__dirname +'/public'));
 
 
 //Local File modules AFTER app initialization
-var loginController = require('./node_controllers/loginController.js');
-var menuNode 		= require('./node_controllers/menuNodeController.js');
-
+var loginController 	= require('./node_controllers/loginController.js');
+var menuNode 			= require('./node_controllers/menuNodeController.js');
+var accountController	= require('./node_controllers/accountController.js');
 
 //Connect to DB
 var conn = massive.connectSync({
@@ -52,13 +52,12 @@ app.post('/api/auth/login', loginController.login);
 app.post('/api/auth/logout', loginController.logout);
 
 //Accounts
-
-
+app.post('/api/account/restaurant', accountController.createRestaurantAccount);
+app.post('/api/account/customer', accountController.createCustomerAccount);
 //Orders
 
 
 //Menus
-
 app.get('/api/menu/:menu_id',authcheck, menuNode.getMenuById);
 
 //Menu Items
