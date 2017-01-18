@@ -34,7 +34,6 @@ function createMenu(req,res) {
 			res.status(500).send(err);
 		}
 	})
-
 }
 
 function getMenuById(req,res,next) {
@@ -81,7 +80,7 @@ function updateMenu(req,res) {
 					}
 				})
 			} else {
-				res.status(500).send(err);
+				res.status(422).send("No menu found for the given id");
 			}
 		} else {
 			res.status(500).send(err);
@@ -111,13 +110,14 @@ function deleteMenu(req,res) {
 						res.status(500).send(err);
 					}
 				})
+			} else {
+				res.status(422).send("No menu found for the given id");
 			}
 		} else {
 			res.status(500).send(err);
 		}
 		
 	})
-	
 }
 
 function getMenuSummaryList(req,res) {
