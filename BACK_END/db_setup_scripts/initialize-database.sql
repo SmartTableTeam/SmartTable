@@ -8,14 +8,14 @@ DROP TABLE IF EXISTS restaurants;
 DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS accounts;
 
-DROP SEQUENCE IF EXISTS order_items;
-DROP SEQUENCE IF EXISTS orders;
-DROP SEQUENCE IF EXISTS menu_items;
-DROP SEQUENCE IF EXISTS menus;
-DROP SEQUENCE IF EXISTS table_accounts;
-DROP SEQUENCE IF EXISTS restaurants;
-DROP SEQUENCE IF EXISTS customers;
-DROP SEQUENCE IF EXISTS accounts;
+DROP SEQUENCE IF EXISTS order_items_pk;
+DROP SEQUENCE IF EXISTS orders_pk;
+DROP SEQUENCE IF EXISTS menu_items_pk;
+DROP SEQUENCE IF EXISTS menus_pk;
+DROP SEQUENCE IF EXISTS table_accounts_pk;
+DROP SEQUENCE IF EXISTS restaurants_pk;
+DROP SEQUENCE IF EXISTS customers_pk;
+DROP SEQUENCE IF EXISTS accounts_pk;
 
 -- CREATE primary key SEQUENCES	=	=	=	=	=	=	=	=	=	=
 -- Note that all Primary Key sequences start at 100. PK ids < 100
@@ -109,7 +109,7 @@ CREATE TABLE public.table_accounts
 	restaurant_id integer,
 	table_number text,
 	PRIMARY KEY (id),
-	FOREIGN KEY (account_id) REFERENCES public.restaurants (id)
+	FOREIGN KEY (restaurant_id) REFERENCES public.restaurants (id)
 );
 
 CREATE TABLE public.menus
@@ -121,7 +121,7 @@ CREATE TABLE public.menus
 	sort_num integer,
 	banner_url text,
 	PRIMARY KEY (id),
-	FOREIGN KEY restaurant_id REFERENCES public.restaurants (id)
+	FOREIGN KEY (restaurant_id) REFERENCES public.restaurants (id)
 );
 	
 CREATE TABLE public.menu_items
@@ -136,7 +136,7 @@ CREATE TABLE public.menu_items
 	ingredients text,
 	photo_url text,
 	PRIMARY KEY (id),
-	FOREIGN KEY menu_id REFERENCES public.menus (id)
+	FOREIGN KEY (menu_id) REFERENCES public.menus (id)
 );
 
 CREATE TABLE public.orders
@@ -146,7 +146,7 @@ CREATE TABLE public.orders
 	create_time date,
 	status integer,
 	PRIMARY KEY (id),
-	FOREIGN KEY table_account_id REFERENCES public.table_accounts (id)
+	FOREIGN KEY (table_account_id) REFERENCES public.table_accounts (id)
 );
 
 CREATE TABLE public.order_items
@@ -156,8 +156,8 @@ CREATE TABLE public.order_items
 	order_id integer,
 	notes text,
 	PRIMARY KEY (id),
-	FOREIGN KEY menu_item_id REFERENCES public.menu_items (id),
-	FOREIGN KEY order_id REFERENCES public.orders (id)
+	FOREIGN KEY (menu_item_id) REFERENCES public.menu_items (id),
+	FOREIGN KEY (order_id) REFERENCES public.orders (id)
 );
 
 
@@ -176,7 +176,7 @@ INSERT INTO public.table_accounts VALUES (2,5,'TWO');
 INSERT INTO public.menus VALUES(1,5,'Drinks','Refreshing Drinks',2,'NA');
 INSERT INTO public.menus VALUES(2,5,'Burgers','Fresh Cooked Meat',1,'NA');
 
-INSERT INTO public.menu_items VALUES (1,1,159,'Soda', 'Sprite, Coca-cola, Barq\'s, Dr. Pepper','Free Refills','NA','HFC, Flavoring','http://assets.nydailynews.com/polopoly_fs/1.2124847.1424636064!/img/httpImage/image.jpg_gen/derivatives/article_750/soda23n-1-web.jpg');
+INSERT INTO public.menu_items VALUES (1,1,159,'Soda', 'Sprite, Coca-cola, Rootbeer, Dr. Pepper','Free Refills','NA','HFC, Flavoring','http://assets.nydailynews.com/polopoly_fs/1.2124847.1424636064!/img/httpImage/image.jpg_gen/derivatives/article_750/soda23n-1-web.jpg');
 INSERT INTO public.menu_items VALUES (2,1,599,'Beer', 'Budweiser, Skol, Guinness', '.50 Refills','NA','Contains Alcohol','https://www.guinness.com/media/1538/guinness_draught_spritzr06bg1_resized_1600-h.jpg?anchor=center&mode=crop&quality=75&width=750');
 INSERT INTO public.menu_items VALUES (3,2,199,'Hamburger', 'A Basic Hamburger','Uses our special sauce','Gluten, Peanuts', 'Bun, Beef, Lettuce, Tomato, Onions', 'http://assets.historyhole.com/wp-content/uploads/2016/07/05010901/hamburger-iStock_000008300965_Medium-1024x780_br5vtp.jpg');
 INSERT INTO public.menu_items VALUES (4,2,249,'Cheeseburger', 'A Basic Cheeseburger','Uses our special sauce','Gluten, Peanuts', 'Bun, Beef, Lettuce, Tomato, Onions, Cheese', 'http://dolcecarini.com/wp-content/uploads/2014/07/Cheeseburger.jpg');
@@ -186,7 +186,7 @@ INSERT INTO public.orders (id,table_account_id,status) VALUES (1,2,1);
 INSERT INTO public.orders (id,table_account_id,status) VALUES (2,1,1);
 
 INSERT INTO public.order_items VALUES (1,1,1,'Sprite');
-INSERT INTO public.order_items VALUES (2,1,1,'Barq\'s');
+INSERT INTO public.order_items VALUES (2,1,1,'Rootbeer');
 INSERT INTO public.order_items VALUES (3,3,1,'Extra Onions');
 INSERT INTO public.order_items VALUES (4,2,2,'Guinness');
 INSERT INTO public.order_items VALUES (5,4,2,'Double Cheese');
