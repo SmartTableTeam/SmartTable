@@ -36,8 +36,12 @@ var restAuthCheck = function(req,res,next) {
 	if(loginController.checkLoggedIn(req)){
 		next();
 	} else {
-		res.status(401).send("You must be logged in as a restaurant to use this resource");
+		db.get_restaurant_account_data(1, function(err, testUser) {
+			req.session.currentUser = testUser[0];
+			next();
+		})
 	}
+	//PROD:	res.status(401).send("You must be logged in as a restaurant to use this resource");
 }
 
 var custAuthCheck = function(req,res,next) {
@@ -90,10 +94,6 @@ app.post('/api/menuitem', restAuthCheck, menuItemController.createMenuItem);
 app.get('/api/menuitem/:menu_item_id', restAuthCheck, menuItemController.getMenuItem);
 app.put('/api/menuitem', restAuthCheck, menuItemController.updateMenuItem);
 app.get('/api/menuitem/list/:menu_id', restAuthCheck, menuItemController.getMenuItemsForMenu);
-
-
-
-
 
 //SPIN UP THE DRIVES!!
 app.listen(port, function() {
