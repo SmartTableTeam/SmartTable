@@ -1,10 +1,21 @@
 import React from 'react'
+import TheBoxNav from './components/boxNav.js'
 import './TheBox.scss'
 export default class TheBox extends React.Component{
   render(){
     return(
-      <h1>Worked</h1>
+      <div className='theContainer'>
+        <TheBoxNav/>
+
+        <div className='theView'>
+          
+        </div>
+      </div>
+
     )
+  }
+  invoct(){
+    console.log('Worked');
   }
 
 }
