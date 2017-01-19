@@ -9,7 +9,7 @@ import EditMenu from './components/edit-menu/edit-menu'
 
 export default (
   <Route path='/' component={App}>
-  <IndexRoute component={Landing}/>
+  <IndexRoute component={Profile}/>
   <Route path='/profile'component={Profile}/>
   <Route path='/edit' component={EditMenu}/>
 

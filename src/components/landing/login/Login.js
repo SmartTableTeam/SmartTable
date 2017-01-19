@@ -64,9 +64,9 @@ export default class Login extends Component {
     }
 
       if(this.state.name && this.state.email && this.state.password){
-       fetch('http://localhost:1701/api/account/restaurant', myInit).then((res) => {
+       //fetch('http://localhost:1701/api/account/restaurant', myInit).then((res) => {
           browserHistory.push('/profile');
-        })
+      //  })
 
         //needs to send to profile page from here
 
