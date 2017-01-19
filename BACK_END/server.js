@@ -21,7 +21,8 @@ app.use(express.static(__dirname +'/public'));
 var loginController 	= require('./node_controllers/loginController.js');
 var menuController		= require('./node_controllers/menuController.js');
 var accountController	= require('./node_controllers/accountController.js');
-var orderController 	= require('./node_controllers.orderController.js');
+var orderController 	= require('./node_controllers/orderController.js');
+var menuItemController 	= require('./node_controllers/menuItemsController.js');
 
 //Connect to DB
 var conn = massive.connectSync({
@@ -40,11 +41,19 @@ var restAuthCheck = function(req,res,next) {
 }
 
 var custAuthCheck = function(req,res,next) {
-	next();
+	if(!!req.session.currentCustomer) {
+		next()
+	} else {
+		res.status(401).send("You must be logged in as a customer to use this resource");
+	}
 }
 
 var tableAuthCheck = function(req,res,next) {
-	next();
+	if(!!req.session.currentTable) {
+		next()
+	} else {
+		res.status(401).send("You must be logged in as a table account to use this resource");
+	}
 }
 
 //END POINTS	=	=	=	=	=	=	=	=	=
@@ -64,9 +73,9 @@ app.get('/api/account/table/list', restAuthCheck, accountController.getTableAcco
 app.get('/api/account/table/:table_id', restAuthCheck, accountController.getTableAccount);
 
 //Orders	=	=	=	=	=	
-// app.post('/api/order', orderController.createOrder);
-// app.get('/api/order/:order_id', restAuthCheck, orderController.getOrder);
-// app.get('/api/order/list/open', restAuthCheck, orderController.getOpenOrders);
+app.post('/api/order', tableAuthCheck, orderController.createOrder);
+app.get('/api/order/:order_id', restAuthCheck, orderController.getOrder);
+app.get('/api/order/list/open', restAuthCheck, orderController.getOpenOrders);
 
 //getMenuSummaryList=	=	=	
 app.post('/api/menu', restAuthCheck, menuController.createMenu);
@@ -77,9 +86,10 @@ app.get('/api/menu/list/summary', restAuthCheck, menuController.getMenuSummaryLi
 app.get('/api/menu/list/details', menuController.getMenuDetailsList);
 
 //Menu Items	=	=	=	=	
-// app.post('/api/menuitem', restAuthCheck, menuItemController.createMenuItem);
-// app.get('/api/menuitem/:menu_item_id', restAuthCheck, menuItemController.getMenuItem);
-// app.put('/api/menuitem', restAuthCheck, menuItemController.updateMenuItem);
+app.post('/api/menuitem', restAuthCheck, menuItemController.createMenuItem);
+app.get('/api/menuitem/:menu_item_id', restAuthCheck, menuItemController.getMenuItem);
+app.put('/api/menuitem', restAuthCheck, menuItemController.updateMenuItem);
+app.get('/api/menuitem/list/:menu_id', restAuthCheck, menuItemController.getMenuItemsForMenu);
 
 
 
