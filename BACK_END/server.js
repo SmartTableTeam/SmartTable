@@ -24,7 +24,7 @@ var accountController	= require('./node_controllers/accountController.js');
 
 //Connect to DB
 var conn = massive.connectSync({
-	connectionString:"postgres://postgres:" + config.postgres.password + "@localhost/" + config.postgres.db_name
+	connectionString:"postgres://postgres:@localhost/" + config.postgres.db_name
 });
 app.set('db',conn);
 var db = app.get('db');
@@ -48,10 +48,11 @@ app.post('/api/auth/logout', loginController.logout);
 app.post('/api/account/restaurant', accountController.createRestaurantAccount);
 app.post('/api/account/customer', accountController.createCustomerAccount);
 
-//Orders	=	=	=	=	=	
+
+//Orders	=	=	=	=	=
 
 
-//getMenuSummaryList=	=	=	
+//getMenuSummaryList=	=	=
 app.post('/api/menu', authcheck, menuController.createMenu);
 app.get('/api/menu/:menu_id',authcheck, menuController.getMenuById);
 app.put('/api/menu', authcheck, menuController.updateMenu);
@@ -59,7 +60,7 @@ app.delete('/api/menu/:menu_id', authcheck, menuController.deleteMenu);
 app.get('/api/menu/list/summary', authcheck, menuController.getMenuSummaryList);
 app.get('/api/menu/list/details', menuController.getMenuDetailsList);
 
-//Menu Items	=	=	=	=	
+//Menu Items	=	=	=	=
 
 
 

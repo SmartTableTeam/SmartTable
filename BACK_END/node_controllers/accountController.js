@@ -8,6 +8,8 @@ module.exports = {
 function createRestaurantAccount(req, res) {
 	var db = app.get('db');
 
+
+
 	var account = {
 		join_date: new Date(),
 		email: req.body.email,
@@ -20,6 +22,7 @@ function createRestaurantAccount(req, res) {
 				res.status(422).send("Account already exists for that email address");
 			} else {
 				db.accounts.insert(account, function(err, newAccount) {
+					console.log(req.body.name, "BODY NAME");
 					if(!err) {
 						var restaurant = {
 							account_id: newAccount.id,
@@ -28,20 +31,20 @@ function createRestaurantAccount(req, res) {
 							city: req.body.city,
 							state: req.body.state,
 							phone_number: req.body.phone_number
-						}			
+						}
 						db.restaurants.insert(restaurant, function(err, restaurant) {
 							if(!err) {
 								db.get_restaurant_account_data(newAccount.id, function(err, fullAccount) {
 									if(!err) {
 										req.session.currentUser = fullAccount;
-										res.status(200).send(fullAccount);	
+										res.status(200).send(fullAccount);
 									}
 								})
 							}
 						})
 					}
 				})
-			}				
+			}
 		}
 	})
 }
@@ -66,7 +69,7 @@ function createCustomerAccount(req, res) {
 							account_id: newAccount.id,
 							first_name: req.body.first_name,
 							last_name:req.body.last_name
-						}			
+						}
 						db.customers.insert(customer, function(err, customer) {
 							if(!err) {
 								req.session.currentCustomer = customer;
@@ -81,7 +84,7 @@ function createCustomerAccount(req, res) {
 						res.status(500).send(err);
 					}
 				})
-			}				
+			}
 		} else {
 			console.log(err);
 			res.status(500).send(err);

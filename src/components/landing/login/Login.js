@@ -1,9 +1,11 @@
 import React , { Component } from 'react'
 import {Link} from 'react-router'
+import browserHistory from 'react-router'
 import '../../main.scss'
 import './login.scss'
 
 export default class Login extends Component {
+
   constructor(props){
     super(props);
     this.state={
@@ -17,20 +19,38 @@ export default class Login extends Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
-  handleSubmit(){
-    var obj = {
+
+  handleSubmit(e){
+    e.preventDefault();
+    var obj = JSON.stringify({
       name:this.state.name,
       email:this.state.email,
       password:this.state.password
-    }
+    })
     console.log(obj);
 
-    var myInit = {  method: "POST",
-                    body: obj
+    var myInit = {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name:this.state.name,
+        email:this.state.email,
+        password:this.state.password
+      })
     }
 
-      if(this.state.name){
-        fetch('/api/auth/login', myInit)
+      if(this.state.name && this.state.email && this.state.password){
+        fetch('http://localhost:1701/api/account/restaurant', myInit).then((res) => {
+          console.log(res, "response to post method");
+        })
+
+        //needs to send to profile page from here
+
+      } else {
+        alert("please enter all fields")
       }
   }
 
@@ -54,7 +74,6 @@ export default class Login extends Component {
 
   render() {
 
-
     return (
 
       <div className='contain'>
@@ -69,8 +88,6 @@ export default class Login extends Component {
           <input type='text' placeholder='Email' onChange={this.handleEmailChange}></input>
           <input type='text' placeholder='Password' onChange={this.handlePasswordChange}></input>
           <input type='text' placeholder='Confirm Password'></input>
-
-
 
           <hr />
 
