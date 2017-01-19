@@ -2,15 +2,21 @@ import React , {Component} from 'react'
 import './edit-menu-category.scss'
 import { connect } from 'react-redux'
 import { addCategory } from '../../redux/categories'
-// import { bindActionCreators } from 'redux'
+import { addDish } from '../../redux/categories'
+import { categorySelected } from '../../redux/categories'
 import store from '../../store'
+import axios from 'axios'
+
 
 import CurrentCategories from '../edit-menu-current-categories/current-categories'
 
 
+const rootUrl='/api/menu';
+
 class Category extends Component {
   constructor(props){
     super(props)
+    console.log(props);
 console.log('setting initial state');
     this.state = {
       newCategory:'',
@@ -31,7 +37,7 @@ console.log('setting initial state');
     console.log(newArray);
     newArray.push({name:this.state.newCategory})
     console.log(newArray);
-
+    this.createCategory()
     this.setState({categoryArray:newArray})
     this.handleCategory()
     console.log(this.state.categoryArray);
@@ -39,6 +45,19 @@ console.log('setting initial state');
     console.log(this.state.newCategory);
 
 
+  }
+
+  createCategory(){
+    // const request = `${rootUrl}`
+    // console.log(this.state.newCategory);
+    // console.log(request);
+    // axios.post(`${rootUrl}`, {
+    //   category:this.state.newCategory
+    // })
+    // store.dispatch({
+    //   type:'CREATE_CATEGORY',
+    //   payload:request
+    // })
   }
 
   handleCategory(){
@@ -66,10 +85,10 @@ console.log('setting initial state');
           className=''
           onClick={() => {
             console.log(category);
-            // store.dispatch({
-            // type:'CATEGORY_SELECTED',
-            // payload:category
-          // })
+            store.dispatch({
+            type:'CATEGORY_SELECTED',
+            payload:category
+          })
           }}
           >{category.name}</li>
       )
@@ -112,13 +131,10 @@ function mapStateToProps(state) {
   }
 }
 
+// const mapDispatchToProps = {
+//   addDish:addDish,
+//   addCategory:addCategory,
+//   categorySelected:categorySelected
+// }
+// console.log(mapDispatchToProps);
 export default connect(mapStateToProps)(Category)
-
-// <h4>{this.state.categoryArray.map(category => {
-//   return (
-//     <CurrentCategories
-//       name={this.category.name}
-//       key={this.category.name}
-//       />
-//   )
-// })}</h4>
