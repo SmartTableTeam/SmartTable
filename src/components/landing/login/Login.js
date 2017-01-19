@@ -1,6 +1,6 @@
 import React , { Component } from 'react'
 import {Link} from 'react-router'
-import browserHistory from 'react-router'
+import {browserHistory} from 'react-router'
 import '../../main.scss'
 import './login.scss'
 
@@ -43,9 +43,9 @@ export default class Login extends Component {
     }
 
       if(this.state.name && this.state.email && this.state.password){
-        fetch('http://localhost:1701/api/account/restaurant', myInit).then((res) => {
-          console.log(res, "response to post method");
-        })
+        // fetch('http://localhost:1701/api/account/restaurant', myInit).then((res) => {
+          browserHistory.push('/profile');
+        // })
 
         //needs to send to profile page from here
 
