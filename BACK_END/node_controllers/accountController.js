@@ -2,7 +2,10 @@ var app = require('./../server.js');
 
 module.exports = {
 	createRestaurantAccount:createRestaurantAccount,
-	createCustomerAccount:createCustomerAccount
+	createCustomerAccount:createCustomerAccount,
+	createTableAccount:createTableAccount,
+	getTableAccountList:getTableAccountList,
+	getTableAccount:getTableAccount
 }
 
 function createRestaurantAccount(req, res) {
@@ -50,7 +53,7 @@ function createRestaurantAccount(req, res) {
 }
 
 function createCustomerAccount(req, res) {
-		var db = app.get('db');
+	var db = app.get('db');
 
 	var account = {
 		join_date: new Date(),
@@ -90,4 +93,54 @@ function createCustomerAccount(req, res) {
 			res.status(500).send(err);
 		}
 	})
+}
+
+
+function createTableAccount(req, res) {
+	var db = app.get('db');
+	var tableAcct = {
+		restaurant_id:req.session.currentUser.restaurant_id,
+		table_number:req.body.table_number
+	}
+	db.table_accounts.insert(tableAcct, function(err, newTableAcct) {
+		if(!err) {
+			res.status(200).send(newTableAcct);
+		} else {
+			res.status(500).send(err);
+		}
+	})
+}
+
+function getTableAccountList(req, res) {
+	var db = app.get('db');
+
+	db.table_accounts.find({restaurant_id:req.session.currentUser.restaurant_id}, function(err, tableAccounts) {
+		if(!err) {
+			res.status(200).send(tableAccounts);
+		} else {
+			res.status(500).send(err);
+		}
+	})
+}
+
+function getTableAccount(req, res) {
+	var db = app.get('db');
+
+	var tableToFind = {
+		id:req.params.table_id,
+		restaurant_id: req.session.currentUser.restaurant_id
+	}
+
+	db.table_accounts.find(tableToFind, function(err, tableAccount) {
+		if(!err) {
+			if(tableAccount.length > 0) {
+				res.status(200).send(tableAccount);
+			} else {
+				res.status(422).send("No table account found for given ID and User");
+			}
+		} else {
+			res.status(500).send(err);
+		}
+	})
+
 }
