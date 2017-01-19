@@ -48,12 +48,12 @@ console.log('setting initial state');
   }
 
   createCategory(){
-    // const request = `${rootUrl}`
-    // console.log(this.state.newCategory);
-    // console.log(request);
-    // axios.post(`${rootUrl}`, {
-    //   category:this.state.newCategory
-    // })
+    const request = `${rootUrl}`
+    console.log(this.state.newCategory);
+    console.log(request);
+    axios.post(`${rootUrl}`, {
+      category:this.state.newCategory
+    })
     // store.dispatch({
     //   type:'CREATE_CATEGORY',
     //   payload:request
