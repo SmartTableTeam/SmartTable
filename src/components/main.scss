@@ -3,6 +3,8 @@ $primary-color: #449c57;
 // $secondary-color: ;
 $warning-color: #bc2031;
 
+$primary-font-stack: 'Open Sans', 'arial', 'sans serif';
+
 
 //blue to save #3e5882
 
@@ -11,6 +13,8 @@ $warning-color: #bc2031;
   padding: 0;
   box-sizing: border-box;
 }
+
+//X button global
 
 .click-to-close {
   height: 35px;
@@ -28,6 +32,13 @@ $warning-color: #bc2031;
 
 .click-to-close:before {
   content: 'X';
+}
+
+.click-to-close:hover {
+  background-color: darken($warning-color, 10%);
+}
+.click-to-close:active {
+  background-color: darken($warning-color, 15%);
 }
 
 //

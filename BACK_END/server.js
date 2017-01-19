@@ -26,12 +26,12 @@ var menuItemController 	= require('./node_controllers/menuItemsController.js');
 
 //Connect to DB
 var conn = massive.connectSync({
-	connectionString:"postgres://postgres:" + config.postgres.password + "@localhost/" + config.postgres.db_name
+	connectionString:"postgres://postgres:@localhost/" + config.postgres.db_name
 });
 app.set('db',conn);
 var db = app.get('db');
 
-//Authorization Middleware	=	=	=	=	=	=	
+//Authorization Middleware	=	=	=	=	=	=
 var restAuthCheck = function(req,res,next) {
 	if(loginController.checkLoggedIn(req)){
 		next();
@@ -76,12 +76,12 @@ app.post('/api/account/table', restAuthCheck, accountController.createTableAccou
 app.get('/api/account/table/list', restAuthCheck, accountController.getTableAccountList);
 app.get('/api/account/table/:table_id', restAuthCheck, accountController.getTableAccount);
 
-//Orders	=	=	=	=	=	
+//Orders	=	=	=	=	=
 app.post('/api/order', tableAuthCheck, orderController.createOrder);
 app.get('/api/order/:order_id', restAuthCheck, orderController.getOrder);
 app.get('/api/order/list/open', restAuthCheck, orderController.getOpenOrders);
 
-//getMenuSummaryList=	=	=	
+//getMenuSummaryList=	=	=
 app.post('/api/menu', restAuthCheck, menuController.createMenu);
 app.get('/api/menu/:menu_id',restAuthCheck, menuController.getMenuById);
 app.put('/api/menu', restAuthCheck, menuController.updateMenu);
@@ -89,11 +89,12 @@ app.delete('/api/menu/:menu_id', restAuthCheck, menuController.deleteMenu);
 app.get('/api/menu/list/summary', restAuthCheck, menuController.getMenuSummaryList);
 app.get('/api/menu/list/details', menuController.getMenuDetailsList);
 
-//Menu Items	=	=	=	=	
+//Menu Items	=	=	=	=
 app.post('/api/menuitem', restAuthCheck, menuItemController.createMenuItem);
 app.get('/api/menuitem/:menu_item_id', restAuthCheck, menuItemController.getMenuItem);
 app.put('/api/menuitem', restAuthCheck, menuItemController.updateMenuItem);
 app.get('/api/menuitem/list/:menu_id', restAuthCheck, menuItemController.getMenuItemsForMenu);
+
 
 //SPIN UP THE DRIVES!!
 app.listen(port, function() {

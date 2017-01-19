@@ -25,7 +25,6 @@ export default class Landing extends React.Component{
 
 
   activateRender(value){
-    console.log('string', value);
     if(value!=undefined)this.setState({val:value})
 
     // document.getElementById('render').className+='none'
@@ -37,10 +36,12 @@ export default class Landing extends React.Component{
     return(
       <div className='LandingContainer' >
         <Nav func={this.activateRender.bind(this)} />
-        <div className="ifContent">
-          {
-          this.state.val?<Login funky={this.changesIt.bind(this)} /> : <Search />
-          }
+
+
+        <div className="signup-popup">
+
+          { this.state.val?<Login funky={this.changesIt.bind(this)} /> : <Search /> }
+
         </div>
       </div>
 
