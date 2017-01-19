@@ -73,7 +73,7 @@ CREATE SEQUENCE public.order_items_pk
 CREATE TABLE public.accounts
 (
 	id integer NOT NULL DEFAULT nextval('accounts_pk'),
-	join_date date,
+	join_timestamp timestamp,
 	email text,
 	password text,
 	password_salt text,
@@ -143,7 +143,7 @@ CREATE TABLE public.orders
 (
 	id integer NOT NULL DEFAULT nextval('orders_pk'),
 	table_account_id integer,
-	create_time date,
+	create_time timestamp,
 	status integer,
 	PRIMARY KEY (id),
 	FOREIGN KEY (table_account_id) REFERENCES public.table_accounts (id)
