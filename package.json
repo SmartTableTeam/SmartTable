@@ -15,7 +15,9 @@
     "react-dom": "^15.4.2",
     "react-redux": "^4.0.0",
     "react-router": "^2.0.1",
-    "redux": "^3.0.4"
+    "redux": "^3.0.4",
+    "redux-promise": "^0.5.3",
+    "axios": "^0.15.3"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",
