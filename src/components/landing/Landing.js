@@ -25,7 +25,6 @@ export default class Landing extends React.Component{
 
 
   activateRender(value){
-    console.log('string', value);
     if(value!=undefined)this.setState({val:value})
 
     // document.getElementById('render').className+='none'
