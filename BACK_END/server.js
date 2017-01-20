@@ -87,7 +87,7 @@ app.get('/api/menu/:menu_id',restAuthCheck, menuController.getMenuById);
 app.put('/api/menu', restAuthCheck, menuController.updateMenu);
 app.delete('/api/menu/:menu_id', restAuthCheck, menuController.deleteMenu);
 app.get('/api/menu/list/summary', restAuthCheck, menuController.getMenuSummaryList);
-app.get('/api/menu/list/details', menuController.getMenuDetailsList);
+app.get('/api/menu/list/details', restAuthCheck, menuController.getMenuDetailsList);
 
 //Menu Items	=	=	=	=
 app.post('/api/menuitem', restAuthCheck, menuItemController.createMenuItem);
