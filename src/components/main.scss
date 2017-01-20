@@ -4,7 +4,7 @@ $primary-color: #449c57;
 $warning-color: #bc2031;
 
 $primary-font-stack: 'Open Sans', 'arial', 'sans serif';
-
+// $secondary-font-stack: ;
 
 //blue to save #3e5882
 
@@ -12,6 +12,7 @@ $primary-font-stack: 'Open Sans', 'arial', 'sans serif';
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  line-height: 1;
 }
 
 //X button global

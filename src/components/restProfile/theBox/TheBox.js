@@ -8,14 +8,12 @@ export default class TheBox extends React.Component{
         <TheBoxNav/>
 
         <div className='theView'>
-          
+
         </div>
       </div>
 
     )
   }
-  invoct(){
-    console.log('Worked');
-  }
+
 
 }
