@@ -6,9 +6,13 @@ export default class ProfileNav extends React.Component{
     return(
       <div className='navigationContain'>
       <h1>NAME OF COMPANY HERE</h1>
-        <ul>
-          <li>Account</li>
-        </ul>
+
+        <div className="burgerWrapper">
+          <div className="bunTop"></div>
+          <div className="lettuce"></div>
+          <div className="burger"></div>
+          <div className="bunBottom"></div>
+        </div>
       </div>
     )
   }

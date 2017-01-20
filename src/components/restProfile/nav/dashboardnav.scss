@@ -10,11 +10,34 @@
   justify-content: space-between;
   padding: 20px 30px 5px;
 
-  ul {
-    background: red;
+  .burgerWrapper {
+    // background: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    li {
-      list-style: none;
+    .bunTop {
+      width: 35px;
+      height: 5px;
+      border-radius: 25%;
+      background-color: tan;
+      margin-bottom: 4px;
+    }
+
+    .lettuce {
+      @extend .bunTop;
+      background-color: green;
+      // width: 40px;
+    }
+
+    .burger {
+      @extend .bunTop;
+      background-color: brown;
+    }
+
+    .bunBottom {
+      @extend .bunTop;
     }
   }
+
 }

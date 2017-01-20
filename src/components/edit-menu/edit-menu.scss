@@ -1,10 +1,11 @@
 .edit-menu-background {
   background: lighten(gray,12%);
-  height:100vh;
+  height:100%;
+  // width: 100%;
 }
-* {
-  line-height: 1.5em;
-}
+// * {
+//   line-height: 1.5em;
+// }
 header {
   height:40px;
   width:100%;
