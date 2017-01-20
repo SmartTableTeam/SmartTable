@@ -1,21 +1,25 @@
-.JumboJumbo{
-  margin: 0;padding: 0;
-  width:100vw;height: 100vh;
+@import "../main.scss";
+
+.dashboardMain {
+  width: 100vw;
+  height: 100vh;
   background-color: gray;
   display: flex;
   flex-direction: column;
   align-items: center;
-  .ProfileNav{
-    width:100vw;
-    height:100px;
-  }
-  .ProfileBoxContain{
-    width:100vw;height:100vh;
+
+  .ProfileBoxContain {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    .ProfileBox{
-      width:95%;height:90%;
+    // background: yellow;
+    // padding: 20px;
+
+    .ProfileBox {
+      width:95%;
+      height:90%;
     }
   }
 }

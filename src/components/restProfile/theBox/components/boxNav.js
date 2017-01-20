@@ -1,5 +1,7 @@
 import React from 'react'
+import '../../../main.scss'
 import './boxComponents.scss'
+
 export default class TheBoxNav extends React.Component{
   constructor(props){
     super(props);
@@ -11,25 +13,27 @@ export default class TheBoxNav extends React.Component{
   }
   render(){
     const onStyle={
-      backgroundColor:'mistyrose',
-      height:'35px',width:'60px'
+      backgroundColor:'white',
     }
     const offStyle={
-      backgroundColor:'red',
-      height:'25px',width:'60px'
+      backgroundColor:'lightgray',
     }
     const oneOffGenerate=this.state.one?onStyle:offStyle
     const twoOffGenerate=this.state.two?onStyle:offStyle
     const threeOffGenerate=this.state.three?onStyle:offStyle
 
     return(
-      <div className ='nav'>
+      <div className="upperDash">
         <div className='containIt'>
-          <div style={oneOffGenerate} ref='checkMe1' onClick={this.desypher.bind(this,'one')} className='miniBox'><p>One</p></div>
-          <div style={twoOffGenerate}onClick={this.desypher.bind(this,'two')} ref='checkMe2' className='miniBox'><p>Two</p></div>
-          <div style={threeOffGenerate}onClick={this.desypher.bind(this,'three')} ref='checkMe3' className='miniBox'><p>three</p></div>
+          <div style={oneOffGenerate} ref='checkMe1' onClick={this.desypher.bind(this,'one')} className='miniBox'><p>Orders</p></div>
+          <div style={twoOffGenerate}onClick={this.desypher.bind(this,'two')} ref='checkMe2' className='miniBox'><p>Menu</p></div>
+          <div style={threeOffGenerate}onClick={this.desypher.bind(this,'three')} ref='checkMe3' className='miniBox'><p>Tables</p></div>
+        </div>
+
+        <div className="dashTitle">
+          <h2>Dashboard</h2>
+        </div>
       </div>
-    </div>
     )
   }
 
