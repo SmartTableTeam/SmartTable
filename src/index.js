@@ -14,6 +14,7 @@ import reducers from './store'
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 render(
+
     <Provider store={createStoreWithMiddleware(reducers)}>
     <Router history={hashHistory} routes={routes}/>
 </Provider>, document.getElementById('app'))

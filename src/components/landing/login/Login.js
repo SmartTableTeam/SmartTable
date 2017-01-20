@@ -1,6 +1,6 @@
 import React , { Component } from 'react'
 import {Link} from 'react-router'
-import browserHistory from 'react-router'
+import {browserHistory} from 'react-router'
 import '../../main.scss'
 import './login.scss'
 
@@ -18,10 +18,31 @@ export default class Login extends Component {
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
+  checkInputs(){
+    var validEmail=validateEmail(this.state.email);
+    var validName=validateName(this.state.name);
+    var validPassword=validatePassword(this.state.password);
+
+    function validateEmail(email) {
+      var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    }
+    function validatePassword(password) {
+      var re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+      return re.test(password);
+    }
+    function validateName(name) {
+      var re = /^.{6,}$/;
+      return re.test(name);
+    }
+
+    if(validEmail,validName,validPassword)this.handleSubmit()
+
+  }
 
 
-  handleSubmit(e){
-    e.preventDefault();
+  handleSubmit(){
+    // e.preventDefault();
     var obj = JSON.stringify({
       name:this.state.name,
       email:this.state.email,
@@ -43,8 +64,8 @@ export default class Login extends Component {
     }
 
       if(this.state.name && this.state.email && this.state.password){
-        fetch('http://localhost:1701/api/account/restaurant', myInit).then((res) => {
-          console.log(res, "response to post method");
+       fetch('http://localhost:1701/api/account/restaurant', myInit).then((res) => {
+          browserHistory.push('/profile');
         })
 
         //needs to send to profile page from here
@@ -91,7 +112,7 @@ export default class Login extends Component {
 
           <hr />
 
-          <button  type="submit" className="sign-up" onClick={this.handleSubmit.bind(this)}>Sign Up Now</button>
+          <button  type="submit" className="sign-up" onClick={this.checkInputs.bind(this)}>Sign Up Now</button>
 
         </form>
       </div>

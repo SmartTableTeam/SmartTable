@@ -26,7 +26,7 @@ var menuItemController 	= require('./node_controllers/menuItemsController.js');
 
 //Connect to DB
 var conn = massive.connectSync({
-	connectionString:"postgres://postgres:@localhost/" + config.postgres.db_name
+	connectionString:config.connectString
 });
 app.set('db',conn);
 var db = app.get('db');
