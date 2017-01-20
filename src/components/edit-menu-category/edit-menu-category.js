@@ -1,140 +1,105 @@
-import React , {Component} from 'react'
+import React, {Component} from 'react'
 import './edit-menu-category.scss'
-import { connect } from 'react-redux'
-import { addCategory } from '../../redux/categories'
-import { addDish } from '../../redux/categories'
-import { categorySelected } from '../../redux/categories'
+import {connect} from 'react-redux'
+import {addCategory} from '../../redux/categories'
+// import { bindActionCreators } from 'redux'
 import store from '../../store'
 import axios from 'axios'
-
-
+const ROOT_URL = 'http://localhost:1701/api/menu'
+const DETAILS = '/list/details'
 import CurrentCategories from '../edit-menu-current-categories/current-categories'
-
-
-const rootUrl='/api/menu';
+import {bindActionCreators} from 'redux'
+import {getMenu} from '../../actions/index'
+import {deleteMenu} from '../../actions/index'
+import {menuSelected} from '../../actions/index'
+import {postMenu} from '../../actions/index'
+import {getMenuItems} from '../../actions/index'
 
 class Category extends Component {
-  constructor(props){
-    super(props)
-    console.log(props);
-console.log('setting initial state');
-    this.state = {
-      newCategory:'',
-      categoryArray:[]
+    constructor(props) {
+        super(props)
+        console.log('setting initial state');
+        this.state = {
+            newCategory: '',
+            categoryArray: [],
+            menus: []
+        }
+        // this.handleCategory = this.handleCategory.bind(this)
     }
-    this.handleCategory = this.handleCategory.bind(this)
-  }
-  onChange(e) {
-    e.preventDefault()
-    // console.log(e.target.value);
-    this.setState({newCategory:e.target.value})
-  }
-  onSubmit(e){
-  e.preventDefault()
-  console.log(this.state.newCategory);
-    console.log(this.state.categoryArray);
-    let newArray = this.state.categoryArray.slice()
-    console.log(newArray);
-    newArray.push({name:this.state.newCategory})
-    console.log(newArray);
-    this.createCategory()
-    this.setState({categoryArray:newArray})
-    this.handleCategory()
-    console.log(this.state.categoryArray);
-    this.setState({newCategory:''})
-    console.log(this.state.newCategory);
+    onChange(e) {
+        e.preventDefault()
+        this.setState({newCategory: e.target.value})
+    }
 
+    onSubmit(e) {
+        e.preventDefault()
+        this.props.postMenu(this.state.newCategory)
+        this.setState({newCategory: ''})
+        console.log(this.state.newCategory);
+        // this.props.menu()
 
-  }
+    }
 
-  createCategory(){
-    const request = `${rootUrl}`
-    console.log(this.state.newCategory);
-    console.log(request);
-    axios.post(`${rootUrl}`, {
-      category:this.state.newCategory
-    })
-    // store.dispatch({
-    //   type:'CREATE_CATEGORY',
-    //   payload:request
-    // })
-  }
+    deleteAndGet(id) {
+        this.props.deleteMenu(id).then(() => {
+            this.props.menu()
+        })
+    }
 
-  handleCategory(){
-    console.log(store)
-    console.log('firing');
-      store.dispatch({
-        type:'ADD_CATEGORY',
-        payload:this.state.newCategory
-      })
-  }
+    selectAndGetItems(id) {
+        this.props.menuSelected(id)
+        this.props.getMenuItems(id)
 
-  render() {
-    console.log(this.props);
-    console.log(this.state.categoryArray);
-    console.log(this.props.categories);
-    console.log(CurrentCategories);
-    console.log(this.state.categoryArray);
-    console.log(addCategory);
+    }
 
-    const categories = this.props.categories.map((category,i) => {
-      console.log(category);
-      return (
-        <li
-          key={i}
-          className=''
-          onClick={() => {
-            console.log(category);
-            store.dispatch({
-            type:'CATEGORY_SELECTED',
-            payload:category
-          })
-          }}
-          >{category.name}</li>
-      )
-    })
+    componentWillMount() {
+        this.props.menu()
+    }
+    render() {
 
-    return (
+        console.log(this.props.categories);
+        console.log(this.props.deleteMenu);
+        return (
 
-      <div id='category-container'>
-        <div className='container-fluid'>
+            <div id='category-container'>
+                <div className='container-fluid'>
 
-          <div className='button-container'>
-          <button className='btn btn-default btn-lg'>Add Category</button>
-          <button className='btn btn-default btn-md'>Back</button>
-          </div>
+                    <div className='button-container'>
+                        <button className='btn btn-default btn-lg'>Add Category</button>
+                        <button onClick={this.props.menu.bind(this)} className='btn btn-default btn-md'>Back</button>
+                    </div>
 
-          <form onSubmit={this.onSubmit.bind(this)}>
-          <input ref='val' value={this.state.newCategory} onChange={this.onChange.bind(this)} type='text' className='form-control'/>
-          </form>
+                    <form onSubmit={this.onSubmit.bind(this)}>
+                        <input ref='val' value={this.state.newCategory} onChange={this.onChange.bind(this)} type='text' className='form-control'/>
+                    </form>
 
-        </div>
-            <h4>{categories}</h4>
+                </div>
+                <div>{this.props.categories.map((cat, i) => {
+                        return (
+                            <h4 key={i} onClick={this.selectAndGetItems.bind(this, cat.id)}>
+                                {cat.category}
+                                <span onClick={this.deleteAndGet.bind(this, cat.id)}>X</span>
+                            </h4>
+                        )
+                    })}</div>
+            </div>
 
-      </div>
-
-    )
-  }
+        )
+    }
 }
-
-
-
-
-
-// export default connect(null,mapDispatchToProps)(Category)
 
 function mapStateToProps(state) {
-  console.log(state);
-  console.log('State change detected!');
-  return {
-    categories: state.categories.categories
-  }
+    console.log(state);
+    console.log('State change detected!');
+    return {categories: state.categories}
 }
-
-// const mapDispatchToProps = {
-//   addDish:addDish,
-//   addCategory:addCategory,
-//   categorySelected:categorySelected
-// }
-// console.log(mapDispatchToProps);
-export default connect(mapStateToProps)(Category)
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        menu: getMenu,
+        deleteMenu: deleteMenu,
+        menuSelected: menuSelected,
+        postMenu: postMenu,
+        getMenuItems: getMenuItems
+    }, dispatch)
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Category)
