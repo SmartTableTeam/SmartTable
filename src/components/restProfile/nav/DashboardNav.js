@@ -1,11 +1,15 @@
 import React from 'react'
 import '../../main.scss'
 import './dashboardnav.scss'
-export default class ProfileNav extends React.Component{
+import { connect } from 'react-redux'
+import store from '../../../store'
+
+
+class ProfileNav extends React.Component{
   render(){
     return(
       <div className='navigationContain'>
-      <h1>NAME OF COMPANY HERE</h1>
+      <h1>{this.props.current_user.name}</h1>
 
         <div className="burgerWrapper">
           <div className="bunTop"></div>
@@ -17,3 +21,11 @@ export default class ProfileNav extends React.Component{
     )
   }
 }
+
+function mapStateToProps(state) {
+    console.log(state);
+    console.log('State change detected!');
+    return {current_user: state.current_user}
+}
+
+export default connect(mapStateToProps)(ProfileNav)
