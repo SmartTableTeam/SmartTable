@@ -34,8 +34,9 @@ export default class Login extends Component {
       var re = /^.{6,}$/;
       return re.test(name);
     }
-
-    if(validEmail,validName,validPassword)this.handleSubmit()
+    if(validEmail,validName,validPassword) {
+      this.handleSubmit()
+    } 
 
   }
 
