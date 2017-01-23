@@ -42,7 +42,7 @@ function getOrder(req,res) {
 	db.orders.findOne(parseInt(req.params.order_id), function(err, order) {
 		if(!err) {
 			if(!!order) {
-				db.order_items.find({order_id:req.params.order_id}, function(err, orderItems) {
+				db.get_detailed_order_items([req.params.order_id], function(err, orderItems) {
 					if(!err) {
 						order.order_items = orderItems;
 						res.status(200).send(order);

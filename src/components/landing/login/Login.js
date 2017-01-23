@@ -35,8 +35,9 @@ export default class Login extends Component {
       var re = /^.{6,}$/;
       return re.test(name);
     }
-
-    if(validEmail,validName,validPassword)this.handleSubmit()
+    if(validEmail,validName,validPassword) {
+      this.handleSubmit()
+    } 
 
   }
 
@@ -65,6 +66,7 @@ export default class Login extends Component {
 
       if(this.state.name && this.state.email && this.state.password){
        fetch('http://localhost:1701/api/account/restaurant', myInit).then((res) => {
+          alert("Reroute");
           browserHistory.push('/profile');
         })
 
