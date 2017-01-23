@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../../main.scss'
 import './boxComponents.scss'
+import { Link } from 'react-router'
 
 export default class TheBoxNav extends React.Component{
   constructor(props){
@@ -25,9 +26,13 @@ export default class TheBoxNav extends React.Component{
     return(
       <div className="upperDash">
         <div className='containIt'>
-          <div style={oneOffGenerate} ref='checkMe1' onClick={this.desypher.bind(this,'one')} className='miniBox'><p>Orders</p></div>
-          <div style={twoOffGenerate}onClick={this.desypher.bind(this,'two')} ref='checkMe2' className='miniBox'><p>Menu</p></div>
-          <div style={threeOffGenerate}onClick={this.desypher.bind(this,'three')} ref='checkMe3' className='miniBox'><p>Tables</p></div>
+        <Link to='/profile/confirm'>
+          <div style={oneOffGenerate} onClick={this.desypher.bind(this,'one')} ref='checkMe1' className='miniBox'><p>Orders</p></div>
+        </Link>
+        <Link to='/profile/edit'>
+          <div style={twoOffGenerate} onClick={this.desypher.bind(this,'two')} ref='checkMe2' className='miniBox'><p>Menu</p></div>
+        </Link>
+          <div style={threeOffGenerate} onClick={this.desypher.bind(this,'three')} ref='checkMe3' className='miniBox'><p>Tables</p></div>
         </div>
 
         <div className="dashTitle">

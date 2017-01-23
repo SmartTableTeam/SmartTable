@@ -2,6 +2,9 @@
 
   .upperDash {
     display: flex;
+    width: 95vw;
+    margin-top: 20px;
+    background: purple;
 
     .containIt{
       display: flex;
@@ -10,7 +13,7 @@
         margin-right: 10px;
         margin-bottom: 0;
         line-height: 1.5em;
-        padding: 15px 50px 0px;
+        padding: 15px 50px 10px;
         border-radius: 5px 5px 0px 0px;
         cursor: pointer;
         font-size: 25px;

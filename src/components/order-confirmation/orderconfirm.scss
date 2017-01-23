@@ -1,0 +1,47 @@
+@import "../main.scss";
+
+hr {
+  border-color: lightgray;
+}
+
+.confirmPage {
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirmBox {
+  width: 500px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border: 1px solid lightgray;
+
+  h2,p {
+    text-align: center;
+  }
+
+  ul {
+    margin-left: 20px;
+
+    li {
+      padding: 3px 0;
+    }
+
+    ul {
+      li {
+        list-style-type: circle;
+      }
+    }
+  }
+
+  .btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 0;
+  }
+}

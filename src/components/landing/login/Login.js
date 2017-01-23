@@ -1,7 +1,6 @@
 import React , { Component } from 'react'
 import {Link} from 'react-router'
-import {browserHistory} from 'react-router'
-import '../../main.scss'
+import {hashHistory} from 'react-router'
 import './login.scss'
 
 export default class Login extends Component {
@@ -23,15 +22,15 @@ export default class Login extends Component {
     var validName=validateName(this.state.name);
     var validPassword=validatePassword(this.state.password);
 
-    function validateEmail(email) {
+    function validateEmail(email) { // anything@aol.com
       var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     }
-    function validatePassword(password) {
+    function validatePassword(password) { // 8 characters min, 1 cap, 1 num
       var re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
       return re.test(password);
     }
-    function validateName(name) {
+    function validateName(name) { //6 char min
       var re = /^.{6,}$/;
       return re.test(name);
     }
@@ -65,7 +64,7 @@ export default class Login extends Component {
 
       if(this.state.name && this.state.email && this.state.password){
        fetch('http://localhost:1701/api/account/restaurant', myInit).then((res) => {
-          browserHistory.push('/profile');
+          hashHistory.push('/profile');
         })
 
         //needs to send to profile page from here
@@ -106,9 +105,9 @@ export default class Login extends Component {
           <hr />
 
           <input type='text' placeholder='Company Name' onChange={this.handleNameChange}></input>
-          <input type='text' placeholder='Email' onChange={this.handleEmailChange}></input>
-          <input type='text' placeholder='Password' onChange={this.handlePasswordChange}></input>
-          <input type='text' placeholder='Confirm Password'></input>
+          <input type='email' placeholder='Email' onChange={this.handleEmailChange}></input>
+          <input type='password' placeholder='Password' onChange={this.handlePasswordChange}></input>
+          <input type='password' placeholder='Confirm Password'></input>
 
           <hr />
 
