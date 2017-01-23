@@ -54,7 +54,7 @@ class SignUp extends Component {
           <hr />
 
           <input type='text' placeholder='Email' onChange={this.handleEmailChange.bind(this)}></input>
-          <input type='text' placeholder='Password' onChange={this.handlePasswordChange.bind(this)}></input>
+          <input type='password' placeholder='Password' onChange={this.handlePasswordChange.bind(this)}></input>
 
           <hr />
 

@@ -105,9 +105,9 @@ export default class Login extends Component {
           <hr />
 
           <input type='text' placeholder='Company Name' onChange={this.handleNameChange}></input>
-          <input type='text' placeholder='Email' onChange={this.handleEmailChange}></input>
-          <input type='text' placeholder='Password' onChange={this.handlePasswordChange}></input>
-          <input type='text' placeholder='Confirm Password'></input>
+          <input type='email' placeholder='Email' onChange={this.handleEmailChange}></input>
+          <input type='password' placeholder='Password' onChange={this.handlePasswordChange}></input>
+          <input type='password' placeholder='Confirm Password'></input>
 
           <hr />
 
