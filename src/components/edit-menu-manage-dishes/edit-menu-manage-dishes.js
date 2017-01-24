@@ -13,7 +13,6 @@ import {menuSelected} from '../../actions/index'
 import {getMenuItems} from '../../actions/index'
 import {postMenuItem} from '../../actions/index'
 import {getThisMenuItem} from '../../actions/index'
-import TestModal from '../modal/modal'
 import AddMenuItem from '../AddMenuItemModal/AddMenuItemModal'
 import EditMenuItemModal from '../EditMenuItemModal/EditMenuItemModal'
 

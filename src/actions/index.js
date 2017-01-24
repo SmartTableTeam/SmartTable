@@ -87,7 +87,9 @@ export function updateMenuItem(obj){
 
   return {
     type: UPDATE_MENU_ITEM,
-// ___________________________________________________________
+  }
+  
+}
 
 export function getOrderById(id){
   console.log(id, 'order id in index.js');
