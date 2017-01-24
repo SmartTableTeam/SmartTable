@@ -24,6 +24,7 @@ var accountController	= require('./node_controllers/accountController.js');
 var orderController 	= require('./node_controllers/orderController.js');
 var menuItemController 	= require('./node_controllers/menuItemsController.js');
 
+var restaurantController = require('./node_controllers/restaurantController.js')
 //Connect to DB
 console.log("abefore");
 var conn = massive.connectSync({
@@ -71,7 +72,6 @@ app.post('/api/auth/logout', loginController.logout);
 app.get('/api/auth/currentuser', loginController.getCurrentUser);
 app.post('/api/auth/table/login', restAuthCheck, loginController.loginTableAccount);
 
-
 //Accounts	=	=	=	=	=
 app.post('/api/account/restaurant', accountController.createRestaurantAccount);
 app.post('/api/account/customer', accountController.createCustomerAccount);
@@ -98,6 +98,7 @@ app.get('/api/menuitem/:menu_item_id', restAuthCheck, menuItemController.getMenu
 app.put('/api/menuitem', restAuthCheck, menuItemController.updateMenuItem);
 app.get('/api/menuitem/list/:menu_id', restAuthCheck, menuItemController.getMenuItemsForMenu);
 
+app.get('/api/restaurants/address',restaurantController.getAddress)
 
 //SPIN UP THE DRIVES!!
 app.listen(port, function() {

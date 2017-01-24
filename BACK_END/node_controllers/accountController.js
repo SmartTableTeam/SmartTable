@@ -14,7 +14,7 @@ function createRestaurantAccount(req, res) {
 
 
 	var account = {
-		join_date: new Date(),
+		join_timestamp: new Date(),
 		email: req.body.email,
 		password:req.body.password
 	};
@@ -26,7 +26,9 @@ function createRestaurantAccount(req, res) {
 			} else {
 				db.accounts.insert(account, function(err, newAccount) {
 					console.log(req.body.name, "BODY NAME");
+					console.log(err);
 					if(!err) {
+
 						var restaurant = {
 							account_id: newAccount.id,
 							name: req.body.name,
