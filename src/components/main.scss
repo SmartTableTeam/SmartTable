@@ -4,7 +4,7 @@ $primary-color: #449c57;
 $warning-color: #bc2031;
 
 $primary-font-stack: 'Open Sans', 'arial', 'sans serif';
-
+// $secondary-font-stack: ;
 
 //blue to save #3e5882
 
@@ -12,6 +12,8 @@ $primary-font-stack: 'Open Sans', 'arial', 'sans serif';
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  line-height: 1;
+  list-style: none;
 }
 
 //X button global
@@ -37,17 +39,21 @@ $primary-font-stack: 'Open Sans', 'arial', 'sans serif';
 .click-to-close:hover {
   background-color: darken($warning-color, 10%);
 }
+
 .click-to-close:active {
   background-color: darken($warning-color, 15%);
 }
-
-//
-// .LandingContainer{
-//   padding: 20px;
-// }
 
 .main-button {
   border: none;
   background: $primary-color;
   color: white;
+}
+
+.main-button:hover {
+  background-color: darken($primary-color, 10%);
+}
+
+.main-button:active {
+  background-color: darken($primary-color, 15%);
 }

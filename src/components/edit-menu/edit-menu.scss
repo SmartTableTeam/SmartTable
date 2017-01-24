@@ -1,10 +1,12 @@
 .edit-menu-background {
-  background: lighten(gray,12%);
-  height:100vh;
+  // background: lighten(gray,12%);
+  background: blue;
+  // height:100%;
+  // width: 100%;
 }
-* {
-  line-height: 1.5em;
-}
+// * {
+//   line-height: 1.5em;
+// }
 header {
   height:40px;
   width:100%;
@@ -13,7 +15,7 @@ header {
   font-size: 26px;
   font-weight: bold;
   color: lighten(gray,36%);
-  margin-bottom: 36px;
+  margin: 10px 0 36px;
 }
 
 #edit-menu-container {

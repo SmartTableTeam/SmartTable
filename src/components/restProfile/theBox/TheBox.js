@@ -1,5 +1,6 @@
 import React from 'react'
 import TheBoxNav from './components/boxNav.js'
+import EditMenu from '../../edit-menu/edit-menu.js'
 import './TheBox.scss'
 export default class TheBox extends React.Component{
   render(){
@@ -8,14 +9,14 @@ export default class TheBox extends React.Component{
         <TheBoxNav/>
 
         <div className='theView'>
-          
+
+        {this.props.children}
+
         </div>
       </div>
 
     )
   }
-  invoct(){
-    console.log('Worked');
-  }
+
 
 }

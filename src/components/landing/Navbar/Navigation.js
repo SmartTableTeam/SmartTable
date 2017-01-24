@@ -10,15 +10,22 @@ export default class Nav extends React.Component{
       <div className='navBar'>
         <div className='right'>
           <ul>
-            <li>Login</li>
-            <li onClick={this.click.bind(this)}>Sign up</li>
+            <li onClick={this.clickLogin.bind(this)}>Login</li>
+            <li onClick={this.clickSignUp.bind(this)}>Sign up</li>
           </ul>
         </div>
       </div>
     )
   }
 
-  click(){
-    this.props.func(true)
+  clickSignUp(){
+    this.props.signup(true)
+    console.log("clicked signup");
   }
+
+  clickLogin(){
+    this.props.login(true)
+    console.log("click login");
+  }
+
 }
