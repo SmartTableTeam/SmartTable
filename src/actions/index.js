@@ -5,6 +5,10 @@ export const DELETE_MENU = 'DELETE_MENU'
 export const MENU_SELECTED = 'MENU_SELECTED'
 export const GET_MENU_ITEMS = 'GET_MENU_ITEMS'
 export const POST_MENU_ITEM = "POST_MENU_ITEM"
+export const RESET_MENU_ITEMS = 'RESET_MENU_ITEMS'
+export const GET_THIS_MENU_ITEM = 'GET_THIS_MENU_ITEM'
+export const UPDATE_MENU_ITEM = "UPDATE_MENU_ITEM"
+
 const ROOT_URL = 'http://localhost:1701/api/menu'
 const MENU_ITEM_URL = `http://localhost:1701/api/menuitem`
 export function getMenu() {
@@ -26,10 +30,7 @@ export function postMenu(desc) {
 }
 
 export function deleteMenu(id) {
-    console.log(id);
-    console.log(`${ROOT_URL}/${id}`);
     const response = axios.delete(`${ROOT_URL}/${id}`)
-    console.log(response);
     return {
         type: DELETE_MENU,
         payload: response
@@ -37,7 +38,6 @@ export function deleteMenu(id) {
 }
 
 export function menuSelected(id) {
-    console.log(id);
     return {
         type: MENU_SELECTED,
         payload: id
@@ -45,7 +45,6 @@ export function menuSelected(id) {
 }
 
 export function getMenuItems(id) {
-    console.log(id);
     const response = axios.get(`http://localhost:1701/api/menuitem/list/${id}`)
     return {
         type: GET_MENU_ITEMS,
@@ -54,16 +53,38 @@ export function getMenuItems(id) {
 }
 
 export function postMenuItem(obj) {
-    console.log(obj);
     const request = axios.post(`${MENU_ITEM_URL}`, {
         menu_id: obj.menu_id,
         price: obj.price,
         name: obj.name,
-        desc: obj.desc,
+        description: obj.description,
         ingredients: obj.ingredients
     })
     return {
         type: POST_MENU_ITEM,
         payload: request
     }
+}
+
+export function resetMenuItems(){
+  return {
+    type: RESET_MENU_ITEMS
+  }
+}
+
+export function getThisMenuItem(id){
+  const response = axios.get(`${MENU_ITEM_URL}/${id}`)
+  return {
+    type: GET_THIS_MENU_ITEM,
+    payload:response
+  }
+}
+
+export function updateMenuItem(obj){
+  const request = axios.put(`${MENU_ITEM_URL}`,obj)
+
+  return {
+    type: UPDATE_MENU_ITEM,
+    payload: request
+  }
 }

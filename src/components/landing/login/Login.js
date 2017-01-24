@@ -48,7 +48,6 @@ export default class Login extends Component {
       email:this.state.email,
       password:this.state.password
     })
-    console.log(obj);
 
     var myInit = {
       method: "POST",
