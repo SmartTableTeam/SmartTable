@@ -36,19 +36,17 @@ export default class Login extends Component {
     }
     if(validEmail,validName,validPassword) {
       this.handleSubmit()
-    } 
+    }
 
   }
 
 
   handleSubmit(){
-    // e.preventDefault();
     var obj = JSON.stringify({
       name:this.state.name,
       email:this.state.email,
       password:this.state.password
     })
-    console.log(obj);
 
     var myInit = {
       method: "POST",
@@ -62,14 +60,11 @@ export default class Login extends Component {
         password:this.state.password
       })
     }
-
       if(this.state.name && this.state.email && this.state.password){
        fetch('http://localhost:1701/api/account/restaurant', myInit).then((res) => {
+         console.log('send');
           hashHistory.push('/profile');
         })
-
-        //needs to send to profile page from here
-
       } else {
         alert("please enter all fields")
       }
@@ -112,7 +107,7 @@ export default class Login extends Component {
 
           <hr />
 
-          <button  type="submit" className="sign-up" onClick={this.checkInputs.bind(this)}>Sign Up Now</button>
+          <button  type="submit" className="sign-up" onClick={this.handleSubmit.bind(this)}>Sign Up Now</button>
 
         </form>
       </div>
