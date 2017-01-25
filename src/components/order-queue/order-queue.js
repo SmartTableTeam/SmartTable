@@ -11,10 +11,10 @@ export default class OrderQueue extends Component {
 	render() {
 		return (
 			<div className="OrderQueue component-box">
-				<div>
+				<div className="queue-box">
 					<List/>
 				</div>
-				<div>
+				<div className="details-box">
 					<Details order_id={this.props.params.order_id}/>
 				</div>
 			</div>

@@ -25,8 +25,8 @@ class OrderQueueList extends Component {
 					key={order.order_id}
 					to={`/profile/orders/${order.order_id}`}
 				>
-					<div key={order.order_id}>
-						Table: {order.table_number} - {order.order_item_count} items - {order.create_time}
+					<div key={order.order_id} className="order-queue-item">
+						Table: {order.table_number} - {order.order_item_count} items - {new Date(order.create_time).toLocaleTimeString()}
 					</div>
 				</Link>
 			)

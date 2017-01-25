@@ -1,5 +1,12 @@
 
-$primary-color: #449c57;
+//
+$primary-red: #C55653;
+$primary-blue: #3E5882;
+$primary-green: #429B48;
+$primary-tan: #C59B53;
+
+
+$button-color: #449c57;
 // $secondary-color: ;
 $warning-color: #bc2031;
 
@@ -46,14 +53,20 @@ $primary-font-stack: 'Open Sans', 'arial', 'sans serif';
 
 .main-button {
   border: none;
-  background: $primary-color;
+  background: $button-color;
   color: white;
 }
 
 .main-button:hover {
-  background-color: darken($primary-color, 10%);
+  background-color: darken($button-color, 10%);
 }
 
 .main-button:active {
-  background-color: darken($primary-color, 15%);
+  background-color: darken($button-color, 15%);
+}
+
+
+a, a:link, a:hover, a:visited, a:active {
+  text-decoration: none;
+  color: black;
 }
