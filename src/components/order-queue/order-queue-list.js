@@ -17,8 +17,9 @@ class OrderQueueList extends Component {
 	}
 
 	render() {
-
-		const orders = this.props.order_queue.map( order => {
+		console.log("ORDER QUEUE LIST PROPERTIES");
+		console.log(this.props);
+		const orders = this.props.order_queue.map(order => {
 
 			return (
 				<Link 
