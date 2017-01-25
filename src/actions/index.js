@@ -72,7 +72,6 @@ export function postMenuItem(obj) {
 // ___________________________________________________________
 
 export function getOrderById(id){
-  console.log(id, 'order id in index.js');
   const request = axios.get(`${ORDER_ID_URL}/${id}`);
 
   return {

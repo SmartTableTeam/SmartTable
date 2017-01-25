@@ -25,12 +25,10 @@ var orderController 	= require('./node_controllers/orderController.js');
 var menuItemController 	= require('./node_controllers/menuItemsController.js');
 
 //Connect to DB
-console.log("abefore");
 var conn = massive.connectSync({
 	connectionString:config.connectString
 });
 
-console.log("bafter");
 app.set('db',conn);
 var db = app.get('db');
 

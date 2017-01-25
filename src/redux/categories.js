@@ -11,39 +11,22 @@ import {
     MENU_SELECTED
 } from '../actions/index'
 export default function(state = [], action) {
-    console.log(action);
-    console.log(state);
-    console.log(action.payload)
     switch (action.type) {
         case GET_MENU:
-            console.log(action.payload);
             return action.payload.data;
 
         case POST_MENU:
-            console.log(action.payload);
-            console.log([...state, action.payload.data]);
             return [...state, action.payload.data]
 
 
         case DELETE_MENU:
-            console.log(action.payload);
             // return [...state].filter(state => state.id !== action.payload.id)
-            console.log([...state]);
             return ['....loading']
 
         case MENU_SELECTED:
-            console.log(action.payload);
-            console.log(state);
-            console.log([...state].filter(obj => obj.id === action.payload));
             return [...state].filter(obj => obj.id === action.payload)
-
-
-
     }
-
-
     return state;
-
 }
 
 
