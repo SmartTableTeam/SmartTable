@@ -1,0 +1,33 @@
+.Jumbo{
+  width:100vw;height:100vh;
+  display: flex;flex-direction: row;
+  .left{width:30%;height:100%;background-color: red;
+    .imageContain{
+      display: flex;justify-content: center;align-items: center;
+      width:100%;height:300px;
+      .image{
+        width:60%;height:60%;
+        background-color: black;
+      }
+
+
+    }
+    .timeContain{
+      width:100%;height:400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .time{
+        width:90%;height:90%;
+        background-color: black;
+      }
+    }
+  }
+  .right{width:70%;height:100%;background-color: blue;
+        display: flex;justify-content: center;align-items: center;
+        .innerRight{
+          width:90%;height:90%;
+          background-color: white;
+        }
+  }
+}

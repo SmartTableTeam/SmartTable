@@ -3,7 +3,7 @@ import {Route, IndexRoute} from 'react-router'
 import App from './components/app/App'
 import Profile from './components/restProfile/Profile.js'
 import Landing from './components/landing/Landing.js'
-
+import EditProfile from './components/restProfile/nav/editProfile/editProfile.js'
 import OrderQueue from './components/order-queue/order-queue.js';
 
 import OrderConfirm from './components/order-confirmation/OrderConfirm.js'
@@ -20,6 +20,7 @@ export default (
       <Route path='/profile/confirm' component={OrderConfirm} />
       <Route path='/profile/edit' component={EditMenu} />
     </Route>
+    <Route path='/profile/editProfile' component={EditProfile} />
     <Route path='/edit' component={EditMenu}/>
     <Route path='/confirm' component={OrderConfirm} />
   </Route>
