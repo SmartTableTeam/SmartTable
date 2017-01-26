@@ -11,7 +11,6 @@ import {
     MENU_SELECTED
 } from '../actions/index'
 export default function(state = [], action) {
-
     switch (action.type) {
         case GET_MENU:
             return action.payload.data;
@@ -21,16 +20,11 @@ export default function(state = [], action) {
 
 
         case DELETE_MENU:
+            // return [...state].filter(state => state.id !== action.payload.id)
             return ['....loading']
 
         case MENU_SELECTED:
             return [...state].filter(obj => obj.id === action.payload)
-
-
-
     }
-
-
     return state;
-
 }

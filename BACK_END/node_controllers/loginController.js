@@ -74,6 +74,7 @@ function loginTableAccount(req,res) {
 		if(!err) {
 			if(tableAccounts.length > 0) {
 				// req.session.currentUser = null;
+
 				req.session.currentTable = tableAccounts[0];
 				console.log('REQ SESSION FROM TBALE ACCOUNTS',req.session);
 				res.status(200).send(req.session.currentTable);

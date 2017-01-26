@@ -55,7 +55,7 @@ var custAuthCheck = function(req,res,next) {
 }
 
 var tableAuthCheck = function(req,res,next) {
-	console.log("TABLE AUTH CHECK",req.session);
+
 	if(!!req.session.currentTable) {
 		next()
 	} else {

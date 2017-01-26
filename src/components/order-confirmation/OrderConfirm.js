@@ -27,15 +27,16 @@ componentWillMount(){
 
 
   render() {
-    console.log(this.props.order_status);
     if(!!this.props.order_status[0]){
-      console.log(this.props.order_status[0].order_items.map( (item,index)=> {
-        return (
-          <li key={index}>
-            {item.notes}
-          </li>
-        )
-      }));
+      console.log("order_items", this.props.order_status[0].order_items);
+
+      // console.log(this.props.order_status[0].order_items.map( (item,index)=> {
+      //   return (
+      //     <li key={index}>
+      //       {item.notes}
+      //     </li>
+      //   )
+      // }));
     var orderItems =  this.props.order_status[0].order_items.map( (item,index)=> {
         return (
           <li key={index}>
@@ -43,28 +44,43 @@ componentWillMount(){
           </li>
         )
       })
-    }
+
+      var orderTotalPrice = 0;
+    var orderrrrr = this.props.order_status[0].order_items.map(function(item,index){
+
+      orderTotalPrice += item.price
+
+      return (
+        <li key={index}>
+          {item.name} <span className="floatRight">{item.price / 100}</span>
+           { item.notes ? <ul><li>{item.notes}</li></ul> : <ul><li>No Notes</li></ul>}
+        </li>
+      )
+    })
+
+
+
+    // var totez = this.props.order_stats[0]order_items.map((item, index) => {
+    //
+    //   console.log();
+    // })
+
+  } //end if
 
     return(
       <div className="confirmPage">
       <div className="confirmBox">
         <h2>Thank you!</h2>
-        <p>Your order has been submitted and is being cooked now</p>
+        <p>Your order has been submitted and is being prepped now</p>
 
-        <hr />
+      <hr />
         <h4>Order Details</h4>
+
         <ul>
-          <li>Coke</li>
-          <ul>
-            <li>No Ice</li>
-          </ul>
-          <li>Bacon Cheeseburger</li>
-            <ul>
-              <li>Only Ketchup</li>
-              {orderItems}
-            </ul>
+          {orderrrrr}
         </ul>
       <hr />
+        <h4>Total:</h4> <h4 className="floatRight">{orderTotalPrice / 100}</h4>
         <button className="main-button btn">Back to Menu</button>
       </div>
       </div>
@@ -88,3 +104,18 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrderConfirm)
+
+
+
+//<span className="floatRight">{orderTotalPrice / 100}</span>
+// <ul>
+//   <li>Coke</li>
+//   <ul>
+//     <li>No Ice</li>
+//   </ul>
+//   <li>Bacon Cheeseburger</li>
+//     <ul>
+//       <li>Only Ketchup</li>
+//       {orderItems}
+//     </ul>
+// </ul>
