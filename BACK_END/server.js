@@ -26,12 +26,10 @@ var menuItemController 	= require('./node_controllers/menuItemsController.js');
 
 var restaurantController = require('./node_controllers/restaurantController.js')
 //Connect to DB
-console.log("abefore");
 var conn = massive.connectSync({
 	connectionString:config.connectString
 });
 
-console.log("bafter");
 app.set('db',conn);
 var db = app.get('db');
 
@@ -57,6 +55,7 @@ var custAuthCheck = function(req,res,next) {
 }
 
 var tableAuthCheck = function(req,res,next) {
+	console.log(req.session.currentTable);
 	if(!!req.session.currentTable) {
 		next()
 	} else {

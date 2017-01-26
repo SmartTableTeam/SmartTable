@@ -35,7 +35,7 @@
 
     .sign-up {
       border: none;
-      background-color: $primary-color;
+      background-color: $button-color;
       padding: 3px;
       margin-top: 10px;
       color: #fff;
@@ -43,10 +43,10 @@
     }
 
     .sign-up:hover {
-      background-color: darken($primary-color, 10%);
+      background-color: darken($button-color, 10%);
     }
     .sign-up:active {
-      background-color: darken($primary-color, 15%);
+      background-color: darken($button-color, 15%);
     }
   }
 }
