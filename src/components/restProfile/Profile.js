@@ -4,6 +4,7 @@ import TheBox from './theBox/TheBox.js'
 import './profile.scss'
 import TheBoxNav from './theBox/TheBox'
 
+
 export default class Profile extends Component {
 
   render() {

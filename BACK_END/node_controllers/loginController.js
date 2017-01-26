@@ -73,7 +73,7 @@ function loginTableAccount(req,res) {
 	db.table_accounts.find(tableToFind, function(err, tableAccounts) {
 		if(!err) {
 			if(tableAccounts.length > 0) {
-				req.session.currentUser = null;
+				//req.session.currentUser = null;
 				req.session.currentTable = tableAccounts[0];
 				res.status(200).send(req.session.currentTable);
 			} else {

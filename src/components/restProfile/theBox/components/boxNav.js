@@ -26,7 +26,7 @@ export default class TheBoxNav extends React.Component{
     return(
       <div className="upperDash">
         <div className='containIt'>
-        <Link to='/profile/confirm'>
+        <Link to='/profile/orders'>
           <div style={oneOffGenerate} onClick={this.desypher.bind(this,'one')} ref='checkMe1' className='miniBox'><p>Orders</p></div>
         </Link>
         <Link to='/profile/edit'>

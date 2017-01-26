@@ -38,20 +38,23 @@ export default class Login extends Component {
       return re.test(name);
     }
     if(validEmail,validName,validPassword) {
+
       this.handleSubmit(e)
+
     }
 
   }
 
 
+
   handleSubmit(e){
     e.preventDefault();
+
     var obj = JSON.stringify({
       name:this.state.name,
       email:this.state.email,
       password:this.state.password
     })
-    console.log(obj);
 
     var myInit = {
       method: "POST",
@@ -66,12 +69,13 @@ export default class Login extends Component {
       })
     }
 
+
     if(this.state.name && this.state.email && this.state.password){
       if(this.state.value === "business"){
         console.log("about to fetch");
         fetch('http://localhost:1701/api/account/restaurant', myInit).then((res) => {
-        hashHistory.push('/profile');
-      })
+          hashHistory.push('/profile');
+        })
       } else {
        console.log("DOESNT OWRKS LOL");
       }
@@ -172,7 +176,6 @@ export default class Login extends Component {
 
 
           {this.userOption()}
-
 
         </form>
       </div>

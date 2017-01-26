@@ -1,0 +1,47 @@
+@import "../main.scss";
+
+.component-box {
+	display: flex;
+	justify-content: space-around;
+	
+	background-color: white;
+	padding: 20px;
+
+	// div {
+	// 	border: 1px solid black;
+	// 	border-radius: 5px;
+	// }
+
+}
+
+.queue-box {
+	width: 30%;
+	border: 2px solid $primary-tan;
+	border-radius: 5px;
+	background-color:lighten($primary-tan, 40%);
+	padding: 10px;
+}
+
+.details-box {
+	width: 50%;
+	border: 2px solid $primary-tan;
+	border-radius: 5px;
+	background-color:lighten($primary-tan, 40%);
+}
+
+.order-queue-item {
+	margin: 5px 0;
+	background-color: lighten($primary-blue, 40%);
+	padding: 10px;
+	font-size: 24px;
+	align-items: center;
+	text-align: center;
+	border-radius:5px;
+
+	
+
+}
+
+.order-queue-item:hover {
+	background-color:lighten($primary-blue, 20%)
+}
