@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal'
-
+import InfoIcon from 'react-icons/lib/fa/info'
 export default class TableMenuItemModal extends React.Component {
   constructor(props){
     super(props)
@@ -48,7 +48,7 @@ export default class TableMenuItemModal extends React.Component {
   };
     return(
       <div>
-      <button onClick={this.openModal.bind(this)}><i>INFO</i></button>
+      <h3><InfoIcon onClick={this.openModal.bind(this)}><i>INFO</i></InfoIcon></h3>
      <Modal
        isOpen={this.state.modalIsOpen}
        onAfterOpen={this.afterOpenModal.bind(this)}
