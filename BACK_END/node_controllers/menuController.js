@@ -17,7 +17,7 @@ If a user not tied to those menus is logged in, then nothing will happen.
 
 function createMenu(req,res) {
 	var db = app.get('db');
-	
+
 	var menu = {
 		restaurant_id:req.session.currentUser.restaurant_id,
 		category:req.body.category,
@@ -57,13 +57,13 @@ function getMenuById(req,res,next) {
 		} else {
 			res.status(500).send(err);
 		}
-		
+
 	})
 }
 
 function updateMenu(req,res) {
 	var db = app.get('db');
-	
+
 	var menuRequestData = {
 		id: parseInt(req.body.id),
 		restaurant_id: req.session.currentUser.restaurant_id
@@ -85,7 +85,7 @@ function updateMenu(req,res) {
 		} else {
 			res.status(500).send(err);
 		}
-		
+
 	})
 }
 
@@ -95,7 +95,7 @@ function deleteMenu(req,res) {
 		id: parseInt(req.params.menu_id),
 		restaurant_id: req.session.currentUser.restaurant_id
 	}
-	//CHECK IF THE MENU MATCHES THE LOGGED IN USER 
+	//CHECK IF THE MENU MATCHES THE LOGGED IN USER
 	db.menus.find(menuRequestData, function(err, menu) {
 		if(!err) {
 			if(menu.length > 0) {
@@ -116,7 +116,7 @@ function deleteMenu(req,res) {
 		} else {
 			res.status(500).send(err);
 		}
-		
+
 	})
 }
 
@@ -133,12 +133,12 @@ function getMenuSummaryList(req,res) {
 
 function getMenuDetailsList(req, res) {
 	var db = app.get('db');
-	
+
 	db.menus.find({restaurant_id:req.session.currentUser.restaurant_id}, function(err, resMenus) {
 		if(!err) {
 			db.get_menu_items_for_user([req.session.currentUser.restaurant_id], function(err, resMenuItems) {
 				if(!err) {
-				
+
 					//Sort the menu objects into a list
 					var menuListObj = {}
 					for(var i = 0; i < resMenus.length; i++) {

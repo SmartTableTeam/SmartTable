@@ -6,7 +6,7 @@ import Landing from './components/landing/Landing.js'
 import EditProfile from './components/restProfile/nav/editProfile/editProfile.js'
 import editMenuItem from './components/edit-menu-item/edit-menu-item'
 import TableMenu from './components/TableMenu/TableMenu'
-import ReactAlert from './components/react-alert/react-alert'
+
 import OrderQueue from './components/order-queue/order-queue.js';
 import OrderDetails from './components/order-queue/order-queue-details.js'
 
@@ -30,7 +30,6 @@ export default (
     </Route>
     <Route path='/practice' component={Profile} />
     <Route path='/TableMenu' component={TableMenu}/>
-    <Route path='/Alert' component={ReactAlert}/>
     <Route path='/editMenu' component={EditMenu}/>
     <Route path='/editMenu/editMenuItem' component={editMenuItem}/>
     <Route path='/confirm' component={OrderConfirm} />

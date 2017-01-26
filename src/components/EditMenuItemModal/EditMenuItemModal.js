@@ -13,19 +13,34 @@ import {getMenu} from '../../actions/index'
 
 const MENU_ITEM_URL = 'http://localhost:1701/api/menuitem'
 
+
+
 class EditMenuItemModal extends Component {
   constructor(props){
     super(props)
-
     this.state ={
       name: '',
       description: '',
       ingredients: '',
       price: '',
       notes: '',
-      photo_url: ''
+      photo_url: '',
+      menuItems: {
+        name:this.props.item.name,
+        description:this.props.item.description,
+        ingredients:this.props.item.ingredients,
+        price:this.props.item.price,
+        notes:this.props.item.notes,
+        photo_url:this.props.item.photo_url,
+        id:this.props.item.id
+      }
     }
+    this.checkSame = this.checkSame.bind(this)
+    this.isEmpty = this.isEmpty.bind(this)
   }
+
+
+
   onChangeName(e) {
     this.setState({name:e.target.value})
   }
@@ -61,24 +76,79 @@ class EditMenuItemModal extends Component {
       photo_url:this.state.photo_url,
       id:this.props.item.id
     };
+    const oldObj = {
+      name:this.props.item.name,
+      description:this.props.item.description,
+      ingredients:this.props.item.ingredients,
+      price:this.props.item.price,
+      notes:this.props.item.notes,
+      photo_url:this.props.item.photo_url,
+      id:this.props.item.id
+    }
+    // console.log("OLD OBJECT");
+    // console.log(oldObj);
+    // console.log("UPDATE OBJ");
+    // console.log(updateObj);
     let newUpdateObj;
     newUpdateObj = this.filterObj(updateObj)
-    axios.put(`${MENU_ITEM_URL}`,newUpdateObj).then(response => this.props.getMenuItems(this.props.item.menu_id)).then(response => {
-      alert('Your Update Was Successful')
-    })
+      axios.put(`${MENU_ITEM_URL}`,newUpdateObj).then(response => this.closeModal())
+      .then( () => {
+          alert('Your Update Was Successful')
+      })
+      // let filterObj = this.checkSame(oldObj,updateObj)
+      // console.log(filterObj);
   }
 
-  filterObj(obj){
-    for(let k in obj){
-      if(!obj[k]){
-          delete obj[k]
-      } else {
+  checkSame(obj,newObj){
+    for (var i in obj){
+      for (var k in newObj){
+        if(i === k){
+          if(obj[i] === newObj[k]){
+            console.log('matching value', obj[i],newObj[k])
+            delete newObj[k]
+          }
+        }
       }
     }
-    return obj
+    var newObjCheck = this.isEmpty(newObj)
+    if(!!newObjCheck){
+      return newObj
+    }
+    else {
+      return 'The Object is the same as before '
+    }
   }
-// ======================================================================
 
+  isEmpty(obj){
+    for(var prop in obj){
+    if(obj.hasOwnProperty(prop)){
+      return true
+    }
+    return false
+  }
+
+  }
+
+// =====================================================================
+
+filterObj(obj){
+  for(let k in obj){
+    if(!obj[k]){
+        delete obj[k]
+    } else {
+    }
+  }
+  return obj
+}
+
+  newObjIsNotEmpty(newObj) {
+    for (let prop in newObj) {
+        if (newObj.hasOwnProperty(prop))
+        return newObj
+    }
+    alert('Please Fill Out One Of The Following Fields')
+    return false
+  }
 
 
 // ==================================================

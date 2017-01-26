@@ -3,6 +3,14 @@ var path = require('path')
 
 module.exports={
   devtool:'inline-source-map',
+  devServer: {
+    proxy: {
+      '/api/': {
+        target: 'http://localhost:1701',
+        secure: false
+      }
+    }
+  },
   entry:[
     'webpack-dev-server/client?http://127.0.0.1:8080/',
     'webpack/hot/only-dev-server',
