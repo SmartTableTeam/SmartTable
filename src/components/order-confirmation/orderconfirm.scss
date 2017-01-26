@@ -4,14 +4,14 @@ hr {
   border-color: lightgray;
 }
 
-.confirmPage {
-  width: 100vw;
-  height: 100vh;
-  background: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+// .confirmPage {
+//   width: 100vw;
+//   height: 100vh;
+//   background: white;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
 
 .confirmBox {
   width: 500px;
@@ -20,7 +20,7 @@ hr {
   padding: 20px;
   border: 1px solid lightgray;
 
-  h2,p {
+  h2, p {
     text-align: center;
   }
 
@@ -44,4 +44,12 @@ hr {
     font-size: 18px;
     border-radius: 0;
   }
+
+  h4 {
+    display: inline-block;
+  }
+}
+
+.floatRight {
+  float: right;
 }
