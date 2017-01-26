@@ -21,7 +21,7 @@ function login(req,res) {
 				res.status(422).send("Incorrect email/password combination");
 			} else {
 				db.get_restaurant_account_data([result[0].id], function(err, user) {
-				
+
 					if(!err) {
 						req.session.currentUser = user[0];
 						res.status(200).send(req.session.currentUser);
@@ -73,8 +73,9 @@ function loginTableAccount(req,res) {
 	db.table_accounts.find(tableToFind, function(err, tableAccounts) {
 		if(!err) {
 			if(tableAccounts.length > 0) {
-				req.session.currentUser = null;
+				// req.session.currentUser = null;
 				req.session.currentTable = tableAccounts[0];
+				console.log('REQ SESSION FROM TBALE ACCOUNTS',req.session);
 				res.status(200).send(req.session.currentTable);
 			} else {
 				res.status(422).send("No table account found for given ID and User");
