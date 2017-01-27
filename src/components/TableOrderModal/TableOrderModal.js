@@ -1,6 +1,11 @@
 import React from 'react';
 import Modal from 'react-modal'
 import TableOrderDetails from './TableOrderDetails'
+import {clearOrder} from '../../actions/tableOrder'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import Restaraunt from 'react-icons/lib/md/local-restaurant'
+
 class TableOrderModal extends React.Component {
   constructor(props) {
     super(props);
@@ -21,8 +26,6 @@ class TableOrderModal extends React.Component {
   }
 
   closeModal() {
-
-
     this.setState({modalIsOpen: false});
   }
   render() {
@@ -38,7 +41,7 @@ class TableOrderModal extends React.Component {
     }
     return(
       <div>
-        <button onClick={this.openModal.bind(this)}>See Current Order</button>
+        <h1><Restaraunt onClick={this.openModal.bind(this)} /></h1>
         <Modal
          isOpen={this.state.modalIsOpen}
          onAfterOpen={this.afterOpenModal.bind(this)}
@@ -46,7 +49,7 @@ class TableOrderModal extends React.Component {
          style={customStyles}
          contentLabel="EditMenuItem Modal"
        >
-       <div><button className='btn btn-danger'>Clear</button><h3 ref='subtitle'>Current Order</h3></div>
+       <div><button disabled={this.props.order.length < 1} onClick={()=> this.props.clear()}>Clear</button><h3 ref='subtitle'>Current Order</h3></div>
         <TableOrderDetails
           openModal = {this.openModal}
           closeModal = {this.closeModal}
@@ -57,4 +60,17 @@ class TableOrderModal extends React.Component {
     );
   }
 }
-export default TableOrderModal;
+
+function mapStateToProps(state){
+  return {
+    order:state.table_order
+  }
+}
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({
+      clear:clearOrder
+    },dispatch)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(TableOrderModal)

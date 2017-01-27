@@ -20,6 +20,7 @@ export default class TableMenuDisplay extends React.Component {
             price = { item.price }
             ingredients = { item.ingredients }
             id = { item.id }
+            index = { i }
            />
         )
       } )
