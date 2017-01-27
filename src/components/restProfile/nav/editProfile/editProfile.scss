@@ -2,38 +2,43 @@
   width:100vw;height:100vh;
   display: flex;flex-direction: row;
   .left{width:30%;height:100%;background-color: red;
+        flex-direction: column;
+        display: flex;align-items: center;justify-content: center;
+
     .imageContain{
-      display: flex;justify-content: center;align-items: center;
-      width:100%;height:300px;
+      display: flex;justify-content: center;
+      width:100%;height:40%;
+      align-items: center;
       .image{
-        width:60%;height:60%;
+        width:100px;height:100px;
         background-color: black;
       }
-
-
     }
     .timeContain{
-      width:100%;height:400px;
+      width:100%;height:60%;
       display: flex;
       justify-content: center;
       align-items: center;
-      .time{
-        width:90%;height:90%;
+      background-color: yellow;
+      .timeInner{
+        width:90%;height:80%;
         background-color: black;
         .top{
           width:100%;height:80%;
+          background-color: black;
         }
         .bot{
           width:100%;height:20%;
           background-color: blue;
           display: flex;
-          flex-direction: row;
+          flex-direction: column;
           justify-content: center;
           align-items: center;
         }
       }
     }
   }
+
   .right{width:70%;height:100%;background-color: blue;
         display: flex;justify-content: center;align-items: center;
         .innerRight{
