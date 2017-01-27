@@ -3,6 +3,7 @@ import {Link} from "react-router";
 import { connect } from 'react-redux'
 import store from "../../store"
 import { bindActionCreators } from 'redux'
+import './order-queue.scss';
 
 
 import { getOpenOrders } from "../../actions/order_queue.js"
@@ -17,8 +18,6 @@ class OrderQueueList extends Component {
 	}
 
 	render() {
-		console.log("ORDER QUEUE LIST PROPERTIES");
-		console.log(this.props);
 		const orders = this.props.order_queue.map(order => {
 
 			return (
@@ -35,7 +34,7 @@ class OrderQueueList extends Component {
 
 		return (
 			<div className="OrderQueueList">
-				<h2>Dis is ma Order List, ya heathens</h2>
+				<h2>Open Orders</h2>
 				{orders}				
 			</div>
 		)

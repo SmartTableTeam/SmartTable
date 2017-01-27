@@ -23,6 +23,10 @@ $primary-font-stack: 'Open Sans', 'arial', 'sans serif';
   list-style: none;
 }
 
+body {
+  min-height: 100vh;
+}
+
 //X button global
 
 .click-to-close {

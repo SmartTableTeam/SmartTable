@@ -8,8 +8,9 @@ import editMenuItem from './components/edit-menu-item/edit-menu-item'
 import TableMenu from './components/TableMenu/TableMenu'
 import ReactAlert from './components/react-alert/react-alert'
 import OrderQueue from './components/order-queue/order-queue.js';
-import OrderDetails from './components/order-queue/order-queue-details.js'
-import OrderConfirm from './components/order-confirmation/OrderConfirm.js'
+import OrderDetails from './components/order-queue/order-queue-details.js';
+import OrderConfirm from './components/order-confirmation/OrderConfirm.js';
+import TableAccounts from './components/table-accounts-view/table-accounts.js';
 
 
 
@@ -25,6 +26,7 @@ export default (
       <Route path='/profile/confirm' component={OrderConfirm} />
       <Route path='/profile/edit' component={EditMenu} />
       <Route path='/profile/editProfile' component={EditProfile} />
+      <Route path='/profile/tables' component={ TableAccounts }/>
     </Route>
     <Route path='/practice' component={Profile} />
     <Route path='/TableMenu' component={TableMenu}/>
