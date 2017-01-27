@@ -10,14 +10,17 @@ export default class Login extends Component {
     this.state={
       name:'',
       email:'',
-      password:''
+      password:'',
+      value: 'customer'
     }
+
 
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
-  checkInputs(){
+  checkInputs(e){
+
     var validEmail=validateEmail(this.state.email);
     var validName=validateName(this.state.name);
     var validPassword=validatePassword(this.state.password);
@@ -35,13 +38,18 @@ export default class Login extends Component {
       return re.test(name);
     }
     if(validEmail,validName,validPassword) {
-      this.handleSubmit()
+
+      this.handleSubmit(e)
+
     }
 
   }
 
 
-  handleSubmit(){
+
+  handleSubmit(e){
+    e.preventDefault();
+
     var obj = JSON.stringify({
       name:this.state.name,
       email:this.state.email,
@@ -60,14 +68,20 @@ export default class Login extends Component {
         password:this.state.password
       })
     }
-      if(this.state.name && this.state.email && this.state.password){
-       fetch('http://localhost:1701/api/account/restaurant', myInit).then((res) => {
-         console.log('send');
+
+
+    if(this.state.name && this.state.email && this.state.password){
+      if(this.state.value === "business"){
+        console.log("about to fetch");
+        fetch('http://localhost:1701/api/account/restaurant', myInit).then((res) => {
           hashHistory.push('/profile');
         })
       } else {
-        alert("please enter all fields")
+       console.log("DOESNT OWRKS LOL");
       }
+    } else {
+      alert("please enter all fields")
+    }
   }
 
   handleNameChange(e){
@@ -88,7 +102,61 @@ export default class Login extends Component {
     })
   }
 
+  handleRadioCustomer(){
+    this.setState({
+      value: 'customer'
+    })
+  }
+  handleRadioBusiness(){
+    this.setState({
+      value: 'business'
+    })
+  }
+
+
+  userOption(){
+   if(this.state.value === 'customer'){
+     return <div>
+     <input type='text' placeholder='Your Name' onChange={this.handleNameChange}></input>
+     <input type='email' placeholder='Email' onChange={this.handleEmailChange}></input>
+     <input type='password' placeholder='Password' onChange={this.handlePasswordChange}></input>
+     <input type='password' placeholder='Confirm Password'></input>
+
+     <hr />
+
+     <button  type="submit" className="sign-up" onClick={this.checkInputs.bind(this)}>Sign Up Now</button>
+     </div>
+   } else {
+     return <div>
+     <input type='text' placeholder='Business Name' onChange={this.handleNameChange}></input>
+     <input type='email' placeholder='Email' onChange={this.handleEmailChange}></input>
+     <input type='password' placeholder='Password' onChange={this.handlePasswordChange}></input>
+     <input type='password' placeholder='Confirm Password'></input>
+
+     <hr />
+
+     <button  type="submit" className="sign-up" onClick={this.checkInputs.bind(this)}>Sign Up Your Business</button>
+     </div>
+   }
+ }
+
+
   render() {
+
+    var msg;
+    if(this.state.value === 'customer'){
+      msg = 'customer'
+      console.log("radio is:", msg);
+    } else if (this.state.value === 'business'){
+      msg = 'business'
+      console.log("radio is:", msg);
+    } else {
+      msg = "does not compute"
+      console.log(msg);
+    }
+
+
+
 
     return (
 
@@ -99,15 +167,15 @@ export default class Login extends Component {
           <h2>Register</h2>
 
           <hr />
+          <label>
+            <input type="radio" name="signup" defaultChecked={this.state.value} onChange={this.handleRadioCustomer.bind(this)} value="customer"/> I am a Customer
+          </label>
+          <label>
+            <input type="radio" name="signup" onChange={this.handleRadioBusiness.bind(this)} value="business"/> I am a Business
+          </label>
 
-          <input type='text' placeholder='Company Name' onChange={this.handleNameChange}></input>
-          <input type='email' placeholder='Email' onChange={this.handleEmailChange}></input>
-          <input type='password' placeholder='Password' onChange={this.handlePasswordChange}></input>
-          <input type='password' placeholder='Confirm Password'></input>
 
-          <hr />
-
-          <button  type="submit" className="sign-up" onClick={this.handleSubmit.bind(this)}>Sign Up Now</button>
+          {this.userOption()}
 
         </form>
       </div>

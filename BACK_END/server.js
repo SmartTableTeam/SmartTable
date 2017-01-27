@@ -12,8 +12,7 @@ var port 		= config.port;
 //Initialize, Export, and Configure the app
 var app = module.exports = express();
 app.use(bodyParser.json());
-app.use(cors());
-app.use(session({secret: config.sessionSecret}));
+app.use(session({saveUninitialized: true, resave: false, secret: config.sessionSecret, cookie: {secure: false, httpOnly: false}}));
 app.use(express.static(__dirname +'/public'));
 
 
@@ -35,6 +34,7 @@ var db = app.get('db');
 
 //Authorization Middleware	=	=	=	=	=	=
 var restAuthCheck = function(req,res,next) {
+	console.log('#$%^&',req.session);
 	if(loginController.checkLoggedIn(req)){
 		next();
 	} else {

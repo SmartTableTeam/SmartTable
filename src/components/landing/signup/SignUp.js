@@ -4,6 +4,7 @@ import store from '../../../store'
 import { bindActionCreators } from 'redux'
 import { loginUser } from '../../../actions/login'
 import { hashHistory } from 'react-router'
+import './signup.scss'
 class SignUp extends Component {
 
   constructor(props){

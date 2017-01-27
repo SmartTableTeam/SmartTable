@@ -6,17 +6,24 @@ import Landing from './components/landing/Landing.js'
 import EditProfile from './components/restProfile/nav/editProfile/editProfile.js'
 import editMenuItem from './components/edit-menu-item/edit-menu-item'
 import TableMenu from './components/TableMenu/TableMenu'
-import ReactAlert from './components/react-alert/react-alert'
+
 import OrderQueue from './components/order-queue/order-queue.js';
+<<<<<<< HEAD
 import OrderDetails from './components/order-queue/order-queue-details.js';
 import OrderConfirm from './components/order-confirmation/OrderConfirm.js';
 import TableAccounts from './components/table-accounts-view/table-accounts.js';
+=======
+import OrderDetails from './components/order-queue/order-queue-details.js'
+
+import OrderConfirm from './components/order-confirmation/OrderConfirm.js'
+>>>>>>> master
 
 
 
 import EditMenu from './components/edit-menu/edit-menu'
 
 export default (
+
   <Route path='/' component={App}>
     <IndexRoute component={Landing}/>
     <Route path='/profile'component={Profile}>
@@ -30,10 +37,10 @@ export default (
     </Route>
     <Route path='/practice' component={Profile} />
     <Route path='/TableMenu' component={TableMenu}/>
-    <Route path='/Alert' component={ReactAlert}/>
     <Route path='/editMenu' component={EditMenu}/>
     <Route path='/editMenu/editMenuItem' component={editMenuItem}/>
     <Route path='/confirm' component={OrderConfirm} />
     <Route path='/edit' component={EditMenu}/>
   </Route>
+
 )

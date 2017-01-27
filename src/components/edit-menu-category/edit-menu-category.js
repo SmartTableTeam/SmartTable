@@ -6,13 +6,10 @@ import store from '../../store'
 import {bindActionCreators} from 'redux'
 import {getMenu} from '../../actions/index'
 import {deleteMenu} from '../../actions/index'
-import {menuSelected} from '../../actions/index'
 import {postMenu} from '../../actions/index'
 import {getMenuItems} from '../../actions/index'
 import {resetMenuItems} from '../../actions/index'
-import FaEdit from 'react-icons/lib/fa/edit'
-import FaErase from 'react-icons/lib/fa/eraser'
-import EditMenuInput from './edit-menu-category-input'
+import MenuComponent from './edit-menu-category-name'
 
 class Category extends Component {
     constructor(props) {
@@ -20,10 +17,7 @@ class Category extends Component {
         this.state = {
             newCategory: '',
             addCategory:false,
-            addCategoryButton:null,
-            editMenu:false
-        }
-        this.editMenu = this.editMenu.bind(this)
+            addCategoryButton:null        }
     }
     addCategory() {
     this.setState({addCategory:!this.state.addCategory})
@@ -40,22 +34,6 @@ class Category extends Component {
         this.setState({newCategory: ''})
     }
 
-    deleteAndGet(id) {
-        this.props.deleteMenu(id).then(() => {
-            this.props.menu()
-        })
-    }
-
-    selectAndGetItems(id) {
-        this.setState({addCategory:false})
-        this.props.menuSelected(id)
-        this.props.getMenuItems(id)
-
-    }
-
-    editMenu(){
-      this.setState({editMenu:!this.state.editMenu})
-    }
 
     backAndReset() {
       this.setState({addCategory:false})
@@ -70,6 +48,17 @@ class Category extends Component {
 
     render() {
 
+      let categories = this.props.categories.map((cat, i) => {
+                return (
+                  <MenuComponent
+                    key={i}
+                    category={cat}
+                    onClick = {() => {
+                      this.setState({addCategory:false})
+                    }}
+                  />
+              )
+          })
         return (
             <div id='category-container'>
                 <div className='container-fluid'>
@@ -85,18 +74,7 @@ class Category extends Component {
 
 
                 </div>
-                <div>{this.props.categories.map((cat, i) => {
-                        return (
-                          <div key={i}>
-
-                            <h4 onClick={this.selectAndGetItems.bind(this, cat.id)}> { cat.category } </h4>
-
-                                <h4><FaErase onClick={this.deleteAndGet.bind(this, cat.id)} /></h4>
-                                <h4><FaEdit onClick={this.editMenu} /></h4>
-                                {this.state.editMenu ? <input/> : null}
-                          </div>
-                        )
-                    })}</div>
+                <div>{categories}</div>
             </div>
 
         )
@@ -111,7 +89,6 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         menu: getMenu,
         deleteMenu: deleteMenu,
-        menuSelected: menuSelected,
         postMenu: postMenu,
         getMenuItems: getMenuItems,
         resetMenuItems: resetMenuItems
