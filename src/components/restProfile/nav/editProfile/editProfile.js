@@ -18,10 +18,15 @@ export default class editProfile extends React.Component{
   }
   pushTime(event){
     event.preventDefault();
-    console.log('Clicked ', event.target.id, event.target.value);
-    var id = event.target.id
-    console.log(typeof id);
-    this.setState({[event.target.id]:event.target.name})
+    var stateObject=function(){
+      let returnObj={}
+      returnObj[this.target.id]=this.target.value
+      return returnObj
+    }.bind(event)();
+
+    this.setState(stateObject)
+    array.push(this.state)
+    if(stateObject)console.log(array);
   }
 
   render(){
