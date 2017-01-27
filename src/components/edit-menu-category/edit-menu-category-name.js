@@ -9,7 +9,7 @@ import FaEdit from 'react-icons/lib/fa/edit'
 import FaErase from 'react-icons/lib/fa/eraser'
 import axios from 'axios'
 
-const MENU_URL = 'http://localhost:1701/api/menu'
+const MENU_URL = '/api/menu'
 
 class MenuComponent extends React.Component {
   constructor(props) {
@@ -48,7 +48,7 @@ class MenuComponent extends React.Component {
       alert('Please Make A Change Or Press Close To Continue')
     }
     else {
-      axios.post(`${MENU_URL}`,updateMenu).then(response => {
+      axios.put(`${MENU_URL}`,updateMenu).then(response => {
         this.props.menu().then(()=>{
           this.setState({clicked:false})
           alert('Category Has Been Updated')

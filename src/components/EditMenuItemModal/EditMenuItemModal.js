@@ -11,7 +11,7 @@ import {hashHistory} from 'react-router'
 import {resetMenuItems} from '../../actions/index'
 import {getMenu} from '../../actions/index'
 
-const MENU_ITEM_URL = 'http://localhost:1701/api/menuitem'
+const MENU_ITEM_URL = '/api/menuitem'
 
 
 

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
+import axios from 'axios'
 import {Link} from 'react-router'
-// import {getMenuItems} from '../../actions/index'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {getThisMenuItem} from '../../actions/index'
@@ -29,7 +29,7 @@ class editMenuItem extends Component {
     menuItemsAndView() {
         this.props.getMenuItems(this.props.menu_items.menu_id).then(() => {
             this.props.resetMenuItems()
-            hashHistory.push('/editMenu')
+            // hashHistory.push('/editMenu')
         })
     }
 
@@ -62,8 +62,10 @@ class editMenuItem extends Component {
             if (!verifyEmpty.id) {
                 alert('there is not item to update! Please go back and select a Menu Item!');
             } else {
-                this.props.updateMenuItem(obj)
+              console.log(verifyEmpty);
+                // this.props.updateMenuItem(obj)
                 // alert('Your Product Has Been Successfully Updated')
+
             }
         }
 

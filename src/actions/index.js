@@ -10,11 +10,11 @@ export const GET_THIS_MENU_ITEM = 'GET_THIS_MENU_ITEM'
 export const UPDATE_MENU_ITEM = "UPDATE_MENU_ITEM"
 
 export const GET_ORDER_BY_ID = "GET_ORDER_BY_ID"
-const ROOT_URL = 'http://localhost:1701/api/menu'
-const MENU_ITEM_URL = 'http://localhost:1701/api/menuitem'
-const ORDER_ID_URL = 'http://localhost:1701/api/order'
+const ROOT_URL = '/api/menu'
+const MENU_ITEM_URL = '/api/menuitem'
+const ORDER_ID_URL = '/api/order'
 export function getMenu() {
-    const response = axios.get('http://localhost:1701/api/menu/list/details')
+    const response = axios.get('/api/menu/list/details')
     return {
         type: GET_MENU,
         payload: response
@@ -47,7 +47,7 @@ export function menuSelected(id) {
 }
 
 export function getMenuItems(id) {
-    const response = axios.get(`http://localhost:1701/api/menuitem/list/${id}`)
+    const response = axios.get(`/api/menuitem/list/${id}`)
     return {
         type: GET_MENU_ITEMS,
         payload: response
@@ -87,8 +87,9 @@ export function updateMenuItem(obj){
 
   return {
     type: UPDATE_MENU_ITEM,
+    payload: request
   }
-  
+
 }
 
 export function getOrderById(id){

@@ -43,10 +43,8 @@ class TableMenu extends Component {
     }
     return(
       <div>
-        <h2>Table Menu </h2><span>Current Orders : {this.props.table_order.length}</span>
-        <button onClick={()=>console.log(this.props.table_menu)}>Click for table_menu</button>
-        <button onClick={()=>console.log(this.props.table_order)}>Click for table_order</button>
-        <button onClick={()=>this.loginTable()}>Login Table</button>
+        <h2>Table Menu </h2>
+        <h4>Current Orders : {this.props.table_order.length}</h4>
         <TableOrderModal tableId = {this.state.table_account_id} />
         {table_menu}
       </div>
