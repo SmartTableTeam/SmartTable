@@ -13,11 +13,11 @@ export default class Profile extends Component {
     return (
       <div className='dashboardMain'>
         <DashboardNav />
+
         <TheBoxNav/>
         <div className="switchViewContainer">
           {this.props.children}
         </div>
-
       </div>
     )
   }

@@ -1,4 +1,5 @@
 var app = require('./../server.js');
+var crypto = require('crypto');
 
 module.exports = {
 	login:login,
@@ -11,27 +12,34 @@ module.exports = {
 
 function login(req,res) {
 	var db = app.get('db');
+
 	var loginData = {
-		email: req.body.email,
-		password: req.body.password
+		email: req.body.email
 	}
 	db.accounts.find(loginData, function(err,result) {
 		if(!err) {
 			if(result.length < 1) {
-				res.status(422).send("Incorrect email/password combination");
+				res.status(422).send("Incorrect email/password combination - email");
 			} else {
-				db.get_restaurant_account_data([result[0].id], function(err, user) {
+				console.log(result[0]);
+				var salt = result[0].password_salt;
+				var hash = crypto.createHmac('sha512', salt);
+				hash.update(req.body.password);
+				var passwordHash = hash.digest('hex');
 
-					if(!err) {
-						req.session.currentUser = user[0];
-						res.status(200).send(req.session.currentUser);
-					} else {
-						res.status(500).send(err);
-					}
-				})
+				if(passwordHash === result[0].password) {
+					db.get_restaurant_account_data([result[0].id], function(err, user) {
+						if(!err) {
+							req.session.currentUser = user[0];
+							res.status(200).send(req.session.currentUser);
+						} else {
+							res.status(500).send(err);
+						}
+					});
+				} else {
+					res.status(422).send("Incorrect email/password combination - password");
+				}
 			}
-		} else {
-			res.status(500).send(err);
 		}
 	})
 }

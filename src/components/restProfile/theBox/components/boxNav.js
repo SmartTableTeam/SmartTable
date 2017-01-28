@@ -26,13 +26,15 @@ export default class TheBoxNav extends React.Component{
     return(
       <div className="upperDash">
         <div className='containIt'>
-        <Link to='/profile/orders'>
-          <div style={oneOffGenerate} onClick={this.desypher.bind(this,'one')} ref='checkMe1' className='miniBox'><p>Orders</p></div>
-        </Link>
-        <Link to='/profile/edit'>
-          <div style={twoOffGenerate} onClick={this.desypher.bind(this,'two')} ref='checkMe2' className='miniBox'><p>Menu</p></div>
-        </Link>
-          <div style={threeOffGenerate} onClick={this.desypher.bind(this,'three')} ref='checkMe3' className='miniBox'><p>Tables</p></div>
+            <Link to='/profile/orders'>
+                <div style={oneOffGenerate} onClick={this.desypher.bind(this,'one')} ref='checkMe1' className='miniBox'><p>Orders</p></div>
+            </Link>
+            <Link to='/profile/edit'>
+                <div style={twoOffGenerate} onClick={this.desypher.bind(this,'two')} ref='checkMe2' className='miniBox'><p>Menu</p></div>
+            </Link>
+            <Link to='/profile/tables'>
+                <div style={threeOffGenerate} onClick={this.desypher.bind(this,'three')} ref='checkMe3' className='miniBox'><p>Tables</p></div>
+            </Link>
         </div>
 
         <div className="dashTitle">

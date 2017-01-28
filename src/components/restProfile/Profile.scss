@@ -1,7 +1,12 @@
 @import "../main.scss";
 
 .dashboardMain {
-  background-color: $primary-tan;
+  // background-color: $primary-blue;
+  background: DimGray  url('./profile-back.jpg');
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: lighten;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,5 +16,13 @@
     // height: 500px;
     background: pink;
     margin-bottom: 400px;
+    border-radius: 5px;
   }
+
+  .boxContainer {
+    width: 90vw;
+    border: 2px solid red;
+  }
+
+
 }
