@@ -2,36 +2,55 @@ import React from 'react'
 import './editProfile.scss'
 import ChooseTime from './components/chooseTime.js'
 import ChooseDay from './components/chooseDay.js'
-var array =[]
+import DateShow from './components/dateShow/dateShow.js'
+import BasicInfo from './components/BasicInfo.js'
+
 export default class editProfile extends React.Component{
   constructor(props){
     super(props)
     this.state={
         Day:'',
         Open:'',
-        Close:''
+        Close:'',
+        timeEvent:[]
+
     }
   }
 
   logState(){
-    console.log(this.state);
+    if(this.state.timeEvent.length===0)this.setState({timeEvent:[{Day:this.state.Day,Open:this.state.Open,Close:this.state.Close}]})
+    else this.setState((state)=>({timeEvent:state.timeEvent.concat([{Day:this.state.Day,Open:this.state.Open,
+                                                                  Close:this.state.Close}])}))
+
+
+      console.log(this.state);
+
+
   }
+
   pushTime(event){
     event.preventDefault();
-    var stateObject=function(){
+    console.log(event.target.id,event.target.value);
+    var stateObject = function(){
       let returnObj={}
       returnObj[this.target.id]=this.target.value
-      return returnObj
-    }.bind(event)();
 
+        return returnObj
+    }.bind(event)();
     this.setState(stateObject)
-    array.push(this.state)
-    if(stateObject)console.log(array);
+    console.log(this.state);
+
   }
 
   render(){
+    const showDate = this.state.timeEvent.map((date,index)=>(
+      <DateShow className='thisTime'key={index}
+        day={date.Day}
+        open={date.Open}
+        close={date.Close}
+      />
+    ))
     return(
-
   <div className = 'Jumbo'>
     <div className='left'>
       <div className='imageContain'>
@@ -41,6 +60,7 @@ export default class editProfile extends React.Component{
       <div className='timeContain'>
         <div className='timeInner'>
           <div className='top'>
+            {showDate}
           </div>
 
           <div className='bot'>
@@ -57,7 +77,11 @@ export default class editProfile extends React.Component{
 
 
     <div className='right'>
-      <h1>Right</h1>
+      <div className='innerRight'>
+        <div className='innerInRight'>
+        <BasicInfo/>
+        </div>
+      </div>
     </div>
 
   </div>

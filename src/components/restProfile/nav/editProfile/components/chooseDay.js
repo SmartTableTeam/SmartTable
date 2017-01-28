@@ -7,13 +7,13 @@ render(){
   return(
     <div className='box'>
       <select id='Day' onChange={this.props.func.bind(this)} >
-                  <option  value="MON">Monday</option>
-                  <option  value="TUES">Teusday</option>
-                  <option  value="WEDN">Wednesday</option>
-                  <option  value="THUR">Thursday</option>
-                  <option  value="FRID">Friday</option>
-                  <option  value="SATU">Saturday</option>
-                  <option  value="SUND">Sunday</option>
+                  <option  value="Monday">Monday</option>
+                  <option  value="Tuesday">Teusday</option>
+                  <option  value="Wednesday">Wednesday</option>
+                  <option  value="Thursday">Thursday</option>
+                  <option  value="Friday">Friday</option>
+                  <option  value="Saturday">Saturday</option>
+                  <option  value="Sunday">Sunday</option>
             </select>
 </div>
     )
