@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 export const GET_TABLE_ACCOUNTS_LIST = "GET_TABLE_ACCOUNTS_LIST";
-const TABLE_ACCOUNT_URL = 'http://localhost:1701/api/account/table/list'
+const TABLE_ACCOUNT_URL = '/api/account/table/list'
 
 export const LOGIN_TABLE_ACCOUNT = "LOGIN_TABLE_ACCOUNT";
-const TABLE_ACCOUNT_LOGIN_URL = "http://localhost:1701/api/auth/table/login";
+const TABLE_ACCOUNT_LOGIN_URL = "/api/auth/table/login";
 
 export function getTableAccountList() {
 	const request = axios.get(`${TABLE_ACCOUNT_URL}`);

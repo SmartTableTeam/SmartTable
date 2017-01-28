@@ -6,17 +6,10 @@ import Landing from './components/landing/Landing.js'
 import EditProfile from './components/restProfile/nav/editProfile/editProfile.js'
 import editMenuItem from './components/edit-menu-item/edit-menu-item'
 import TableMenu from './components/TableMenu/TableMenu'
-
 import OrderQueue from './components/order-queue/order-queue.js';
-<<<<<<< HEAD
 import OrderDetails from './components/order-queue/order-queue-details.js';
 import OrderConfirm from './components/order-confirmation/OrderConfirm.js';
 import TableAccounts from './components/table-accounts-view/table-accounts.js';
-=======
-import OrderDetails from './components/order-queue/order-queue-details.js'
-
-import OrderConfirm from './components/order-confirmation/OrderConfirm.js'
->>>>>>> master
 
 
 

@@ -12,9 +12,10 @@ import { getOpenOrders } from "../../actions/order_queue.js"
 class OrderQueueList extends Component {
 
 	componentWillMount() {
-		this.props.getOpenOrders().then(() => {
-			// console.log(this.props.order_queue);
-		});
+		this.props.getOpenOrders()
+		// .then(() => {
+		// 	// console.log(this.props.order_queue);
+		// });
 	}
 
 	render() {

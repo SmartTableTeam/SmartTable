@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Link} from "react-router";
+import {Link, hashHistory} from "react-router";
 import { connect } from 'react-redux'
 import store from "../../store"
 import { bindActionCreators } from 'redux'
@@ -11,13 +11,19 @@ import { getTableAccountList , loginTableAccount } from "../../actions/table_acc
 
 class TableAccountsList extends Component {
 
+	constructor(props) {
+		super(props);
+
+	}
+
 	componentWillMount() {
 		this.props.getTableAccountList();
 	}
 
 	loginButtonFunction(table_id) {
+		console.log(`Table Account ID: ${table_id}`);
 		this.props.loginTableAccount(table_id);
-
+		hashHistory.push('/TableMenu');
 	}
 
 	render() {
@@ -25,7 +31,7 @@ class TableAccountsList extends Component {
 			return (
 				<div key={account.id} className="table-account-item">
 					Table {account.table_number}
-					<button>Login</button>
+					<button onClick={() => this.loginButtonFunction(account.id)}>Login</button>
 				</div>
 			)
 		});
@@ -34,7 +40,7 @@ class TableAccountsList extends Component {
 		return (
 			<div>
 				<h2>Table Account List</h2>
-				{tables}
+				{ tables }
 			</div>
 		)
 	}
