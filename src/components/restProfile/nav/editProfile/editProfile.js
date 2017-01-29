@@ -12,19 +12,57 @@ export default class editProfile extends React.Component{
         Day:'',
         Open:'',
         Close:'',
-        timeEvent:[]
+        DOPeration:[
+
+        {
+          'Monday':{
+            Closed:'Closed Today'
+          }
+        },
+        { Tuesday:{
+            Closed:'Closed Today'
+          }
+        },
+        { Wednesday:{
+            Closed:'Closed Today'
+          }
+        },
+        { Thursday:{
+            Closed:'Closed Today'
+          }
+        },
+        { Friday:{
+            Closed:'Closed Today'
+          }
+        },
+        { Saturday:{
+            Closed:'Closed Today'
+          }
+        },
+        { Sunday:{
+            Closed:'Closed Today'
+          }
+        }
+        ]
 
     }
   }
 
   logState(){
-    if(this.state.timeEvent.length===0)this.setState({timeEvent:[{Day:this.state.Day,Open:this.state.Open,Close:this.state.Close}]})
-    else this.setState((state)=>({timeEvent:state.timeEvent.concat([{Day:this.state.Day,Open:this.state.Open,
-                                                                  Close:this.state.Close}])}))
-
-
-      console.log(this.state);
-
+    var timeEvent = this.state.DOPeration
+    for (var i = 0; i < this.state.DOPeration.length; i++) {
+      if(this.state.DOPeration[i].hasOwnProperty(this.state.Day)){
+        timeEvent[i]={
+          [this.state.Day]:{
+            Open:this.state.Open,
+            Close:this.state.Close
+          }
+        }
+      }
+    }
+    console.log(timeEvent);
+    this.setState({DOPeration:timeEvent})
+    console.log(this.state.DOPeration);
 
   }
 
@@ -43,13 +81,6 @@ export default class editProfile extends React.Component{
   }
 
   render(){
-    const showDate = this.state.timeEvent.map((date,index)=>(
-      <DateShow className='thisTime'key={index}
-        day={date.Day}
-        open={date.Open}
-        close={date.Close}
-      />
-    ))
     return(
   <div className = 'Jumbo'>
     <div className='left'>
@@ -60,11 +91,12 @@ export default class editProfile extends React.Component{
       <div className='timeContain'>
         <div className='timeInner'>
           <div className='top'>
-            {showDate}
+            <DateShow
+              dates={this.state.DOPeration}
+            />
           </div>
 
           <div className='bot'>
-
             <ChooseDay func={this.pushTime.bind(this)} />
             <ChooseTime id = 'Open' func={this.pushTime.bind(this)} />
             <ChooseTime id='Close' func={this.pushTime.bind(this)}/>
