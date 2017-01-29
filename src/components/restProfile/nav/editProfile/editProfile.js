@@ -43,11 +43,26 @@ export default class editProfile extends React.Component{
             Closed:'Closed Today'
           }
         }
-        ]
-
+      ],
+      file:'',
+      imagePreviewUrl:''
     }
   }
+  handleImageSubmit(e){
+    e.preventDefault();
+    console.log('handle Uploading',this.state.file);
+  }
+  handleImageChange(e){
+    e.preventDefault()
+    let reader = new FileReader()
+    let file = e.target.files[0]
 
+    render.onloadend=()=>{
+      this.setState({file:file,
+                    imagePreviewUrl:reader.result})
+    }
+    reader.readAsDataURL(file)
+  }
   logState(){
     var timeEvent = this.state.DOPeration
     for (var i = 0; i < this.state.DOPeration.length; i++) {
@@ -60,15 +75,12 @@ export default class editProfile extends React.Component{
         }
       }
     }
-    console.log(timeEvent);
     this.setState({DOPeration:timeEvent})
-    console.log(this.state.DOPeration);
 
   }
 
   pushTime(event){
     event.preventDefault();
-    console.log(event.target.id,event.target.value);
     var stateObject = function(){
       let returnObj={}
       returnObj[this.target.id]=this.target.value
@@ -76,7 +88,6 @@ export default class editProfile extends React.Component{
         return returnObj
     }.bind(event)();
     this.setState(stateObject)
-    console.log(this.state);
 
   }
 

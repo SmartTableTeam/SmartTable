@@ -3,27 +3,32 @@ import './dateShow.scss'
 export default class displayDay extends React.Component{
   render(){
     const thing = this.props.dates.map(function(sec,index) {
-      var keyVal = sec[Object.keys(sec)]
-      console.log(Object.keys(sec)[0]);
-      for (var variable in (keyVal)) {
-        console.log('keyVal',keyVal);
-        console.log('variable',variable);
-        console.log('both',keyVal[variable]);
-        
+      var keyVal = sec[Object.keys(sec)[0]]
+
+
         return(
-          <div>
-          <h1>{Object.keys(sec)[0]}</h1>
-        <p>{keyVal[variable]}</p>
+        <div key = {index}>
+          <h9>{Object.keys(sec)[0]}</h9>
+        <div>
+        {
+
+          for (var variable in keyVal) {
+            return(
+              <p>{variable}:{keyVal[variable]}</p>
+            )
+          }
+
+        }</div>
         </div>
         )
-      }
+
 
     })
+
   return(
     <div className='container'>
       <div className='box'>
-
-
+        {thing}
       </div>
 
     </div>
@@ -38,3 +43,20 @@ export default class displayDay extends React.Component{
 //     <p>{sec.Open}/{sec.Close}</p>
 // </div>
 // )
+
+//
+//
+// const thing = this.props.dates.map(function(sec,index) {
+//   var keyVal = sec[Object.keys(sec)[0]]
+//   for (var variable in (keyVal)) {
+//     console.log('keyVal',keyVal);
+//
+//     return(
+//     <div key = {index}>
+//       <h9>{Object.keys(sec)[0]}</h9>
+//     <p>{variable}:{keyVal[variable]}</p>
+//     </div>
+//     )
+//   }
+//
+// })
