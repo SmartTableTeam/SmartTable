@@ -4,7 +4,7 @@ import ChooseTime from './components/chooseTime.js'
 import ChooseDay from './components/chooseDay.js'
 import DateShow from './components/dateShow/dateShow.js'
 import BasicInfo from './components/BasicInfo.js'
-
+import axios from 'axios'
 export default class editProfile extends React.Component{
   constructor(props){
     super(props)
@@ -48,6 +48,12 @@ export default class editProfile extends React.Component{
       imagePreviewUrl:''
     }
   }
+  // componentWillMount(){
+  //   axios.get('/api/auth/loggedIn').then(function(response) {
+  //     console.log(response.data);
+  //   })
+  //
+  // }
   handleImageSubmit(e){
     e.preventDefault();
     console.log('handle Uploading',this.state.file);
