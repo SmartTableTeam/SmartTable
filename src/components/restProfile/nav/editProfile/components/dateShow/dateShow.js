@@ -4,21 +4,18 @@ export default class displayDay extends React.Component{
   render(){
     const thing = this.props.dates.map(function(sec,index) {
       var keyVal = sec[Object.keys(sec)[0]]
-
-
         return(
         <div key = {index}>
           <h9>{Object.keys(sec)[0]}</h9>
-        <div>
-        {
-
-          for (var variable in keyVal) {
-            return(
-              <p>{variable}:{keyVal[variable]}</p>
-            )
-          }
-
-        }</div>
+        <br/>
+        {sec[Object.keys(sec)[0]].Open?
+          <div>
+              <p>Open:{sec[Object.keys(sec)[0]].Close}</p>
+              <p>Close:{sec[Object.keys(sec)[0]].Open}</p>
+          </div>
+          :
+           <p>Closed:{sec[Object.keys(sec)[0]].Close}</p>
+        }
         </div>
         )
 

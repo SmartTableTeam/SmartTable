@@ -16,31 +16,31 @@ export default class editProfile extends React.Component{
 
         {
           'Monday':{
-            Closed:'Closed Today'
+            Close:'Closed Today'
           }
         },
         { Tuesday:{
-            Closed:'Closed Today'
+            Close:'Closed Today'
           }
         },
         { Wednesday:{
-            Closed:'Closed Today'
+            Close:'Closed Today'
           }
         },
         { Thursday:{
-            Closed:'Closed Today'
+            Close:'Closed Today'
           }
         },
         { Friday:{
-            Closed:'Closed Today'
+            Close:'Closed Today'
           }
         },
         { Saturday:{
-            Closed:'Closed Today'
+            Close:'Closed Today'
           }
         },
         { Sunday:{
-            Closed:'Closed Today'
+            Close:'Closed Today'
           }
         }
       ],
@@ -61,7 +61,7 @@ export default class editProfile extends React.Component{
       this.setState({file:file,
                     imagePreviewUrl:reader.result})
     }
-    reader.readAsDataURL(file)
+    reader.readAsDataURL()
   }
   logState(){
     var timeEvent = this.state.DOPeration
