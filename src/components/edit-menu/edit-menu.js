@@ -7,7 +7,6 @@ export default class EditMenu extends Component {
   render(){
 
     return (
-      // header test out bootstrap 'Category'
       <div className='edit-menu-background'>
 
 

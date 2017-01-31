@@ -29,7 +29,6 @@ class editMenuItem extends Component {
     menuItemsAndView() {
         this.props.getMenuItems(this.props.menu_items.menu_id).then(() => {
             this.props.resetMenuItems()
-            // hashHistory.push('/editMenu')
         })
     }
 
@@ -58,14 +57,10 @@ class editMenuItem extends Component {
         let verifyEmpty = this.newObjIsNotEmpty(newObj)
         if (!!verifyEmpty) {
             verifyEmpty.id = this.props.menu_items.id
-            // verifyEmpty.price = (verifyEmpty.price * 100)
             if (!verifyEmpty.id) {
                 alert('there is not item to update! Please go back and select a Menu Item!');
             } else {
               console.log(verifyEmpty);
-                // this.props.updateMenuItem(obj)
-                // alert('Your Product Has Been Successfully Updated')
-
             }
         }
 
@@ -98,7 +93,7 @@ class editMenuItem extends Component {
             width: "400px",
             height: "400px",
             margin: "auto",
-            border: "1px solid black",
+            border: "1px solid gray",
             clear: "both",
             backgroundImage: `url( ${this.props.menu_items.photo_url}  )`,
             backgroundSize:"cover",
@@ -108,8 +103,8 @@ class editMenuItem extends Component {
 
         const menu_item = this.state.menu_items;
         return (
-            <div className='edit-container'>
-                <h1>menuItemEdit</h1>
+            <div id='edit-container'>
+                <h1 className='text-center'>Edit Your Dish</h1>
                 <button onClick={this.menuItemDetails.bind(this)}>Click for details</button>
                 <Link to='/editMenu'>
                     <button>Edit Menu</button>

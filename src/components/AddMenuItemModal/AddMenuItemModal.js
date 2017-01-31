@@ -7,6 +7,7 @@ import '../edit-menu-category/edit-menu-category.scss'
 import {getMenuItems} from '../../actions/index'
 import {postMenuItem} from '../../actions/index'
 import {getThisMenuItem} from '../../actions/index'
+import'./Style.scss'
 
 class AddMenuItem extends React.Component {
   constructor(props) {
@@ -52,8 +53,6 @@ class AddMenuItem extends React.Component {
           this.closeModal()
         })
       }
-
-
   }
 
   handleName(e){
@@ -61,6 +60,7 @@ class AddMenuItem extends React.Component {
   }
 
   render() {
+
     const customStyles = {
       content : {
         top                   : '50%',
@@ -68,27 +68,21 @@ class AddMenuItem extends React.Component {
         right                 : 'auto',
         bottom                : 'auto',
         marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)'
+        transform             : 'translate(-50%, -50%)',
+        background            : 'tan',
+        borderRadius          : '15px',
+        border                : '4px solid lightgray',
+        boxShadow             : "10px 10px 5px #888888"
       }
     }
-    if (this.props.categories[0]) {
-        this.state.menu_id = this.props.categories[0].id
+    const btnStyle = {
+      width : "100%",
+      margin :'auto',
+      display : 'flex',
+      flexDirection : 'row',
+      justifyContent : 'space-around',
+      marginTop: '16px'
     }
-  // ===========================================
-
-        var sectionStyle = {
-            width: "400px",
-            height: "400px",
-            margin: "auto",
-            border: "1px solid black",
-            clear: "both",
-            backgroundImage: `url( ${this.props.menu_items.photo_url}  )`,
-            backgroundSize:"cover",
-            backgroundPosition: "center",
-            cursor:"pointer"
-        };
-// ====================================================================
-
     return(
       <div>
         <button className='btn btn-default btn-lg' onClick={this.openModal.bind(this)}>Add Dish</button>
@@ -100,8 +94,10 @@ class AddMenuItem extends React.Component {
         contentLabel="AddNewDish Modal">
           <h2 ref='subtitle'>Enter Dish Name</h2>
           <input className='form-control' onChange={this.handleName.bind(this)} required/>
-          <button className='btn' onClick={this.handleDish.bind(this)}>Add Dish</button>
-          <button className='btn' onClick={this.closeModal.bind(this)}>Cancel</button>
+          <div style={btnStyle}>
+            <button className='btn btn-primary text-center' onClick={this.handleDish.bind(this)}>Add Dish</button>
+            <button className='btn btn-danger text-center' onClick={this.closeModal.bind(this)}>Cancel</button>
+          </div>
         </Modal>
       </div>
     );

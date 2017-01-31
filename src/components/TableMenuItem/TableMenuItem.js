@@ -7,8 +7,14 @@ import MdThumbUp from 'react-icons/lib/fa/thumbs-up'
 import {addOrder} from '../../actions/tableOrder'
 import LocalRestaurant from 'react-icons/lib/fa/cutlery'
 import axios from 'axios'
+import Alert from 'react-s-alert';
+import './Alert.scss'
+
+
+
 
 const ORDER_URL = '/api/order'
+
 class TableMenuItem extends Component {
     constructor(props) {
         super(props);
@@ -18,8 +24,6 @@ class TableMenuItem extends Component {
         };
         this.addOrderNotes = this.addOrderNotes.bind(this)
         this.handleOrderItem = this.handleOrderItem.bind(this)
-        this.tableMenuItemArray = this.tableMenuItemArray.bind(this)
-        this.findMatch = this.findMatch.bind(this)
     }
 
     addOrderNotes(e) {
@@ -27,51 +31,46 @@ class TableMenuItem extends Component {
     }
 
     handleOrderItem() {
-
         let orderItem = {
             menu_item_id: this.props.id,
-            notes: this.state.orderNotes
+            notes: this.state.orderNotes,
+            index: this.props.table_order.length + 1,
+            price:this.props.price,
+            ingredients:this.props.ingredients,
+            name:this.props.name
         };
-
-        var menuItemArray = this.tableMenuItemArray()
-        var newOrderItemArray = this.findMatch(orderItem, menuItemArray)
-        this.props.addOrder(newOrderItemArray)
-        if(newOrderItemArray[0].orderNotes){
-          alert(`Your Dish has Been Added With The Note Of "${newOrderItemArray[0].orderNotes}"`)
+        this.props.addOrder(orderItem)
+        if(!orderItem.notes){
+          // alert(`Your Dish "${orderItem.name}" Has Been Added`)
+          this.handleSuccess(orderItem)
           this.setState({addNote:false})
+          this.setState({orderNotes:''})
         }
-        else{
-          alert('Your Dish Has Been Added')
+        else {
+          // alert(`Your Dish "${orderItem.name}" Has Been Added With Note Of "${orderItem.notes}"`)
+          this.handleSuccessNotes(orderItem)
           this.setState({addNote:false})
+          this.setState({orderNotes:''})
         }
+
     }
 
 
-    tableMenuItemArray() {
-        let myArray = []
-        this.props.table_menu.forEach(obj => {
-            obj.menuItems.forEach(item => {
-                myArray.push(item)
-            })
-        })
-        return myArray
-    }
+    handleSuccess(orderItem) {
+     Alert.warning(`Your Dish "${orderItem.name}" Has Been Added!`, {
+         position: 'top-right'
+     });
+   }
 
-    findMatch(orderObj, menuArray) {
-        let myArray = [];
-        let i = 0,
-            j = menuArray.length
-        for (i; i < j; i++) {
-            if (menuArray[i].id === orderObj.menu_item_id) {
-                menuArray[i].orderNotes = orderObj.notes
-                myArray.push(menuArray[i])
-            }
-        }
-        return myArray
-    }
-
+   handleSuccessNotes(orderItem){
+     Alert.warning(`Your Dish "${orderItem.name}" Has Been Added! With Note Of "${orderItem.notes}"`, {
+         position: 'top-right'
+     });
+   }
 
     render() {
+
+
         var sectionStyle = {
             width: "200px",
             height: "200px",
@@ -95,6 +94,7 @@ class TableMenuItem extends Component {
         }
 
         var itemStyle = {
+            marginBottom:"46px",
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
@@ -115,23 +115,17 @@ class TableMenuItem extends Component {
                 <div style={optionsStyle}>
                     <h4><MdThumbUp onClick={this.handleOrderItem}/></h4>
                     <span onClick={() => {
-                        this.setState({addNote: !this.state.addNote})
-                      }}>Add Note</span>
-                    {this.state.addNote
-                        ? <div>
-                                <textarea onChange={this.addOrderNotes}></textarea>
-                            </div>
-                        : null}
+                        this.setState({addNote: !this.state.addNote})}}>Add Note</span>
+                    {this.state.addNote ? <div><textarea onChange={this.addOrderNotes}></textarea></div>: null}
                     <h4>{this.props.price / 100}</h4>
                     <span style={floatRight}><TableMenuItemModal photo={this.props.photo} notes={this.props.notes} ingredients={this.props.ingredients}/></span>
 
                 </div>
-
+                <Alert stack={true} timeout={3000} />
             </div>
         );
     }
 }
-
 function mapStateToProps(state) {
     return {table_menu: state.table_menu, table_order: state.table_order}
 }

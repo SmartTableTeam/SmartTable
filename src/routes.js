@@ -5,7 +5,7 @@ import Profile from './components/restProfile/Profile.js'
 import Landing from './components/landing/Landing.js'
 import EditProfile from './components/restProfile/nav/editProfile/editProfile.js'
 import editMenuItem from './components/edit-menu-item/edit-menu-item'
-import TableMenu from './components/TableMenu/TableMenu'
+import Swipe from './components/swipe/swipe'
 
 import OrderQueue from './components/order-queue/order-queue.js';
 import OrderDetails from './components/order-queue/order-queue-details.js'
@@ -29,11 +29,12 @@ export default (
       <Route path='/profile/editProfile' component={EditProfile} />
     </Route>
     <Route path='/practice' component={Profile} />
-    <Route path='/TableMenu' component={TableMenu}/>
+    <Route path='/TableMenu' component={Swipe}/>
     <Route path='/editMenu' component={EditMenu}/>
     <Route path='/editMenu/editMenuItem' component={editMenuItem}/>
     <Route path='/confirm' component={OrderConfirm} />
     <Route path='/edit' component={EditMenu}/>
+    <Route path='/swipe' component={Swipe}/>
   </Route>
 
 )

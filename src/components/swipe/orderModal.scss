@@ -1,0 +1,165 @@
+// =  =  =  =  =  =  Variables  =  =   =  =  =  =
+$border:1px solid black;
+  // =  =  =  =  =  =  =  =  =  =  =  =
+* {
+  box-sizing: border-box;
+  line-height: 1.5vh;
+}
+
+// =  =  =  =  =  =  =  = Header Div  =  =  =  =  =  =  =  =
+#header {
+  width : 100%;
+  height : 120px;
+  border: 1px solid black;
+  border-radius: 15px;
+  box-shadow: 10px 10px 5px #888888;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  button {
+    background:lighten(red,15%);
+    color:white;
+    height:36px;
+    width:80px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 2px #888888;
+  }
+  span {
+    font-size: 36px;
+  }
+  #printer {
+    font-size:56px;
+  }
+}
+// =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  =
+
+  // =  =  =  =  = Total Wrapper  =  =  =  =  =  =  =
+  #total-wrapper {
+    height:50px;
+    width: 80%;
+    margin: auto;
+    font-size: 24px;
+    margin-bottom: 50px;
+    #total {
+      float: right;
+      width: 200px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+
+// =  =  =  =  =  =  =  =  =  Order Items  =  =  =  =  =  =  =  =  =
+#orderItems-container {
+  height:600px;
+  width:100%;
+  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+#orderItem-wrapper {
+  margin-bottom: 33px;
+  #dishName {
+    font-size: 26px;
+    color: lighten(blue,10%)
+  }
+  #itemPrice {
+    float: right;
+    font-size: 26px;
+  }
+  #remove {
+    float: right;
+    font-size: 26px;
+    margin-right: 26px;
+    color:lighten(red,10%);
+    cursor: pointer;
+  }
+  #orderNotes {
+    font-size:18px;
+    margin-top: 16px;
+    width:100%;
+  }
+}
+
+  // =   =  =  =  =  =  =  =  =  footer  =  =  =  =  =  =   =
+  #footer-button {
+    width: 100%;
+    position:absolute;
+    bottom:66px;
+    #button-center {
+      width: 20%;
+      margin: auto;
+      border: border;
+      text-align: center;
+      display:flex;
+      justify-content: space-between;
+
+    }
+  }
+
+  // =  =  =  =  =  =  =  =  Menu Items  =  =  =  =  =  =  =
+  #menuItem-container{
+    border:$border;
+    .description-container{
+      border:$border;
+    }
+    #menuItem-wrapper{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      #desc-container{
+        text-align: center;
+      }
+      #options-container {
+        width:30%;
+        border:$border;
+        display:flex;
+        flex-direction: column;
+        text-align: center;
+        #options-price {
+          border:$border;
+          display:flex;
+          flex-direction: row;
+          justify-content: space-around;
+          width:47%;
+          margin:auto;
+          margin-bottom: 8px;
+          #thumbs-up {
+            color:darken(red,15%);
+            cursor:pointer;
+            font-size: 56px;
+          }
+          #info-wrapper {
+            border-radius: 60px;
+            width:70px;
+            padding-top:8px;
+            background:darken(red,15%);
+            color:tan;
+            cursor:pointer;
+          }
+        }
+      }
+    }
+
+    #noteContainer {
+      width: 100%;
+      height:140px;
+      border:$border;
+      clear:both;
+      button{
+        margin-left:12px;
+        margin-top:8px;
+      }
+      textarea {
+        margin-left:12px;
+        margin-top: 8px;
+        padding-left:8px;
+      }
+    }
+  }
