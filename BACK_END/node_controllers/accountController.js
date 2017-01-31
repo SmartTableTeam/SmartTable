@@ -35,8 +35,6 @@ function createRestaurantAccount(req, res) {
 				res.status(422).send("Account already exists for that email address");
 			} else {
 				db.accounts.insert(account, function(err, newAccount) {
-					console.log(req.body.name, "BODY NAME");
-					console.log(err);
 					if(!err) {
 
 						var restaurant = {
