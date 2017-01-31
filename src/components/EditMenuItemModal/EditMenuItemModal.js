@@ -10,10 +10,11 @@ import {updateMenuItem} from '../../actions/index'
 import {hashHistory} from 'react-router'
 import {resetMenuItems} from '../../actions/index'
 import {getMenu} from '../../actions/index'
+import FaBars from 'react-icons/lib/fa/bars'
 
 const MENU_ITEM_URL = '/api/menuitem'
 
-
+const DEFAULT_IMAGE_URL = 'http://www.dirtyapronrecipes.com/wp-content/uploads/2015/10/food-placeholder.png'
 
 class EditMenuItemModal extends Component {
   constructor(props){
@@ -24,16 +25,7 @@ class EditMenuItemModal extends Component {
       ingredients: '',
       price: '',
       notes: '',
-      photo_url: '',
-      menuItems: {
-        name:this.props.item.name,
-        description:this.props.item.description,
-        ingredients:this.props.item.ingredients,
-        price:this.props.item.price,
-        notes:this.props.item.notes,
-        photo_url:this.props.item.photo_url,
-        id:this.props.item.id
-      }
+      photo_url: ''
     }
     this.checkSame = this.checkSame.bind(this)
     this.isEmpty = this.isEmpty.bind(this)
@@ -85,18 +77,14 @@ class EditMenuItemModal extends Component {
       photo_url:this.props.item.photo_url,
       id:this.props.item.id
     }
-    // console.log("OLD OBJECT");
-    // console.log(oldObj);
-    // console.log("UPDATE OBJ");
-    // console.log(updateObj);
+
     let newUpdateObj;
     newUpdateObj = this.filterObj(updateObj)
       axios.put(`${MENU_ITEM_URL}`,newUpdateObj).then(response => this.closeModal())
       .then( () => {
           alert('Your Update Was Successful')
       })
-      // let filterObj = this.checkSame(oldObj,updateObj)
-      // console.log(filterObj);
+
   }
 
   checkSame(obj,newObj){
@@ -177,8 +165,12 @@ filterObj(obj){
 
 
   render(){
+    if(!this.props.item.photo_url){
+      this.props.item.photo_url = DEFAULT_IMAGE_URL
+    }
     const customStyles = {
       content : {
+        height                : '80vh',
         top                   : '50%',
         left                  : '50%',
         right                 : 'auto',
@@ -191,18 +183,31 @@ filterObj(obj){
         width: "400px",
         height: "400px",
         margin: "auto",
-        border: "1px solid black",
+        border: "1px solid gray",
         clear: "both",
         backgroundImage: `url( ${this.props.item.photo_url}  )`,
         backgroundSize:"cover",
         backgroundPosition: "center",
+        marginTop:"53px",
+        marginBottom: "53px",
         cursor:"pointer"
     };
 
+    let pointerStyle = {
+      cursor:"pointer"
+    }
+
+    let buttonStyle = {
+      width : '100%',
+      display : 'flex',
+      flexDirection : 'row',
+      justifyContent : 'center',
+      marginTop : '34px'
+    }
 
     return (
       <div>
-      <button onClick={this.openModal.bind(this)}>Update</button>
+      <h4><FaBars style={pointerStyle} onClick={this.openModal.bind(this)}></FaBars></h4>
       <Modal
        isOpen={this.state.modalIsOpen}
        onAfterOpen={this.afterOpenModal.bind(this)}
@@ -211,7 +216,9 @@ filterObj(obj){
        contentLabel="EditMenuItem Modal"
      >
         <div className='edit-container'>
-            <h1 ref='subtitle'>menuItemEdit</h1>
+            <h1 ref='subtitle'>DISH</h1>
+            <h3>{this.props.item.name}</h3>
+            <div style={sectionStyle}></div>
 
             <form className="form-horizontal" role="form">
                 <div className="form-group">
@@ -250,15 +257,13 @@ filterObj(obj){
                         <input onChange={this.onChangePhoto.bind(this)} defaultValue={this.props.item.photo_url} className="form-control" type="text"/>
                     </div>
                 </div>
-                <div className="col-md-8">
-                    <input type="button" onClick={this.updateMenuItem.bind(this)} className="btn-primary" value="Save Changes"/>
-
-                    <input type="reset" className="btn btn-default" onClick={this.closeModal.bind(this)}value="Cancel"/>
-
-                </div>
             </form>
 
-            <div style={sectionStyle}></div>
+        </div>
+        <div style={buttonStyle} className="col-md-8">
+            <input type="button" onClick={this.updateMenuItem.bind(this)} className="btn btn-primary" value="Save Changes"/>
+
+            <input type="reset" className="btn btn-danger" onClick={this.closeModal.bind(this)}value="Close"/>
 
         </div>
      </Modal>

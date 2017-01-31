@@ -1,12 +1,16 @@
-.edit-menu-background {
-  // background: lighten(gray,12%);
-  background: blue;
-  // height:100%;
-  // width: 100%;
+body {
+  background: lighten(gray,12%);
 }
-// * {
-//   line-height: 1.5em;
-// }
+
+.edit-menu-background {
+  background: lighten(gray,12%);
+  // background: blue;
+  height:100%;
+  width: 100%;
+}
+* {
+  line-height: 1.5em;
+}
 header {
   height:40px;
   width:100%;
@@ -16,8 +20,5 @@ header {
   font-weight: bold;
   color: lighten(gray,36%);
   margin: 10px 0 36px;
-}
-
-#edit-menu-container {
-  // border:1px solid black;
+  padding-top: 8px;
 }

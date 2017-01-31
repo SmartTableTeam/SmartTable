@@ -18,7 +18,7 @@ class TableOrderItems extends React.Component {
 
         <div>Price: ${this.props.item.price / 100}</div>
 
-        <div> {this.props.item.orderNotes ? <span>Order Notes: {this.props.item.orderNotes}</span>: null}</div>
+        <div> {this.props.item.notes ? <span>Order Notes: {this.props.item.notes}</span>: null}</div>
 
 
       <h3><Remove onClick={()=>this.props.removeOrder(this.props.index)} /></h3>

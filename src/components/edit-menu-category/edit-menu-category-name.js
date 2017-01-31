@@ -8,7 +8,8 @@ import {bindActionCreators} from 'redux'
 import FaEdit from 'react-icons/lib/fa/edit'
 import FaErase from 'react-icons/lib/fa/eraser'
 import axios from 'axios'
-
+import EditMenuModal from './edit-menu-modal'
+import './edit-menu-category.scss'
 const MENU_URL = '/api/menu'
 
 class MenuComponent extends React.Component {
@@ -60,21 +61,54 @@ class MenuComponent extends React.Component {
 
 
   render() {
-
+    var categoryStyle={
+      display:'flex',
+      flexDirection:'row',
+      justifyContent:'space-between',
+      paddingLeft:"14px",
+      paddingRight:"14px",
+      marginTop : "58px"
+    }
+    var optionStyle = {
+      width:"30%",
+      display:'flex',
+      flexDirection:'row',
+      justifyContent:'space-between'
+    }
+    var containerStyle ={
+      marginBottom:"36px"
+    }
+    var btnstyle = {
+      width : '36%',
+      float : "right",
+      display : 'flex',
+      flexDirection : 'row',
+      justifyContent : 'space-between',
+      marginTop : "16px"
+    }
     return(
-      <div>
-      <h4 onClick={this.selectAndGetItems.bind(this, this.props.category.id)}> { this.props.category.category } </h4>
+      <div style={containerStyle}>
+        <div style={categoryStyle}>
+        <h4 className='icon-pointer' onClick={this.selectAndGetItems.bind(this, this.props.category.id)}> { this.props.category.category } </h4>
 
-          <h4><FaErase onClick={this.deleteAndGet.bind(this, this.props.category.id)} /></h4>
-          <h4><FaEdit onClick={()=>{
-              this.setState({clicked:!this.state.clicked})
-              this.props.onClick()
-            }}/>{this.state.clicked ? <div>
-              <input defaultValue={this.props.category.category} onChange={this.handleChange}className='form-control'/>
-              <button className='btn btn-warning' onClick={this.handleSubmit}>Submit</button>
-              <button className='btn btn-danger' onClick={()=>this.setState({clicked:false})}>Close</button>
-              </div> : null}</h4>
+          <div style={optionStyle}>
+            <h4 className='icon-pointer'><FaEdit onClick={()=>{
+                this.setState({clicked:!this.state.clicked})
+                this.props.onClick()}}/></h4>
+              <h4 className='icon-pointer'><FaErase onClick={this.deleteAndGet.bind(this, this.props.category.id)} /></h4>
+                <h4 className='icon-pointer'><EditMenuModal category={this.props.category}/></h4>
+          </div>
+        </div>
+
+        <div>{this.state.clicked ? <div className='editName'>
+          <input defaultValue={this.props.category.category} onChange={this.handleChange}className='form-control'/>
+          <div style={btnstyle}>
+            <button className='btn btn-warning' onClick={this.handleSubmit}>Submit</button>
+            <button className='btn btn-danger' onClick={()=>this.setState({clicked:false})}>Close</button>
+          </div>
+          </div> : null}</div>
       </div>
+
     );
   }
 }
