@@ -35,7 +35,7 @@ class TableOrderDetails extends React.Component {
     reformat(arr){
       let myArr = [];
       arr.forEach( (item) => {
-        myArr.push({menu_item_id:item.id,notes:item.orderNotes})
+        myArr.push({menu_item_id:item.id,notes:item.notes})
       })
       return myArr
     }
@@ -55,6 +55,9 @@ class TableOrderDetails extends React.Component {
         return (
             <div>
                 <div>
+                  <button onClick={()=>{
+                      axios.post(`/api/auth/table/login`,{table_account_id:2}).then(response => console.log(response))
+                    }}>Login Table</button>
                     <u>Table</u>
                     {this.state.current_order
                         ? <span>{this.state.current_order.order_items[0].order_id}</span>
@@ -66,10 +69,7 @@ class TableOrderDetails extends React.Component {
 
                 <div>{orderItems}</div>
 
-                <div>
-                    <button disabled={this.props.order.length < 1} onClick={()=> this.postOrder()}>Send</button>
-                    <button onClick={() => this.props.closeModal()}>Close</button>
-                </div>
+
             </div>
         );
     }

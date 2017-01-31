@@ -17,7 +17,11 @@ class Category extends Component {
         this.state = {
             newCategory: '',
             addCategory:false,
-            addCategoryButton:null        }
+            addCategoryButton:null ,
+            lightenStyle:{
+              opacity:'.09'
+            }
+                 }
     }
     addCategory() {
     this.setState({addCategory:!this.state.addCategory})
@@ -34,20 +38,12 @@ class Category extends Component {
         this.setState({newCategory: ''})
     }
 
-
-    backAndReset() {
-      this.setState({addCategory:false})
-        this.props.menu()
-        this.props.resetMenuItems()
-    }
-
     componentWillMount() {
         this.props.menu()
     }
 
 
     render() {
-
       let categories = this.props.categories.map((cat, i) => {
                 return (
                   <MenuComponent
@@ -59,16 +55,19 @@ class Category extends Component {
                   />
               )
           })
+      let formStyle = {
+        marginBottom:"26px"
+      }
         return (
-            <div id='category-container'>
+            <div id='category-container-wrapper' style={(this.props.categories.length === 1) ? this.state.lightenStyle : null}>
                 <div className='container-fluid'>
 
                     <div className='button-container'>
-                        <button className='btn btn-default btn-lg' onClick={this.addCategory.bind(this)}>Add Category</button>
-                        <button onClick={this.backAndReset.bind(this)} className='btn btn-default btn-md'>Back</button>
+                        <button disabled={this.props.categories.length === 1} className='black btn btn-default btn-lg' onClick={this.addCategory.bind(this)}>Add Category</button>
+                        {this.state.addCategory ? <button onClick ={()=>this.setState({addCategory:false})} className='btn btn-default btn-md'>Back</button> : null}
                     </div>
 
-                    {this.state.addCategory ? <form onSubmit={this.onSubmit.bind(this)}>
+                    {this.state.addCategory ? <form style={formStyle} onSubmit={this.onSubmit.bind(this)}>
                         <input ref='val' value={this.state.newCategory} onChange={this.onChange.bind(this)} type='text' className='form-control'/>
                     </form> : null }
 
