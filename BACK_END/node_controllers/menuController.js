@@ -47,7 +47,6 @@ function getMenuById(req,res,next) {
 			db.menu_items.find({menu_id:parseInt(req.params.menu_id)}, function(err, menuItems) {
 				if(!err) {
 					menu[0].menu_items = menuItems;
-					console.log(menu);
 					res.status(200).send(menu);
 				} else {
 					res.status(500).send(err);

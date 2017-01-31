@@ -32,7 +32,7 @@ export default (
     <Route path='/TableMenu' component={Swipe}/>
     <Route path='/editMenu' component={EditMenu}/>
     <Route path='/editMenu/editMenuItem' component={editMenuItem}/>
-    <Route path='/confirm' component={OrderConfirm} />
+    <Route path='/confirm/:order_id' component={OrderConfirm} />
     <Route path='/edit' component={EditMenu}/>
   </Route>
 

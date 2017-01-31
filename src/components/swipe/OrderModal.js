@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {clearOrder} from '../../actions/tableOrder'
+import {hashHistory} from "react-router"
 import OrderItems from './orderItems'
 import Printer from 'react-icons/lib/ti/printer'
 
@@ -42,17 +43,23 @@ class OrderModal extends React.Component {
 // =  =  =  =  =  =  =  =  =  Send Order Controls  =  =  =  =  =  =  =  =  =
 
 postOrder(){
-  axios.post(`${ORDER_URL}`,this.reformat(this.props.order)).then(response => {
-  alert('Your Order Has Been Sent!')
-  this.props.clear()
-  this.closeModal()
+
+  console.log(this.props.order)
+  var orderSubmit = this.reformat(this.props.order)
+  console.log(orderSubmit);
+
+  axios.post(`${ORDER_URL}`, orderSubmit).then(response => {
+    alert('Your Order Has Been Sent!')
+    this.props.clear()
+    this.closeModal()
+    hashHistory.push(`/confirm/${response.data.id}`);
   })
 }
 
 reformat(arr){
   let myArr = [];
   arr.forEach( (item) => {
-    myArr.push({menu_item_id:item.id,notes:item.notes})
+    myArr.push({menu_item_id:item.menu_item_id,notes:item.notes})
   })
   return myArr
 }
@@ -95,11 +102,6 @@ reformat(arr){
       <div>
         <h1 onClick={this.openModal}> <Restaraunt /> </h1>
         <h1>Table Number: {this.state.table ? this.state.table : null}</h1>
-        <button onClick={()=>{
-          axios.post(`/api/auth/table/login`,{table_account_id:2}).then(response => {
-            this.setState({table:response.data.id})
-          })
-          }}>Login Table</button>
           <Modal
            isOpen={this.state.modalIsOpen}
            onAfterOpen={this.afterOpenModal.bind(this)}
