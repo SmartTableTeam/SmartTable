@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const GET_USER = 'GET_USER'
-const LOGIN_URL = 'http://localhost:1701/api/auth/login'
+const LOGIN_URL = '/api/auth/login'
 
 
 

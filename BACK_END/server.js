@@ -4,6 +4,7 @@ var session		= require('express-session')
 var bodyParser 	= require('body-parser');
 var cors 		= require('cors');
 var massive		= require('massive');
+var crypto		= require('crypto');
 
 var config 		= require('./config.js');
 
@@ -14,7 +15,6 @@ var app = module.exports = express();
 app.use(bodyParser.json());
 app.use(session({saveUninitialized: true, resave: false, secret: config.sessionSecret, cookie: {secure: false, httpOnly: false}}));
 app.use(express.static(__dirname +'/public'));
-
 
 //Local File modules AFTER app initialization
 var loginController 	= require('./node_controllers/loginController.js');
@@ -34,7 +34,6 @@ var db = app.get('db');
 
 //Authorization Middleware	=	=	=	=	=	=
 var restAuthCheck = function(req,res,next) {
-	console.log('#$%^&',req.session);
 	if(loginController.checkLoggedIn(req)){
 		next();
 	} else {
@@ -55,7 +54,6 @@ var custAuthCheck = function(req,res,next) {
 }
 
 var tableAuthCheck = function(req,res,next) {
-
 	if(!!req.session.currentTable) {
 		next()
 	} else {

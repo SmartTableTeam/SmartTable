@@ -6,11 +6,10 @@ import Landing from './components/landing/Landing.js'
 import EditProfile from './components/restProfile/nav/editProfile/editProfile.js'
 import editMenuItem from './components/edit-menu-item/edit-menu-item'
 import Swipe from './components/swipe/swipe'
-
 import OrderQueue from './components/order-queue/order-queue.js';
-import OrderDetails from './components/order-queue/order-queue-details.js'
-
-import OrderConfirm from './components/order-confirmation/OrderConfirm.js'
+import OrderDetails from './components/order-queue/order-queue-details.js';
+import OrderConfirm from './components/order-confirmation/OrderConfirm.js';
+import TableAccounts from './components/table-accounts-view/table-accounts.js';
 
 
 
@@ -27,6 +26,7 @@ export default (
       <Route path='/profile/confirm' component={OrderConfirm} />
       <Route path='/profile/edit' component={EditMenu} />
       <Route path='/profile/editProfile' component={EditProfile} />
+      <Route path='/profile/tables' component={ TableAccounts }/>
     </Route>
     <Route path='/practice' component={Profile} />
     <Route path='/TableMenu' component={Swipe}/>
@@ -34,7 +34,6 @@ export default (
     <Route path='/editMenu/editMenuItem' component={editMenuItem}/>
     <Route path='/confirm' component={OrderConfirm} />
     <Route path='/edit' component={EditMenu}/>
-    <Route path='/swipe' component={Swipe}/>
   </Route>
 
 )

@@ -1,5 +1,7 @@
 var app = require('./../server.js');
 
+var crypto = require('crypto');
+
 module.exports = {
 	createRestaurantAccount:createRestaurantAccount,
 	createCustomerAccount:createCustomerAccount,
@@ -8,15 +10,23 @@ module.exports = {
 	getTableAccount:getTableAccount
 }
 
+function generateSalt(length) {
+	return crypto.randomBytes(Math.ceil(length/2)).toString('hex').slice(0,length);
+}
+
 function createRestaurantAccount(req, res) {
 	var db = app.get('db');
 
-
+	var salt = generateSalt(20);
+	var hash = crypto.createHmac('sha512', salt);
+	hash.update(req.body.password);
+	var passwordHash = hash.digest('hex');
 
 	var account = {
 		join_timestamp: new Date(),
 		email: req.body.email,
-		password:req.body.password
+		password:passwordHash,
+		password_salt:salt
 	};
 
 	db.accounts.find({email:req.body.email}, function(err, result) {

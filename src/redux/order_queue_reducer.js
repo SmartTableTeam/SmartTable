@@ -4,7 +4,7 @@ export default function(state = [], action) {
 
 	switch(action.type) {
 		case GET_OPEN_ORDERS:
-			console.log(action.payload.data);
+			console.log("PROMISE RETURNED");
 			return action.payload.data
 	}
 	return state;
