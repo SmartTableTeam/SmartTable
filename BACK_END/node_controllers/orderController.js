@@ -10,6 +10,10 @@ module.exports = {
 function createOrder(req, res) {
 	var db = app.get('db');
 
+
+	console.log("ORDER CONTENT");
+	console.log(req.body); 
+
 	var orderToCreate = {
 		table_account_id:req.session.currentTable.id,
 		create_time: new Date(),
