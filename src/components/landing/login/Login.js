@@ -1,7 +1,7 @@
 import React , { Component } from 'react'
 import {Link} from 'react-router'
 import {hashHistory} from 'react-router'
-import './login.scss'
+import './Login.scss'
 
 export default class Login extends Component {
 
