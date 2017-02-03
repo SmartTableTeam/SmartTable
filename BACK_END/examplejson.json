@@ -1,0 +1,128 @@
+/*Account
+	join_date
+	email
+	password
+Restaurant
+	account_id
+	name
+	address
+	city
+	state
+	phone_number
+
+Customer
+	first_name
+	last_name
+*/
+
+//Submitted JSON
+
+//Restaurant
+{
+	"email": "restaurant@example.com",
+	"password":"qwerty",
+	"name":"Waffle House",
+	"address": "1234 Main",
+	"city": "Beaverton",
+	"state":"Oregon",
+	"phone_number":"503-555-1234"
+}
+
+//Customer
+{
+	"email": "customer@example.com",
+	"password":"qwerty",
+	"first_name":"John",
+	"last_name":"Doe"
+}
+
+//Menu create
+{
+	"category":"Drinks",
+	"description":"A list of tasty drinks",
+	"banner_url":"url-to-a-picture-for-the-menu"
+}
+
+//Menu update
+{
+	"id":1,
+	"category":"Drinks",
+	"description":"A list of tasty drinks",
+	"banner_url":"url-to-a-picture-for-the-menu"
+}
+
+//Table account login
+{
+	"table_account_id":1,
+}
+
+//Create table account
+{
+
+	"table_number":"Table One"
+}
+
+//Create order
+[
+	{
+		"menu_item_id": 1,
+		"notes" : "Don't over cook"
+	}, {
+		"menu_item_id": 3,
+		"notes" : "Don't over cook"
+	}, {
+		"menu_item_id": 4,
+		"notes" : "Don't over cook"
+	}
+]
+
+
+
+//Create menu item
+{
+	"menu_id":1,
+	"price":199,
+	"name":"The MehBurger",
+	"description":"It's alright",
+	"notes":"It ain't the greatest",
+	"allergy_warning":"If you are allergic to mediocrity",
+	"ingredients":"It's a hamburger...",
+	"photo_url":"nah"
+}
+
+
+//UPDATE menu item
+{
+	"menu_id":1,
+	"price":199,
+	"name":"The MehBurger",
+	"description":"It's alright",
+	"notes":"It ain't the greatest",
+	"allergy_warning":"If you are allergic to mediocrity",
+	"ingredients":"It's a hamburger...",
+	"photo_url":"nah"
+}
+
+### Doc Template
+  ** PUT  /api/**
+  **Description:**
+  desc goes here
+
+  **Request Body:**
+
+
+  **Request Params:**
+
+
+  **Success Response:**
+
+
+  **Failure Responses:**
+  Server side error
+  HTTP status 500
+
+  User not logged in
+  HTTP status 401
+  ```javascript
+  "You must be logged in as a restaurant to use this resource"
+  ```

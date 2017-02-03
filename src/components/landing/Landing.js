@@ -1,5 +1,5 @@
 import React from 'react'
-import Nav from './NavBar/Navigation.js'
+import Nav from './Navbar/Navigation.js'
 import Login from './login/Login.js'
 import Search from './searchBar/Search.js'
 import SignUp from './signup/SignUp.js'

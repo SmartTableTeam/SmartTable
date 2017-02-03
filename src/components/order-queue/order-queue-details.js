@@ -23,7 +23,7 @@ class OrderQueueDetails extends Component {
 
 		return (
 			<div className="OrderQueueDetails">
-				<h2>Ya'll want details? I got great details, right here!</h2>
+				<h2>Order Details</h2>
 				{order_items}	
 			</div>
 
