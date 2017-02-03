@@ -2,7 +2,7 @@ import React from 'react';
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
-import MdThumbUp from 'react-icons/lib/fa/thumbs-up'
+import ThumbsUp from 'react-icons/lib/fa/thumbs-up'
 
 import InfoModal from './infoModal'
 
@@ -48,13 +48,13 @@ class MenuItems extends React.Component {
       this.props.addOrder(orderItem)
       if(!orderItem.notes){
         // alert(`Your Dish "${orderItem.name}" Has Been Added`)
-        // this.handleSuccess(orderItem)
+        this.handleSuccess(orderItem)
         this.setState({addNote:false})
         this.setState({orderNotes:''})
       }
       else {
         // alert(`Your Dish "${orderItem.name}" Has Been Added With Note Of "${orderItem.notes}"`)
-        // this.handleSuccessNotes(orderItem)
+        this.handleSuccessNotes(orderItem)
         this.setState({addNote:false})
         this.setState({orderNotes:''})
       }
@@ -88,13 +88,16 @@ class MenuItems extends React.Component {
             <h2>
                 <b>{this.props.item.name}</b>
             </h2>
-            <h4>{this.props.item.ingredients}</h4>
+            <div id='ingredients'><h4>{this.props.item.ingredients}</h4></div>
             </div>
 
             <div id='options-container'>
 
               <div id='options-price'>
-                <h1 id='thumbs-up'> <MdThumbUp onClick={this.handleOrderItem}/> </h1>
+                <div onClick={this.handleOrderItem} id='thumbs-up'>
+                  <h1><ThumbsUp /></h1>
+                  <h2>Order</h2>
+                </div>
 
                 <div id='info-wrapper'>
                   <span id='infoModal'>
@@ -104,6 +107,7 @@ class MenuItems extends React.Component {
                     closeModal={this.closeModal}
                     />
                   </span>
+                  <h2>Info</h2>
                 </div>
 
               </div>
@@ -121,16 +125,8 @@ class MenuItems extends React.Component {
         {!this.state.addNote ? <button id='addNote' className='btn btn-danger btn-md' onClick={()=>this.setState({addNote:!this.state.addNote})}>Add Note</button> : null}
         {this.state.addNote ? <button id='closeNote' onClick={()=> this.setState({addNote:null})} className='btn btn-danger btn-md'>Close</button> : null}
         {this.state.addNote ? <button id='sendNote' className='btn btn-danger btn-md' onClick={this.handleOrderItem}>Send</button> : null}
-        {this.state.addNote ?<div><textarea placeholder='notes....' rows="5" cols="50" onChange={this.addOrderNotes}></textarea></div>: null}
+        {this.state.addNote ?<div><textarea placeholder='Notes..' rows="5" cols="50" onChange={this.addOrderNotes}></textarea></div>: null}
         </div>
-
-
-
-
-
-
-
-        <Alert stack={true} timeout={3000} />
 
       </div>
 

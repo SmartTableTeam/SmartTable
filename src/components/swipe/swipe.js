@@ -8,6 +8,7 @@ import Menu from './menu'
 import Left from 'react-icons/lib/md/arrow-back'
 import Right from 'react-icons/lib/md/arrow-forward'
 import OrderModal from './OrderModal'
+import Alert from 'react-s-alert';
 
 // const DEFAULT_BACKGROUND_URL = 'http://www.sawyoo.com/postpic/2011/08/mexican-restaurant-menu_426932.jpg'
 const DEFAULT_BACKGROUND_URL = 'http://www.babaimage.com/images/qianqian-li-design-vintage-paper-background-images-2.jpg'
@@ -36,15 +37,17 @@ class Swipe extends React.Component {
         />
       )
     })
+    let swipeStyle = {
+      backgroundImage:`url(${DEFAULT_BACKGROUND_URL})`
+    }
     return(
-      <div className="">
-      <h1>Table Menu</h1>
-      <div> <h4>Use Arrows <Left /> and <Right /> To Navigate</h4> </div>
-      <div> <OrderModal /> </div>
+      <div className="SwipeContainer" style={swipeStyle}>
       <BindKeyboardSwipeableViews>
         {views}
       </BindKeyboardSwipeableViews>
+      <Alert stack={true} timeout={3000} />
       </div>
+
 
 
 

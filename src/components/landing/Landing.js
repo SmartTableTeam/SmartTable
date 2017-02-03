@@ -12,6 +12,7 @@ export default class Landing extends React.Component{
       login: false,
       signup: false
     }
+    this.openModal = this.openModal.bind(this)
   }
   changesIt(){
     this.setState({
@@ -31,7 +32,13 @@ export default class Landing extends React.Component{
     if(value!=undefined)this.setState({login:value})
     return;
   }
+  openModal(){
+    console.log('firing');
+    this.setState({login:true})
+    this.setState({signup:false})
+  }
   render(){
+    console.log(this.state.signup);
     return(
       <div className='LandingContainer' >
         <Nav signup={this.activateRender.bind(this)} login={this.activateRenderr.bind(this)} />
@@ -39,7 +46,7 @@ export default class Landing extends React.Component{
         <div className="signup-popup">
 
 
-          { this.state.signup ? <Login funky={this.changesIt.bind(this)} /> : this.state.login ? <SignUp closeModal={this.closeLogin.bind(this)} /> : <Search /> }
+          { this.state.signup ? <Login openModal={this.openModal}funky={this.changesIt.bind(this)} /> : this.state.login ? <SignUp closeModal={this.closeLogin.bind(this)} /> : <Search /> }
 
 
         </div>

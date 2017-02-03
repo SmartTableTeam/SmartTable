@@ -77,12 +77,12 @@ class ManageDishes extends Component {
 
             )
         })
-        return (
 
+        return (
             <div className='ManageDishes-container'>
                 <div style={containerStyle}>
-                  {this.state.addDish ? <AddMenuItem /> : null}
-                  {(this.props.categories.length === 1) ? <button className='btn btn-md' onClick={()=>this.backAndReset()}>Back</button> : null }
+                  {this.state.addDish ? <AddMenuItem/> : null}
+                  {(this.props.categories.length === 1) ? <button className='buttonStyle btn btn-md' onClick={()=>this.backAndReset()}>Back</button> : null }
                 </div>
 
                 <div className='dish-item-container'>

@@ -1,5 +1,6 @@
 import React from 'react';
 import MenuItems from './menuItems'
+import OrderModal from './OrderModal'
 
 const IMAGE_DEFAULT_URL = 'http://www.dirtyapronrecipes.com/wp-content/uploads/2015/10/food-placeholder.png'
 
@@ -32,12 +33,12 @@ class Menu extends React.Component {
     return(
       <div style={backgroundStyle}>
 
-        <div>
+        <div id='menu-header-container'>
           <h1>{this.props.menu.category}</h1>
           <h3>{this.props.menu.description}</h3>
+            <OrderModal />
         </div>
-
-        <div className="">
+        <div className="menu-item-component-wrapper">
           {menuItems}
         </div>
 
