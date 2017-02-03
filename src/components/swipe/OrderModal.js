@@ -12,7 +12,7 @@ import axios from 'axios'
 
 import Modal from 'react-modal'
 
-import Restaraunt from 'react-icons/lib/md/local-restaurant'
+import Restaraunt from 'react-icons/lib/fa/cutlery'
 
 const ORDER_URL = '/api/order'
 
@@ -98,10 +98,15 @@ reformat(arr){
             total += item.price;
         })
     }
+
     return(
-      <div>
-        <h1 onClick={this.openModal}> <Restaraunt /> </h1>
-        <h1>Table Number: {this.state.table ? this.state.table : null}</h1>
+      <div id="orderModalContainer">
+        <div id='orderModalButton'>
+          <h1 id='modalBtn'> <Restaraunt onClick={this.openModal} /> </h1>
+          <span>View Order</span>
+        </div>
+         {this.state.table ?<h1>Table Number: this.state.table </h1>: null}
+
           <Modal
            isOpen={this.state.modalIsOpen}
            onAfterOpen={this.afterOpenModal.bind(this)}
@@ -141,6 +146,11 @@ reformat(arr){
     );
   }
 }
+// <button onClick={()=>{
+//   axios.post(`/api/auth/table/login`,{table_account_id:2}).then(response => {
+//     this.setState({table:response.data.id})
+//   })
+//   }}>Login Table</button>
 
 function mapStateToProps(state){
   return {

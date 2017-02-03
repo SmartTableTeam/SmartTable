@@ -7,7 +7,7 @@ export default function(state = [], action) {
     case GET_USER:
     console.log(action.payload, "LOGIN REDUCER");
     console.log(state);
-    return action.payload.data
+    return [...state,action.payload.data]
   }
 
   return state;

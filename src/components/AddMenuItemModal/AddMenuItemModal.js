@@ -8,7 +8,8 @@ import {getMenuItems} from '../../actions/index'
 import {postMenuItem} from '../../actions/index'
 import {getThisMenuItem} from '../../actions/index'
 import'./Style.scss'
-
+import axios from 'axios'
+const MENU_ITEM_URL = '/api/menuitem'
 class AddMenuItem extends React.Component {
   constructor(props) {
     super(props);
@@ -36,13 +37,12 @@ class AddMenuItem extends React.Component {
 
   handleDish(e) {
       e.preventDefault()
-
       const newMenuItem = {
           name: this.state.name,
           description: this.state.description,
           ingredients: this.state.ingredients,
           price: (this.state.price * 100),
-          menu_id: this.state.menu_id
+          menu_id: this.props.categories[0].id
       }
       if(!newMenuItem.name){
         alert('Please Enter A Dish Name')
@@ -85,7 +85,7 @@ class AddMenuItem extends React.Component {
     }
     return(
       <div>
-        <button className='btn btn-default btn-lg' onClick={this.openModal.bind(this)}>Add Dish</button>
+        <button className='buttonStyle btn btn-default btn-lg' onClick={this.openModal.bind(this)}>Add Dish</button>
 
         <Modal isOpen={this.state.modalIsOpen}
         onAfterOpen={this.afterOpenModal.bind(this)}

@@ -73,8 +73,11 @@ export default class Login extends Component {
     if(this.state.name && this.state.email && this.state.password){
       if(this.state.value === "business"){
         console.log("about to fetch");
-        fetch('http://localhost:1701/api/account/restaurant', myInit).then((res) => {
-          hashHistory.push('/profile');
+        fetch('/api/account/restaurant', myInit).then((res) => {
+          // hashHistory.push('/profile');
+          console.log('this props openModal');
+          this.props.openModal()
+
         })
       } else {
        console.log("DOESNT OWRKS LOL");

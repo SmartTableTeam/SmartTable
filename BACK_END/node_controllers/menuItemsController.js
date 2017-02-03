@@ -10,11 +10,12 @@ module.exports = {
 
 function createMenuItem(req, res) {
 	var db = app.get('db');
-
+	console.log(req.body);
 	db.menu_items.insert(req.body, function(err, newMenuItem) {
 		if(!err) {
 			res.status(200).send(newMenuItem);
 		} else {
+			console.log(err);
 			res.status(500).send(err);
 		}
 	})
@@ -35,12 +36,12 @@ function getMenuItem(req, res) {
 			res.status(500).send(err)
 		}
 	})
-	
+
 }
 
 function updateMenuItem(req, res) {
 	var db = app.get('db');
-	
+
 	db.menu_items.update(req.body, function(err, newMenuItem) {
 		if(!err) {
 			res.status(200).send(newMenuItem);

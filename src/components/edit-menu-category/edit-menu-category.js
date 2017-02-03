@@ -63,8 +63,8 @@ class Category extends Component {
                 <div className='container-fluid'>
 
                     <div className='button-container'>
-                        <button disabled={this.props.categories.length === 1} className='black btn btn-default btn-lg' onClick={this.addCategory.bind(this)}>Add Category</button>
-                        {this.state.addCategory ? <button onClick ={()=>this.setState({addCategory:false})} className='btn btn-default btn-md'>Back</button> : null}
+                        <button disabled={this.props.categories.length === 1} className='buttonStyle btn btn-default btn-lg' onClick={this.addCategory.bind(this)}>Add Category</button>
+                        {this.state.addCategory ? <button onClick ={()=>this.setState({addCategory:false})} className='buttonStyle btn btn-default btn-md'>Back</button> : null}
                     </div>
 
                     {this.state.addCategory ? <form style={formStyle} onSubmit={this.onSubmit.bind(this)}>

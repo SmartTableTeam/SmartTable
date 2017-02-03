@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { loginUser } from '../../../actions/login'
 import { hashHistory } from 'react-router'
 import './signup.scss'
+import axios from 'axios'
 class SignUp extends Component {
 
   constructor(props){
@@ -36,7 +37,9 @@ class SignUp extends Component {
         password:this.state.password
       }
       console.log(user);
-      this.props.loginUser(user).then(() => hashHistory.push('/profile'))
+      this.props.loginUser(user)
+      .then(() => hashHistory.push('/profile'))
+
     }
 
 

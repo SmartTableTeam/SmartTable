@@ -49,10 +49,15 @@ function createRestaurantAccount(req, res) {
 							if(!err) {
 								db.get_restaurant_account_data(newAccount.id, function(err, fullAccount) {
 									if(!err) {
+										console.log('FULLACCOUNT',fullAccount);
 										req.session.currentUser = fullAccount;
 										res.status(200).send(fullAccount);
+									} else {
+										res.status(500).send(err);
 									}
 								})
+							} else {
+								res.status(500).send(err);
 							}
 						})
 					}
