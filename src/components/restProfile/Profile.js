@@ -1,7 +1,7 @@
 import React , { Component } from 'react'
 import DashboardNav from './nav/DashboardNav.js'
 import TheBox from './theBox/TheBox.js'
-import './Profile.scss'
+import './profile.scss'
 import TheBoxNav from './theBox/TheBox'
 
 
