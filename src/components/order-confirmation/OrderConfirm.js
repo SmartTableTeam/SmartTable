@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { getOrderById } from '../../actions/index'
 import { bindActionCreators } from 'redux'
+import {hashHistory} from 'react-router'
 import '../main.scss';
 import './orderconfirm.scss';
 
@@ -46,7 +47,7 @@ class OrderConfirm extends Component {
                 </ul>
                 <hr />
                 <h4>Total:</h4> <h4 className="floatRight">{orderTotalPrice / 100}</h4>
-                <button className="main-button btn">Back to Menu</button>
+                <button onClick={()=>hashHistory.push('/tableMenu')} className="main-button btn">Back to Menu</button>
             </div>
         </div>
     )
