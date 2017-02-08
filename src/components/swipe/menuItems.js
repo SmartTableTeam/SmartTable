@@ -23,12 +23,12 @@ class MenuItems extends React.Component {
   }
   // = = = = = = = = = = Alert = = = = = = = = = =
   handleSuccess(orderItem) {
-   Alert.warning(`Your Dish "${orderItem.name}" Has Been Added!`, {
+   Alert.error(`Your Dish "${orderItem.name}" Has Been Added!`, {
        position: 'top-right'
    });
   }
   handleSuccessNotes(orderItem){
-   Alert.warning(`Your Dish "${orderItem.name}" Has Been Added! With Note Of "${orderItem.notes}"`, {
+   Alert.error(`Your Dish "${orderItem.name}" Has Been Added! With Note Of "${orderItem.notes}"`, {
        position: 'top-right'
    });
   }
@@ -94,26 +94,33 @@ class MenuItems extends React.Component {
             <div id='options-container'>
 
               <div id='options-price'>
-                <div onClick={this.handleOrderItem} id='thumbs-up'>
-                  <h1><ThumbsUp /></h1>
+                <div onClick={this.handleOrderItem} className="menuItem-button">
+                  <div id='thumbs-up'>
+                    <h1><ThumbsUp /></h1>
+                  </div>
+
                   <h2>Order</h2>
                 </div>
 
-                <div id='info-wrapper'>
-                  <span id='infoModal'>
-                    <InfoModal
-                    item={this.props.item}
-                    modalIsOpen={this.state.modalIsOpen}
-                    closeModal={this.closeModal}
-                    />
-                  </span>
+                <div className='menuItem-button'>
+                  <div id='info-wrapper'>
+                    <span id='infoModal'>
+                      <InfoModal
+                      item={this.props.item}
+                      modalIsOpen={this.state.modalIsOpen}
+                      closeModal={this.closeModal}
+                      />
+                    </span>
+                  </div>
+
                   <h2>Info</h2>
                 </div>
+
 
               </div>
 
               <div>
-                <h3>${(this.props.item.price / 100)}</h3>
+                <h1>${(this.props.item.price / 100)}</h1>
               </div>
 
             </div>

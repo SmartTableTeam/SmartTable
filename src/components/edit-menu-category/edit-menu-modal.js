@@ -113,8 +113,6 @@ class EditMenuModal extends React.Component {
         style={customStyles}
         contentLabel="EditMenu Modal">
 
-          <button onClick={()=> console.log(this.props.category)}>Click for Category</button>
-
             <h1 ref='subtitle'>Menu Edit</h1>
             <h3>{this.props.category.category}</h3>
             <div style={sectionStyle}></div>

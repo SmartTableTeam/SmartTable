@@ -103,7 +103,7 @@ class MenuComponent extends React.Component {
         <div>{this.state.clicked ? <div className='editName'>
           <input defaultValue={this.props.category.category} onChange={this.handleChange}className='form-control'/>
           <div style={btnstyle}>
-            <button className='btn btn-warning' onClick={this.handleSubmit}>Submit</button>
+            <button className='btn btn-primary' onClick={this.handleSubmit}>Submit</button>
             <button className='btn btn-danger' onClick={()=>this.setState({clicked:false})}>Close</button>
           </div>
           </div> : null}</div>
